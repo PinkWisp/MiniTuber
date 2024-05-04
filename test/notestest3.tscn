@@ -1,0 +1,157 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0dnefij758lt"]
+
+[ext_resource type="Script" path="res://test/CharacterBody2D.gd" id="1_3hond"]
+[ext_resource type="Script" path="res://test/ColorRectdebug.gd" id="1_3qyn4"]
+[ext_resource type="Script" path="res://test/notestest3.gd" id="1_ds3no"]
+[ext_resource type="Texture2D" uid="uid://cfqnn2gbo73yl" path="res://assets/DebugFullScreen.png" id="4_13y1i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjylp"]
+size = Vector2(461, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onhm1"]
+size = Vector2(459, 552)
+
+[node name="Node" type="Node"]
+script = ExtResource("1_ds3no")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(13, 103)
+polygon = PackedVector2Array(-17.655, -97, -9, 126.68, 241, 131.89, 241.765, -89)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 13.0
+offset_top = 103.0
+offset_right = 147.0
+offset_bottom = 133.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 25.0
+offset_top = 23.0
+offset_right = 77.0
+offset_bottom = 71.0
+color = Color(0.442911, 0.442911, 0.442911, 1)
+script = ExtResource("1_3qyn4")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(193, 74)
+script = ExtResource("1_3hond")
+
+[node name="Control" type="Control" parent="CharacterBody2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 499.0
+offset_bottom = 431.0
+mouse_filter = 2
+
+[node name="PassMove" type="Button" parent="CharacterBody2D/Control"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = -46.0
+offset_right = 470.0
+offset_bottom = -8.0
+
+[node name="Panel" type="Panel" parent="CharacterBody2D/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -41.0
+offset_right = -30.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TabContainer" type="TabContainer" parent="CharacterBody2D/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 462.0
+offset_top = -6.0
+offset_right = 462.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+mouse_filter = 2
+
+[node name="TabBar" type="TabBar" parent="CharacterBody2D/Control/TabContainer"]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="CharacterBody2D/Control/TabContainer/TabBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 395.0
+offset_right = -105.0
+offset_bottom = 483.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5708
+placeholder_text = "Test"
+
+[node name="TabBar2" type="TabBar" parent="CharacterBody2D/Control/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="CharacterBody2D/Control/TabContainer/TabBar2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 395.0
+offset_right = -105.0
+offset_bottom = 483.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5708
+placeholder_text = "Test"
+
+[node name="TabBar3" type="TabBar" parent="CharacterBody2D/Control/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="CharacterBody2D/Control/TabContainer/TabBar3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 395.0
+offset_right = -105.0
+offset_bottom = 483.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5708
+placeholder_text = "Test"
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+position = Vector2(22, -45)
+metadata/_edit_group_ = true
+
+[node name="DragArea" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+position = Vector2(220.5, 14)
+shape = SubResource("RectangleShape2D_fjylp")
+
+[node name="ClickArea" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(240.5, 231)
+shape = SubResource("RectangleShape2D_onhm1")
+
+[node name="ClickArea2" type="Sprite2D" parent="CharacterBody2D"]
+unique_name_in_owner = true
+position = Vector2(240.5, 231)
+scale = Vector2(0.243229, 0.514815)
+texture = ExtResource("4_13y1i")
+
+[connection signal="pressed" from="Button" to="CharacterBody2D" method="_on_button_pressed"]
+[connection signal="pressed" from="CharacterBody2D/Control/PassMove" to="." method="_on_pass_move_pressed"]
+[connection signal="input_event" from="CharacterBody2D/Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="CharacterBody2D/Area2D" to="ColorRect" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="CharacterBody2D/Area2D" to="ColorRect" method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_exited" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_mouse_exited"]

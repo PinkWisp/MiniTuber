@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxeapy2ggn5pv"]
+
+[ext_resource type="Texture2D" uid="uid://dlc4s5lmbasr7" path="res://icon.svg" id="1_hupf5"]
+[ext_resource type="Script" path="res://assets/ClickArea.gd" id="2_4wu0d"]
+
+[node name="ClickArea" type="Sprite2D"]
+texture = ExtResource("1_hupf5")
+script = ExtResource("2_4wu0d")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="ClickPolygon" type="CollisionPolygon2D" parent="Area2D"]
+unique_name_in_owner = true
+polygon = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

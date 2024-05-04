@@ -1,0 +1,196 @@
+[gd_scene load_steps=6 format=3 uid="uid://w2mi5vb30kyv"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_gmujt"]
+[ext_resource type="Script" path="res://addons/draggablesprite2d/src/draggablesprite2d.gd" id="2_sjub7"]
+[ext_resource type="Texture2D" uid="uid://cufb5traovods" path="res://assets/TransNotebook.png" id="3_a1d53"]
+[ext_resource type="Script" path="res://chalk/ChalkBoard.gd" id="3_elxl8"]
+[ext_resource type="Script" path="res://notebook/notebook.gd" id="4_nlxft"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_gmujt")
+
+[node name="ButtonArea" type="Polygon2D" parent="."]
+unique_name_in_owner = true
+visible = false
+color = Color(1, 1, 0.321569, 0.368627)
+polygon = PackedVector2Array(303, 978, 305, 1102, 499, 1098, 495, 976)
+
+[node name="TransBG" type="Polygon2D" parent="."]
+unique_name_in_owner = true
+visible = false
+color = Color(1, 0.847059, 1, 0.470588)
+polygon = PackedVector2Array(-20, -24, -35, 1100, 1955, 1105, 1935, -19)
+
+[node name="NoteBook" type="Area2D" parent="."]
+visible = false
+position = Vector2(257, 301)
+script = ExtResource("2_sjub7")
+texture = ExtResource("3_a1d53")
+
+[node name="Control" type="Control" parent="NoteBook"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -146.0
+offset_top = -168.0
+offset_right = 146.0
+offset_bottom = 198.0
+mouse_filter = 1
+script = ExtResource("4_nlxft")
+
+[node name="TabContainer2" type="TabContainer" parent="NoteBook/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Notes" type="TabBar" parent="NoteBook/Control/TabContainer2"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="NoteEdit" type="TextEdit" parent="NoteBook/Control/TabContainer2/Notes"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+placeholder_text = "Remember to save!
+
+Right click in an empty area to quickly close."
+wrap_mode = 1
+
+[node name="Info" type="TabBar" parent="NoteBook/Control/TabContainer2"]
+visible = false
+layout_mode = 2
+mouse_filter = 1
+
+[node name="InfoEdit" type="TextEdit" parent="NoteBook/Control/TabContainer2/Info"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Other" type="TabBar" parent="NoteBook/Control/TabContainer2"]
+visible = false
+layout_mode = 2
+mouse_filter = 1
+
+[node name="OtherEdit" type="TextEdit" parent="NoteBook/Control/TabContainer2/Other"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="CloseNote" type="Button" parent="NoteBook/Control"]
+layout_mode = 0
+offset_left = 253.0
+offset_top = -1.0
+offset_right = 287.0
+offset_bottom = 30.0
+text = "X"
+
+[node name="SaveTxt2" type="Button" parent="NoteBook/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -91.0
+offset_top = 329.0
+offset_right = -6.0
+offset_bottom = 360.0
+grow_horizontal = 0
+mouse_filter = 1
+text = "Save"
+
+[node name="ChalkBoard" type="Node2D" parent="."]
+script = ExtResource("3_elxl8")
+
+[node name="ChalkLine" type="Node2D" parent="ChalkBoard"]
+
+[node name="BottomUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 311.0
+offset_top = 988.0
+offset_right = 492.0
+offset_bottom = 1089.0
+metadata/_edit_group_ = true
+
+[node name="Panel" type="Panel" parent="BottomUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+metadata/_edit_lock_ = true
+
+[node name="Chalk" type="Button" parent="BottomUI" groups=["UI"]]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -75.0
+offset_bottom = 60.0
+grow_horizontal = 0
+toggle_mode = true
+text = "Chalk"
+metadata/_edit_lock_ = true
+
+[node name="Notes" type="Button" parent="BottomUI" groups=["UI"]]
+layout_mode = 1
+offset_right = 75.0
+offset_bottom = 60.0
+toggle_mode = true
+text = "Notes"
+metadata/_edit_lock_ = true
+
+[node name="MiniTuber" type="Button" parent="BottomUI" groups=["UI"]]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -51.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Future Feature :3"
+metadata/_edit_lock_ = true
+
+[node name="Settings" type="Button" parent="BottomUI" groups=["UI"]]
+visible = false
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -63.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Settings"
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="NoteBook/Control/CloseNote" to="NoteBook" method="_on_close_note_pressed"]
+[connection signal="pressed" from="NoteBook/Control/CloseNote" to="NoteBook/Control" method="_on_close_note_pressed"]
+[connection signal="pressed" from="NoteBook/Control/SaveTxt2" to="NoteBook/Control" method="_on_save_txt_2_pressed"]
+[connection signal="pressed" from="BottomUI/Chalk" to="." method="_on_chalk_pressed"]
+[connection signal="toggled" from="BottomUI/Chalk" to="." method="_on_chalk_toggled"]
+[connection signal="toggled" from="BottomUI/Chalk" to="ChalkBoard" method="_on_chalk_toggled"]
+[connection signal="pressed" from="BottomUI/Notes" to="." method="_on_note_pad_pressed"]
+[connection signal="pressed" from="BottomUI/Notes" to="NoteBook" method="_on_notes_pressed"]
+[connection signal="pressed" from="BottomUI/Notes" to="NoteBook/Control" method="_on_notes_pressed"]
+[connection signal="toggled" from="BottomUI/Notes" to="ChalkBoard" method="_on_note_pad_toggled"]
+[connection signal="pressed" from="BottomUI/MiniTuber" to="." method="_on_mini_tuber_pressed"]

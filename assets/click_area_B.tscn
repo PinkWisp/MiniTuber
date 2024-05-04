@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8oyrjq87u5o2"]
+
+[ext_resource type="Texture2D" uid="uid://c5n8lvwn5hivd" path="res://assets/transparentButton.png" id="1_2q32r"]
+[ext_resource type="Script" path="res://assets/click_area_B.gd" id="2_6nrew"]
+
+[node name="ClickArea" type="Sprite2D"]
+texture = ExtResource("1_2q32r")
+script = ExtResource("2_6nrew")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="ClickPolygonB" type="CollisionPolygon2D" parent="Area2D"]
+unique_name_in_owner = true
+polygon = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)

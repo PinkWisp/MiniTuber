@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://d1qyacfu6crx1"]
+
+[node name="Notes" type="Node"]
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_right = 304.0
+offset_bottom = 291.0
+
+[node name="Polygon2D" type="Polygon2D" parent="PanelContainer"]
+polygon = PackedVector2Array(-6, -6, -8, 296, 310, 296, 310, -8)
+
+[node name="TabContainer" type="TabContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="NoteA" type="TabBar" parent="PanelContainer/TabContainer"]
+layout_mode = 2
+
+[node name="NotepadA" type="TextEdit" parent="PanelContainer/TabContainer/NoteA"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NoteB" type="TabBar" parent="PanelContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="NotepadB" type="TextEdit" parent="PanelContainer/TabContainer/NoteB"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NoteC" type="TabBar" parent="PanelContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="NotepadC" type="TextEdit" parent="PanelContainer/TabContainer/NoteC"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,0 +1,96 @@
+{
+	"categories": [
+		{
+			"uuid": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
+			"title": "Task",
+			"color": "70bafa"
+		}
+	],
+	"stages": [
+		{
+			"uuid": "78eeb4a5-dd09-462d-8e1a-4b05106fe1f1",
+			"title": "Todo",
+			"tasks": [
+				"0b4cc151-3bea-4a09-b3eb-40bd5d546a0b",
+				"e4a5cd66-670d-41e5-9e2e-167919a5f4a7"
+			]
+		},
+		{
+			"uuid": "501d3492-78f7-437e-95b3-f7dc2a0646db",
+			"title": "Doing",
+			"tasks": []
+		},
+		{
+			"uuid": "9a8236e3-957f-4322-b6ca-44a91737ebfc",
+			"title": "Done",
+			"tasks": [
+				"f0d2a23b-25fe-43ca-ab7e-c06262c1a824",
+				"02624b29-b43c-4c10-83a7-5a50535b9f0c",
+				"f704ed5c-6ea8-4fda-adda-9392182590a7"
+			]
+		}
+	],
+	"tasks": [
+		{
+			"uuid": "e4a5cd66-670d-41e5-9e2e-167919a5f4a7",
+			"title": "Button Hover Effect",
+			"description": "https://www.youtube.com/watch?v=t8678_R2HzM\n\nhttps://www.reddit.com/r/godot/comments/ogkwcq/expand_button_on_hover/",
+			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
+			"steps": []
+		},
+		{
+			"uuid": "02624b29-b43c-4c10-83a7-5a50535b9f0c",
+			"title": "Transparent Always Ontop Partially Click Through",
+			"description": "https://github.com/atadenizoktay/godot-click-through-transparent-window/blob/godot-4/src/scenes/canvas.gd\n\nhttps://medium.com/@chewedgumah/godot-4-partially-clickthrough-window-with-transparent-background-3de637cdf95b",
+			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
+			"steps": []
+		},
+		{
+			"uuid": "f704ed5c-6ea8-4fda-adda-9392182590a7",
+			"title": "NotePad",
+			"description": "https://github.com/finepointcgi/Drag-Rescale-and-Drop-Windows\nhttps://www.youtube.com/watch?v=VF_sAq4QQZo&t=1369s\n\nUI transition: https://www.youtube.com/watch?v=qAYugO4Fj8c\n\nDraggable UI: https://www.youtube.com/watch?v=GfGpXfbLVBA",
+			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
+			"steps": []
+		},
+		{
+			"uuid": "f0d2a23b-25fe-43ca-ab7e-c06262c1a824",
+			"title": "Chalk",
+			"description": "https://www.youtube.com/watch?v=oLle7eYuvMY",
+			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
+			"steps": []
+		},
+		{
+			"uuid": "0b4cc151-3bea-4a09-b3eb-40bd5d546a0b",
+			"title": "DeskTuber",
+			"description": "Sync expressons with key phrases and volume?\nFollow Mouse\n\nWTF?! = Angry\nDont be suspecious = Smug\n",
+			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
+			"steps": [
+				{
+					"details": "PNG",
+					"done": false
+				},
+				{
+					"details": "Bones",
+					"done": false
+				},
+				{
+					"details": "Desk",
+					"done": false
+				}
+			]
+		}
+	],
+	"layout": {
+		"columns": [
+			[
+				"78eeb4a5-dd09-462d-8e1a-4b05106fe1f1"
+			],
+			[
+				"501d3492-78f7-437e-95b3-f7dc2a0646db"
+			],
+			[
+				"9a8236e3-957f-4322-b6ca-44a91737ebfc"
+			]
+		]
+	}
+}

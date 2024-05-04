@@ -1,0 +1,100 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7qhfdtcpphvh"]
+
+[ext_resource type="Script" path="res://test/oldNotepad/notepad.gd" id="1_n2cax"]
+[ext_resource type="Script" path="res://test/oldNotepad/WindowManager.gd" id="2_i8lot"]
+
+[node name="Notepad" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 53.0
+offset_top = 25.0
+offset_right = -707.0
+offset_bottom = -195.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n2cax")
+
+[node name="NoteArea" type="Polygon2D" parent="."]
+position = Vector2(14, 14)
+polygon = PackedVector2Array(0, 2, 0, 397, 364, 397, 364, 0)
+
+[node name="PanelContainer" type="PanelContainer" parent="NoteArea"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 364.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NoteOpen" type="Control" parent="NoteArea/PanelContainer"]
+layout_mode = 2
+script = ExtResource("2_i8lot")
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="NoteArea/PanelContainer/NoteOpen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="TabContainer" type="TabContainer" parent="NoteArea/PanelContainer/NoteOpen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+drag_to_rearrange_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="TabA" type="TabBar" parent="NoteArea/PanelContainer/NoteOpen/TabContainer"]
+layout_mode = 2
+drag_to_rearrange_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="NoteA" type="TextEdit" parent="NoteArea/PanelContainer/NoteOpen/TabContainer/TabA"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="TabB" type="TabBar" parent="NoteArea/PanelContainer/NoteOpen/TabContainer"]
+visible = false
+layout_mode = 2
+drag_to_rearrange_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="NoteB" type="TextEdit" parent="NoteArea/PanelContainer/NoteOpen/TabContainer/TabB"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="TabC" type="TabBar" parent="NoteArea/PanelContainer/NoteOpen/TabContainer"]
+visible = false
+layout_mode = 2
+drag_to_rearrange_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="NoteC" type="TextEdit" parent="NoteArea/PanelContainer/NoteOpen/TabContainer/TabC"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
