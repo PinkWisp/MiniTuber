@@ -22,7 +22,6 @@ color = Color(1, 0.847059, 1, 0.470588)
 polygon = PackedVector2Array(-20, -24, -35, 1100, 1955, 1105, 1935, -19)
 
 [node name="NoteBook" type="Area2D" parent="."]
-visible = false
 position = Vector2(257, 301)
 script = ExtResource("2_sjub7")
 texture = ExtResource("3_a1d53")
@@ -31,7 +30,7 @@ texture = ExtResource("3_a1d53")
 layout_mode = 3
 anchors_preset = 0
 offset_left = -146.0
-offset_top = -168.0
+offset_top = -198.0
 offset_right = 146.0
 offset_bottom = 198.0
 mouse_filter = 1
@@ -58,9 +57,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-placeholder_text = "Remember to save!
+placeholder_text = "Save notes before closing MiniTuber!
 
-Right click in an empty area to quickly close."
+'X' button also saves"
 wrap_mode = 1
 
 [node name="Info" type="TabBar" parent="NoteBook/Control/TabContainer2"]
@@ -92,6 +91,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+wrap_mode = 1
 
 [node name="CloseNote" type="Button" parent="NoteBook/Control"]
 layout_mode = 0
@@ -103,14 +103,15 @@ text = "X"
 
 [node name="SaveTxt2" type="Button" parent="NoteBook/Control"]
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = 3
 anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
-offset_left = -91.0
-offset_top = 329.0
-offset_right = -6.0
-offset_bottom = 360.0
+anchor_bottom = 1.0
+offset_left = -85.0
+offset_top = -31.0
 grow_horizontal = 0
+grow_vertical = 0
 mouse_filter = 1
 text = "Save"
 
