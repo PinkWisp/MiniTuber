@@ -9,7 +9,7 @@ var noteState = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_tree().get_root().set_transparent_background(true) #transparent BG
-	DisplayServer.window_set_mouse_passthrough($ButtonArea.polygon)
+	DisplayServer.window_set_mouse_passthrough($%ButtonArea.polygon)
 
 	
 func _input(event):
@@ -27,7 +27,7 @@ func _input(event):
 	# if Notepad && in empty area then cancel
 	if Input.is_action_just_pressed("RMB"):
 		if chalkState == true:
-			DisplayServer.window_set_mouse_passthrough($ButtonArea.polygon)
+			DisplayServer.window_set_mouse_passthrough($%ButtonArea.polygon)
 			chalkState = false
 			print("RMB")
 

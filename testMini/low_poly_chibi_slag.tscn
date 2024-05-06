@@ -1,0 +1,88 @@
+[gd_scene load_steps=3 format=3 uid="uid://culgexfngll5c"]
+
+[ext_resource type="PackedScene" uid="uid://c0vakpygtg2o4" path="res://testMini/LowPolyChibiSlag.glb" id="1_cj5ns"]
+[ext_resource type="Script" path="res://addons/jigglebones/jigglebone.gd" id="2_vw60g"]
+
+[node name="LowPolyChibiSlag" instance=ExtResource("1_cj5ns")]
+
+[node name="Skeleton3D" parent="ChibiSlag Armature" index="0"]
+bones/2/rotation = Quaternion(1.13798e-15, -0.00151811, -3.74701e-16, 0.999999)
+bones/3/rotation = Quaternion(0.0544496, -1.19032e-07, -6.4909e-09, 0.998517)
+bones/4/rotation = Quaternion(-0.262059, -5.52206e-15, 6.24797e-08, 0.965052)
+bones/5/rotation = Quaternion(0.209123, 1.16573e-07, -2.49295e-08, 0.977889)
+bones/6/rotation = Quaternion(0.0047393, -0.00482437, -0.702703, 0.711451)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(-0.00676127, -0.000142663, -0.0362425, 0.99932)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(0.0548877, 0.00446458, -0.0364344, 0.997818)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(-0.0222098, -0.00308992, -0.0327183, 0.999213)
+bones/9/scale = Vector3(1, 1, 1)
+bones/12/rotation = Quaternion(-0.650592, 9.05308e-08, -7.75566e-08, 0.759428)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(-0.0565943, 1.30105e-14, -1.34931e-08, 0.998397)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/rotation = Quaternion(-0.0285965, -3.92208e-15, -6.81793e-09, 0.999591)
+bones/15/rotation = Quaternion(-0.0474414, 3.8068e-15, -1.13109e-08, 0.998874)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(-0.0187533, -1.3214e-14, -4.47113e-09, 0.999824)
+bones/17/rotation = Quaternion(0.0047393, 0.00482437, 0.702703, 0.711451)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/rotation = Quaternion(-0.00676127, 0.000142663, 0.0362425, 0.99932)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/rotation = Quaternion(0.0548877, -0.00446458, 0.0364344, 0.997818)
+bones/19/scale = Vector3(1, 1, 1)
+bones/20/rotation = Quaternion(-0.0222098, 0.00308992, 0.0327183, 0.999213)
+bones/20/scale = Vector3(1, 1, 1)
+bones/22/rotation = Quaternion(-0.637666, 1.83657e-07, 4.61204e-15, 0.770313)
+bones/23/rotation = Quaternion(-0.47537, 1.00954e-14, -1.13337e-07, 0.879786)
+bones/25/rotation = Quaternion(0.0415957, 0.245761, -0.665039, 0.703985)
+bones/26/rotation = Quaternion(0.181198, 0.00464707, 0.00514873, 0.983422)
+bones/27/rotation = Quaternion(-0.0347268, -0.00108249, -0.00188195, 0.999394)
+bones/27/scale = Vector3(1, 1, 1)
+bones/28/rotation = Quaternion(-0.384383, 0.593506, -0.384383, 0.593506)
+bones/28/scale = Vector3(1, 1, 1)
+bones/29/rotation = Quaternion(0.209123, 1.06377e-07, 2.2749e-08, 0.977889)
+bones/29/scale = Vector3(1, 1, 1)
+bones/30/rotation = Quaternion(0.0415958, -0.245761, 0.665039, 0.703985)
+bones/30/scale = Vector3(1, 1, 1)
+bones/31/rotation = Quaternion(0.181198, -0.00464711, -0.00514871, 0.983422)
+bones/32/rotation = Quaternion(-0.0347268, 0.00108249, 0.00188195, 0.999394)
+bones/32/scale = Vector3(1, 1, 1)
+bones/33/rotation = Quaternion(-0.384383, -0.593506, 0.384383, 0.593506)
+bones/34/rotation = Quaternion(0.209123, 1.06377e-07, 2.2749e-08, 0.977889)
+bones/34/scale = Vector3(1, 1, 1)
+bones/35/rotation = Quaternion(0.695977, 0.109559, 0.702198, 0.10262)
+bones/36/rotation = Quaternion(-0.00656616, -0.000563128, 0.714515, 0.699589)
+bones/36/scale = Vector3(1, 1, 1)
+bones/37/rotation = Quaternion(1.48762e-07, -1.59375e-07, -0.6854, 0.728167)
+bones/38/rotation = Quaternion(-0.781653, 7.43524e-08, 9.31803e-08, 0.623714)
+bones/39/rotation = Quaternion(0.0163213, -3.89988e-15, 6.98619e-15, 0.999867)
+bones/40/rotation = Quaternion(0.0821375, 9.65347e-17, -1.23443e-15, 0.996621)
+bones/41/rotation = Quaternion(0.0163207, 2.93757e-18, -2.43652e-16, 0.999867)
+bones/42/rotation = Quaternion(-0.362765, 4.80287e-15, 6.41315e-15, 0.931881)
+bones/43/rotation = Quaternion(0.221611, -4.20367e-16, 1.79865e-15, 0.975135)
+bones/44/rotation = Quaternion(0.0955848, -7.66511e-17, 7.48324e-16, 0.995421)
+bones/45/rotation = Quaternion(0.720286, -0.105875, -0.67724, 0.106416)
+bones/45/scale = Vector3(1, 1, 1)
+bones/46/rotation = Quaternion(0.0186137, -0.024087, -0.714302, 0.699175)
+bones/46/scale = Vector3(1, 1, 1)
+bones/47/rotation = Quaternion(1.74381e-07, 7.41331e-08, 0.6854, 0.728167)
+
+[node name="Jigglebone" type="Node3D" parent="ChibiSlag Armature/Skeleton3D" index="9"]
+transform = Transform3D(1, -9.23705e-14, 2.38418e-07, -1.67201e-07, -0.712874, 0.701291, 1.69962e-07, -0.701291, -0.712874, -1.17022e-13, 1.92033, -0.846689)
+top_level = true
+script = ExtResource("2_vw60g")
+bone_name = "Ponytail.004"
+stiffness = 0.5
+use_gravity = true
+forward_axis = 1
+
+[node name="Jigglebone2" type="Node3D" parent="ChibiSlag Armature/Skeleton3D" index="10"]
+transform = Transform3D(1, -1.03029e-13, 2.38418e-07, -7.97669e-08, -0.942372, 0.334566, 2.24679e-07, -0.334566, -0.942372, -1.35189e-13, 1.77838, -0.986337)
+top_level = true
+script = ExtResource("2_vw60g")
+bone_name = "Ponytail.005"
+stiffness = 0.1
+use_gravity = true
+forward_axis = 1
