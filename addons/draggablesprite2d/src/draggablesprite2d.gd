@@ -74,7 +74,7 @@ func _ready() -> void:
 
 func _process(delta) -> void:
 	# If the input_method is down and the object is and can be grabbed, update it's position
-	# Passthrough Check
+		# Passthrough Check NoteBook
 	if noteState == true:
 		if Input.is_mouse_button_pressed(input_method) and is_grabbed and grabbable:
 			position = get_global_mouse_position() + grabbed_offset
@@ -130,6 +130,8 @@ func _on_input_event(viewport, event, shape_idx) -> void:
 		grabbed_offset = position - get_global_mouse_position()
 		#Passthrough Addition
 	if Input.is_action_just_pressed("LMB") and noteState == true:
+		DisplayServer.window_set_mouse_passthrough($%TransBG.polygon)
+	if Input.is_action_just_pressed("RMB") and noteState == true:
 		DisplayServer.window_set_mouse_passthrough($%TransBG.polygon)
 
 func _on_child_entered_tree(child) -> void:
