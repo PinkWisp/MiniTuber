@@ -12,7 +12,8 @@
 			"title": "Todo",
 			"tasks": [
 				"0b4cc151-3bea-4a09-b3eb-40bd5d546a0b",
-				"e4a5cd66-670d-41e5-9e2e-167919a5f4a7"
+				"e4a5cd66-670d-41e5-9e2e-167919a5f4a7",
+				"536b7dc7-a69f-4d5e-8453-1dd0ababc9f6"
 			]
 		},
 		{
@@ -26,7 +27,8 @@
 			"tasks": [
 				"f0d2a23b-25fe-43ca-ab7e-c06262c1a824",
 				"02624b29-b43c-4c10-83a7-5a50535b9f0c",
-				"f704ed5c-6ea8-4fda-adda-9392182590a7"
+				"f704ed5c-6ea8-4fda-adda-9392182590a7",
+				"0c2d4c78-63cb-40b5-8844-7ed32d5242ec"
 			]
 		}
 	],
@@ -78,6 +80,27 @@
 					"done": false
 				}
 			]
+		},
+		{
+			"uuid": "536b7dc7-a69f-4d5e-8453-1dd0ababc9f6",
+			"title": "Chalk Outline",
+			"description": "",
+			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
+			"steps": []
+		},
+		{
+			"uuid": "0c2d4c78-63cb-40b5-8844-7ed32d5242ec",
+			"title": "Save Function",
+			"description": "",
+			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
+			"steps": []
+		},
+		{
+			"uuid": "dd8af19c-9f28-4b69-97c1-183660afcd54",
+			"title": "Chalk Color Picker",
+			"description": "",
+			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
+			"steps": []
 		}
 	],
 	"layout": {
