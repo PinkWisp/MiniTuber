@@ -28,7 +28,7 @@ func save_notes():
 
 func _on_save_pressed():
 	save_notes()
-	
+
 func _on_close_note_pressed():
 	save_notes()
 	visible = false
