@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://cvr8vqtmaxym"]
+
+[ext_resource type="Texture2D" uid="uid://cbfydio3kgbjy" path="res://assets/EmoteTest/pispSMUG.png" id="1_6sasm"]
+[ext_resource type="Script" path="res://testMini/character_body_2d.gd" id="1_tenk8"]
+[ext_resource type="Texture2D" uid="uid://dw6qs6yhr1xre" path="res://assets/hands/wavetest.png" id="3_ebc5x"]
+[ext_resource type="Script" path="res://testMini/HandPaths.gd" id="3_m0qaa"]
+[ext_resource type="Script" path="res://testMini/HandPathClick.gd" id="5_e7s7a"]
+[ext_resource type="Texture2D" uid="uid://o1u4qw3dqns7" path="res://assets/hands/pointertest.png" id="6_om0s2"]
+
+[sub_resource type="Curve2D" id="Curve2D_e66pm"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -160, -50, -20.2043, 9.54093, 20.2043, -9.54093, -130, -72, 0, 0, 0, 0, -82, -82)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_t8lb4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 466.381, 0, 0, 0, 0, 0, 677.064, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_f0kok"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txj0k"]
+size = Vector2(127.105, 127.105)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(408, 242)
+script = ExtResource("1_tenk8")
+
+[node name="MiniPlaceholder" type="Sprite2D" parent="."]
+scale = Vector2(0.23, 0.23)
+texture = ExtResource("1_6sasm")
+
+[node name="Wave" type="Path2D" parent="MiniPlaceholder"]
+scale = Vector2(4.34783, 4.34783)
+curve = SubResource("Curve2D_e66pm")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="MiniPlaceholder/Wave"]
+position = Vector2(-89.2237, -81.5891)
+rotation = -0.0819814
+progress = 79.5467
+loop = false
+script = ExtResource("3_m0qaa")
+
+[node name="HandTemp" type="Sprite2D" parent="MiniPlaceholder/Wave/PathFollow2D"]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(0.465, 0.465)
+texture = ExtResource("3_ebc5x")
+flip_h = true
+
+[node name="Punch" type="Path2D" parent="MiniPlaceholder"]
+scale = Vector2(4.34783, 4.34783)
+curve = SubResource("Curve2D_e66pm")
+
+[node name="Orbit" type="Node2D" parent="MiniPlaceholder"]
+unique_name_in_owner = true
+
+[node name="Path2D" type="Path2D" parent="MiniPlaceholder/Orbit"]
+curve = SubResource("Curve2D_t8lb4")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="MiniPlaceholder/Orbit/Path2D"]
+position = Vector2(466.381, 0)
+loop = false
+script = ExtResource("5_e7s7a")
+
+[node name="CircleTemp" type="Sprite2D" parent="MiniPlaceholder/Orbit/Path2D/PathFollow2D"]
+unique_name_in_owner = true
+position = Vector2(0.00012207, 0)
+rotation = 1.5708
+scale = Vector2(2.02174, 2.02174)
+texture = ExtResource("6_om0s2")
+
+[node name="FistPath" type="Path2D" parent="MiniPlaceholder"]
+curve = SubResource("Curve2D_f0kok")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_txj0k")
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]

@@ -12,13 +12,17 @@
 			"title": "Todo",
 			"tasks": [
 				"0b4cc151-3bea-4a09-b3eb-40bd5d546a0b",
-				"e4a5cd66-670d-41e5-9e2e-167919a5f4a7"
+				"e4a5cd66-670d-41e5-9e2e-167919a5f4a7",
+				"d08c836a-4853-48bf-b99b-0bf8246e274f",
+				"9a6c264c-d085-4dd8-a3b2-ee14d95e6c2a"
 			]
 		},
 		{
 			"uuid": "501d3492-78f7-437e-95b3-f7dc2a0646db",
 			"title": "Doing",
-			"tasks": []
+			"tasks": [
+				"ee82a70e-4c17-4109-ab4b-3dfe9db45577"
+			]
 		},
 		{
 			"uuid": "9a8236e3-957f-4322-b6ca-44a91737ebfc",
@@ -78,6 +82,53 @@
 					"done": false
 				}
 			]
+		},
+		{
+			"uuid": "ee82a70e-4c17-4109-ab4b-3dfe9db45577",
+			"title": "MiniTuber",
+			"description": "Floating Head (multiple emojis)\nFloating Hands",
+			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
+			"steps": [
+				{
+					"details": "Multi Expressions",
+					"done": true
+				},
+				{
+					"details": "Multi Hand Emotes",
+					"done": false
+				},
+				{
+					"details": "Emote particles",
+					"done": false
+				},
+				{
+					"details": "Movement",
+					"done": true
+				}
+			]
+		},
+		{
+			"uuid": "d08c836a-4853-48bf-b99b-0bf8246e274f",
+			"title": "Config Settings",
+			"description": "",
+			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
+			"steps": [
+				{
+					"details": "Window Size",
+					"done": false
+				},
+				{
+					"details": "Select Monitor\n",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "9a6c264c-d085-4dd8-a3b2-ee14d95e6c2a",
+			"title": "Moveable Bottom Menu?",
+			"description": "Vector2 Array Resource Editor Addon?\nhttps://github.com/Bugwan91/vector2_array_resource_editor",
+			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
+			"steps": []
 		}
 	],
 	"layout": {

@@ -22,6 +22,7 @@ color = Color(1, 0.847059, 1, 0.470588)
 polygon = PackedVector2Array(-20, -24, -35, 1100, 1955, 1105, 1935, -19)
 
 [node name="NoteBook" type="Area2D" parent="."]
+visible = false
 position = Vector2(257, 301)
 script = ExtResource("2_sjub7")
 texture = ExtResource("3_a1d53")
