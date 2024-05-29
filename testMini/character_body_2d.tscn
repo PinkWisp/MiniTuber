@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cvr8vqtmaxym"]
+[gd_scene load_steps=14 format=3 uid="uid://cvr8vqtmaxym"]
 
 [ext_resource type="Texture2D" uid="uid://cbfydio3kgbjy" path="res://assets/EmoteTest/pispSMUG.png" id="1_6sasm"]
 [ext_resource type="Script" path="res://testMini/character_body_2d.gd" id="1_tenk8"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://testMini/HandPaths.gd" id="3_m0qaa"]
 [ext_resource type="Script" path="res://testMini/HandPathClick.gd" id="5_e7s7a"]
 [ext_resource type="Texture2D" uid="uid://o1u4qw3dqns7" path="res://assets/hands/pointertest.png" id="6_om0s2"]
+[ext_resource type="Texture2D" uid="uid://buktowx0fov3v" path="res://assets/hands/rudetest.png" id="7_4ggm6"]
+[ext_resource type="Texture2D" uid="uid://cqbjskgwv3sgh" path="res://assets/hands/fistholder.png" id="8_30ra7"]
 
 [sub_resource type="Curve2D" id="Curve2D_e66pm"]
 _data = {
@@ -20,60 +22,101 @@ _data = {
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_f0kok"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 426.054, -160.87, 0, 0, 0, 0, 426.054, -447.826)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_03d4u"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -330.435, 65.2173, 0, 0, 0, 0, -665.217, 65.2173)
+}
+point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_txj0k"]
 size = Vector2(127.105, 127.105)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="MiniTuber" type="CharacterBody2D"]
 position = Vector2(408, 242)
 script = ExtResource("1_tenk8")
 
-[node name="MiniPlaceholder" type="Sprite2D" parent="."]
+[node name="MiniSprite" type="Sprite2D" parent="."]
 scale = Vector2(0.23, 0.23)
 texture = ExtResource("1_6sasm")
 
-[node name="Wave" type="Path2D" parent="MiniPlaceholder"]
+[node name="Wave" type="Path2D" parent="MiniSprite"]
 scale = Vector2(4.34783, 4.34783)
 curve = SubResource("Curve2D_e66pm")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="MiniPlaceholder/Wave"]
+[node name="PathFollow2D" type="PathFollow2D" parent="MiniSprite/Wave"]
 position = Vector2(-89.2237, -81.5891)
 rotation = -0.0819814
 progress = 79.5467
 loop = false
 script = ExtResource("3_m0qaa")
 
-[node name="HandTemp" type="Sprite2D" parent="MiniPlaceholder/Wave/PathFollow2D"]
+[node name="WaveHand" type="Sprite2D" parent="MiniSprite/Wave/PathFollow2D"]
 unique_name_in_owner = true
 visible = false
 scale = Vector2(0.465, 0.465)
 texture = ExtResource("3_ebc5x")
 flip_h = true
 
-[node name="Punch" type="Path2D" parent="MiniPlaceholder"]
+[node name="Punch" type="Path2D" parent="MiniSprite"]
 scale = Vector2(4.34783, 4.34783)
 curve = SubResource("Curve2D_e66pm")
 
-[node name="Orbit" type="Node2D" parent="MiniPlaceholder"]
+[node name="Orbit" type="Node2D" parent="MiniSprite"]
 unique_name_in_owner = true
 
-[node name="Path2D" type="Path2D" parent="MiniPlaceholder/Orbit"]
+[node name="Path2D" type="Path2D" parent="MiniSprite/Orbit"]
 curve = SubResource("Curve2D_t8lb4")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="MiniPlaceholder/Orbit/Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="MiniSprite/Orbit/Path2D"]
 position = Vector2(466.381, 0)
 loop = false
 script = ExtResource("5_e7s7a")
 
-[node name="CircleTemp" type="Sprite2D" parent="MiniPlaceholder/Orbit/Path2D/PathFollow2D"]
+[node name="OrbitHand" type="Sprite2D" parent="MiniSprite/Orbit/Path2D/PathFollow2D"]
 unique_name_in_owner = true
+visible = false
 position = Vector2(0.00012207, 0)
 rotation = 1.5708
 scale = Vector2(2.02174, 2.02174)
 texture = ExtResource("6_om0s2")
 
-[node name="FistPath" type="Path2D" parent="MiniPlaceholder"]
+[node name="Vertical" type="Path2D" parent="MiniSprite"]
 curve = SubResource("Curve2D_f0kok")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="MiniSprite/Vertical"]
+position = Vector2(426.054, -160.87)
+rotation = -1.5708
+loop = false
+script = ExtResource("3_m0qaa")
+
+[node name="VerticalHand" type="Sprite2D" parent="MiniSprite/Vertical/PathFollow2D"]
+unique_name_in_owner = true
+visible = false
+rotation = 1.5708
+scale = Vector2(1.71, 1.71)
+texture = ExtResource("7_4ggm6")
+
+[node name="Horizontal" type="Path2D" parent="."]
+scale = Vector2(0.23, 0.23)
+curve = SubResource("Curve2D_03d4u")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Horizontal"]
+position = Vector2(-330.435, 65.2173)
+rotation = 3.14159
+loop = false
+script = ExtResource("3_m0qaa")
+
+[node name="HoritonalHand" type="Sprite2D" parent="Horizontal/PathFollow2D"]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(1.82, 1.82)
+texture = ExtResource("8_30ra7")
+flip_v = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_txj0k")
