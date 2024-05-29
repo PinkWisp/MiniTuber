@@ -13,18 +13,18 @@ var dashState = false
 
 var currentTuber = "" # Dynamic Directory
 
-const emote1 = "emote1.png"
-const emote2 = "emote2.png"
-const emote3 = "emote3.png"
-const emote4 = "emote4.png"
-const emote5 = "emote5.png"
-const emote6 = "emote6.png"
-const hand1 = "hand1.png"
-const hand2 = "hand2.png"
-const hand3 = "hand3.png"
-const hand4 = "hand4.png"
+var emote1 = "user://models/default/emote1.png"
+var emote2 = "user://models/default/emote2.png"
+var emote3 = "user://models/default/emote3.png"
+var emote4 = "user://models/default/emote4.png"
+var emote5 = "user://models/default/emote5.png"
+var emote6 = "user://models/default/emote6.png"
+var hand1 = "user://models/default/hand1.png"
+var hand2 = "user://models/default/hand2.png"
+var hand3 = "user://models/default/hand3.png"
+var hand4 = "user://models/default/hand4.png"
 
-
+const dirModels = "user://models/"
 
 func _ready():
 	clickPos = position
@@ -32,7 +32,6 @@ func _ready():
 	# Make Emotes
 	var dir = DirAccess.open("user://")
 	if dir.dir_exists("user://models/default"):
-		pass # Load Face and Hands
 		$MiniSprite.texture = load(emote1)
 	else:
 		dir.make_dir("models")
@@ -42,26 +41,26 @@ func _ready():
 		$MiniSprite.texture = load(emote1)
 
 func _blank_png():
-	emote1 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
-	emote1.save_png("user://models/default/emote1.png")
-	emote2 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
-	emote2.save_png("user://models/default/emote2.png")
-	emote3 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
-	emote3.save_png("user://models/default/emote3.png")
-	emote4 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
-	emote4.save_png("user://models/default/emote4.png")
-	emote5 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
-	emote5.save_png("user://models/default/emote5.png")
-	emote6 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
-	emote6.save_png("user://models/default/emote6.png")
-	hand1 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
-	hand1.save_png("user://models/default/hand1.png")
-	hand2 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
-	hand2.save_png("user://models/default/hand2.png")
-	hand3 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
-	hand3.save_png("user://models/default/hand3.png")
-	hand4 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
-	hand4.save_png("user://models/default/hand4.png")
+	var blank_emote1 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+	blank_emote1.save_png("user://models/default/emote1.png")
+	var blank_emote2 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+	blank_emote2.save_png("user://models/default/emote2.png")
+	var blank_emote3 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+	blank_emote3.save_png("user://models/default/emote3.png")
+	var blank_emote4 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+	blank_emote4.save_png("user://models/default/emote4.png")
+	var blank_emote5 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+	blank_emote5.save_png("user://models/default/emote5.png")
+	var blank_emote6 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+	blank_emote6.save_png("user://models/default/emote6.png")
+	var blank_hand1 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+	blank_hand1.save_png("user://models/default/hand1.png")
+	var blank_hand2 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+	blank_hand2.save_png("user://models/default/hand2.png")
+	var blank_hand3 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+	blank_hand3.save_png("user://models/default/hand3.png")
+	var blank_hand4 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+	blank_hand4.save_png("user://models/default/hand4.png")
 
 	
 func _process(delta):
@@ -127,6 +126,7 @@ func _input(event):
 	if Input.is_action_pressed("LMB"):
 		#$%WaveHand.visible = true
 		$%OrbitHand.visible = true
+		print(emote1)
 		
 #region Emotes
 	if Input.is_action_just_pressed("1"):
