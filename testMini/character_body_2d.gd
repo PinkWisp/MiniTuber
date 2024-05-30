@@ -11,35 +11,37 @@ var dashState = false
 #have menu add another folder for different tubers
 # Prep Emotes
 
-var currentTuber = "" # Dynamic Directory
+# Not CompressedTexture2D and not able to load easily
+const emote1 = "emote1.png"
+const emote2 = "emote2.png"
+const emote3 = "emote3.png"
+const emote4 = "emote4.png"
+const emote5 = "emote5.png"
+const emote6 = "emote6.png"
+const hand1 = "hand1.png"
+const hand2 = "hand2.png"
+const hand3 = "hand3.png"
+const hand4 = "hand4.png"
 
-var emote1 = "user://models/default/emote1.png"
-var emote2 = "user://models/default/emote2.png"
-var emote3 = "user://models/default/emote3.png"
-var emote4 = "user://models/default/emote4.png"
-var emote5 = "user://models/default/emote5.png"
-var emote6 = "user://models/default/emote6.png"
-var hand1 = "user://models/default/hand1.png"
-var hand2 = "user://models/default/hand2.png"
-var hand3 = "user://models/default/hand3.png"
-var hand4 = "user://models/default/hand4.png"
-
-const dirModels = "user://models/"
+var currentTuber = "" # use FileDialog.current_dir
+var selectNodePath = "" # selected emote
+var currentEmote = "" #str(currentTuber, selectNodePath) # current dir and selected emote
 
 func _ready():
 	clickPos = position
-
-	# Make Emotes
+	# Make Model Folder and Placeholders 
 	var dir = DirAccess.open("user://")
 	if dir.dir_exists("user://models/default"):
-		$MiniSprite.texture = load(emote1)
+		var dirModel = DirAccess.open("user://models/default")
+		#$MiniSprite.texture = emote.load(emote1)
 	else:
 		dir.make_dir("models")
 		var dirModel = DirAccess.open("user://models")
 		dirModel.make_dir("default")
 		_blank_png()
-		$MiniSprite.texture = load(emote1)
+		#$MiniSprite.texture = emote.load(emote1)
 
+# Emote Placeholders
 func _blank_png():
 	var blank_emote1 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
 	blank_emote1.save_png("user://models/default/emote1.png")
@@ -61,6 +63,9 @@ func _blank_png():
 	blank_hand3.save_png("user://models/default/hand3.png")
 	var blank_hand4 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
 	blank_hand4.save_png("user://models/default/hand4.png")
+
+func _currentTuber():
+	currentEmote = str(currentTuber,selectNodePath)
 
 	
 func _process(delta):
@@ -126,11 +131,17 @@ func _input(event):
 	if Input.is_action_pressed("LMB"):
 		#$%WaveHand.visible = true
 		$%OrbitHand.visible = true
-		print(emote1)
 		
+func _compress_custom_imports():
+	var image = Image.load_from_file(emote1)
+	var texture = ImageTexture.create_from_image(image)
+	$MiniSprite.texture = texture
+
+
 #region Emotes
 	if Input.is_action_just_pressed("1"):
-		$MiniSprite.texture = load(emote1)
+		_compress_custom_imports()
+		#$MiniSprite.texture = load(emote1)
 	if Input.is_action_just_pressed("2"):
 		$MiniSprite.texture = load(emote2)
 	if Input.is_action_just_pressed("3"):

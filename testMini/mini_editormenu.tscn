@@ -18,7 +18,7 @@ script = ExtResource("1_vyx1n")
 [node name="ImportDialog" type="FileDialog" parent="."]
 title = "Open a File"
 initial_position = 2
-size = Vector2i(717, 425)
+size = Vector2i(700, 425)
 transient = false
 exclusive = false
 always_on_top = true
@@ -30,6 +30,16 @@ root_subfolder = "G:\\Documents\\0 Godot Practice\\handtest"
 use_native_dialog = true
 
 [node name="LoadDialog" type="FileDialog" parent="."]
+title = "Open a Directory"
+initial_position = 2
+size = Vector2i(700, 425)
+wrap_controls = false
+popup_window = true
+ok_button_text = "Select Current Folder"
+file_mode = 2
+access = 1
+root_subfolder = "models"
+use_native_dialog = true
 
 [node name="AspectRatioContainer5" type="AspectRatioContainer" parent="."]
 layout_mode = 1
@@ -270,6 +280,7 @@ horizontal_alignment = 1
 
 [connection signal="close_requested" from="ImportDialog" to="." method="_on_file_dialog_close_requested"]
 [connection signal="file_selected" from="ImportDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="dir_selected" from="LoadDialog" to="." method="_on_load_dialog_dir_selected"]
 [connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand1" to="." method="_on_hand_1_mouse_entered"]
 [connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand1" to="." method="_on_hand_1_mouse_exited"]
 [connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand2" to="." method="_on_hand_2_mouse_entered"]
@@ -278,6 +289,7 @@ horizontal_alignment = 1
 [connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand3" to="." method="_on_hand_3_mouse_exited"]
 [connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand4" to="." method="_on_hand_4_mouse_entered"]
 [connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand4" to="." method="_on_hand_4_mouse_exited"]
+[connection signal="pressed" from="AspectRatioContainer5/HBoxContainer/VBoxContainer/HBoxContainer/LoadTuber" to="." method="_on_load_tuber_pressed"]
 [connection signal="item_rect_changed" from="AspectRatioContainer5/HBoxContainer/Faces/Emotes/Emote1" to="." method="_on_emote_1_item_rect_changed"]
 [connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/Emotes/Emote1" to="." method="_on_emote_1_mouse_entered"]
 [connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/Emotes/Emote1" to="." method="_on_emote_1_mouse_exited"]
