@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+#EMOTEMENU NOT GETTING INPUT
+
 # Movement Variables
 var clickPos = Vector2()
 var targetPos = Vector2() 
@@ -7,23 +9,23 @@ var dashState = false
 
 # Emote Variables
 
+
 #have menu save over premade files
 #have menu add another folder for different tubers
 # Prep Emotes
-
-signal EmoteOpen
+var menuHover = false
 
 # Not CompressedTexture2D and not able to load easily
-const emote1 = "emote1.png"
-const emote2 = "emote2.png"
-const emote3 = "emote3.png"
-const emote4 = "emote4.png"
-const emote5 = "emote5.png"
-const emote6 = "emote6.png"
-const hand1 = "hand1.png"
-const hand2 = "hand2.png"
-const hand3 = "hand3.png"
-const hand4 = "hand4.png"
+const emote1 = "/emote1.png"
+const emote2 = "/emote2.png"
+const emote3 = "/emote3.png"
+const emote4 = "/emote4.png"
+const emote5 = "/emote5.png"
+const emote6 = "/emote6.png"
+const hand1 = "/hand1.png"
+const hand2 = "/hand2.png"
+const hand3 = "/hand3.png"
+const hand4 = "/hand4.png"
 
 var currentTuber = "" # use FileDialog.current_dir
 var selectNodePath = "" # selected emote
@@ -35,13 +37,18 @@ func _ready():
 	var dir = DirAccess.open("user://")
 	if dir.dir_exists("user://models/default"):
 		var dirModel = DirAccess.open("user://models/default")
-		#$MiniSprite.texture = emote.load(emote1)
+		var image = Image.load_from_file("user://models/default/emote1.png")
+		var texture = ImageTexture.create_from_image(image)
+		$MiniSprite.texture = texture
+		_loadMenu()
 	else:
 		dir.make_dir("models")
 		var dirModel = DirAccess.open("user://models")
 		dirModel.make_dir("default")
 		_blank_png()
-		#$MiniSprite.texture = emote.load(emote1)
+		var image = Image.load_from_file("user://models/default/emote1.png")
+		var texture = ImageTexture.create_from_image(image)
+		$MiniSprite.texture = texture
 
 # Emote Placeholders
 func _blank_png():
@@ -69,6 +76,37 @@ func _blank_png():
 func _currentTuber():
 	currentEmote = str(currentTuber,selectNodePath)
 
+# COMPRESS AND LOAD Emote Menu Images
+func _loadMenu():
+	var face1 = Image.load_from_file("user://models/default/emote1.png")
+	var facetext1 = ImageTexture.new()
+	facetext1.set_image(face1)
+	$EmoteMenu/Emote1.texture = facetext1
+	
+	var face2 = Image.load_from_file("user://models/default/emote2.png")
+	var facetext2 = ImageTexture.new()
+	facetext2.set_image(face2)
+	$EmoteMenu/Emote2.texture = facetext2
+	
+	var face3 = Image.load_from_file("user://models/default/emote3.png")
+	var facetext3 = ImageTexture.new()
+	facetext3.set_image(face3)
+	$EmoteMenu/Emote3.texture = facetext3
+	
+	var face4 = Image.load_from_file("user://models/default/emote4.png")
+	var facetext4 = ImageTexture.new()
+	facetext4.set_image(face4)
+	$EmoteMenu/Emote4.texture = facetext4
+	
+	var face5 = Image.load_from_file("user://models/default/emote5.png")
+	var facetext5 = ImageTexture.new()
+	facetext5.set_image(face5)
+	$EmoteMenu/Emote5.texture = facetext5
+	
+	var face6 = Image.load_from_file("user://models/default/emote6.png")
+	var facetext6 = ImageTexture.new()
+	facetext6.set_image(face6)
+	$EmoteMenu/Emote6.texture = facetext6
 	
 func _process(delta):
 	$%Orbit.look_at(get_global_mouse_position())
@@ -127,39 +165,41 @@ func _physics_process(delta):
 
 func _input(event):
 	# quick debugging
-	if Input.is_action_just_pressed("Close"):
-		get_tree().quit()
+	if menuHover == false:
+		if Input.is_action_just_pressed("Close"):
+			get_tree().quit()
 
-	if Input.is_action_pressed("LMB"):
-		#$%WaveHand.visible = true
-		$%OrbitHand.visible = true
-	
-	# Open Emote Menu
-	if Input.is_action_just_pressed("MMB"):
-		$Window.position = DisplayServer.mouse_get_position()
-		$Window.popup()
-
+		if Input.is_action_pressed("LMB"):
+			#$%WaveHand.visible = true
+			$%OrbitHand.visible = true
 		
-#func _compress_custom_imports():
-	#var image = Image.load_from_file(emote1)
-	#var texture = ImageTexture.create_from_image(image)
-	#$MiniSprite.texture = texture
-
-
-#region Emotes
-	if Input.is_action_just_pressed("1"):
-		#_compress_custom_imports()
-		$MiniSprite.texture = load(emote1)
-	if Input.is_action_just_pressed("2"):
-		$MiniSprite.texture = load(emote2)
-	if Input.is_action_just_pressed("3"):
-		$MiniSprite.texture = load(emote3)
-	if Input.is_action_just_pressed("4"):
-		$MiniSprite.texture = load(emote4)
-	if Input.is_action_just_pressed("5"):
-		$MiniSprite.texture = load(emote5)
-	if Input.is_action_just_pressed("6"):
-		$MiniSprite.texture = load(emote6)
+		# Open Emote Menu
+		if Input.is_action_just_pressed("MMB"):
+			$EmoteMenu.position = DisplayServer.mouse_get_position()
+			$EmoteMenu.popup()
+			
+	if menuHover == true:
+		print(currentEmote)
+		if Input.is_action_pressed("LMB"):
+			_currentTuber()
+			_compress_custom()
+			$MiniSprite.texture = load(currentEmote)
+		if Input.is_action_just_released("LMB"):
+			$EmoteMenu.visible = false
+			
+	#if Input.is_action_just_pressed("1"):
+		##_compress_custom_imports()
+		#$MiniSprite.texture = load(emote1)
+	#if Input.is_action_just_pressed("2"):
+		#$MiniSprite.texture = load(emote2)
+	#if Input.is_action_just_pressed("3"):
+		#$MiniSprite.texture = load(emote3)
+	#if Input.is_action_just_pressed("4"):
+		#$MiniSprite.texture = load(emote4)
+	#if Input.is_action_just_pressed("5"):
+		#$MiniSprite.texture = load(emote5)
+	#if Input.is_action_just_pressed("6"):
+		#$MiniSprite.texture = load(emote6)
 # Extra Emotes
 	#if Input.is_action_just_pressed("7"):
 		#$MiniSprite.texture = load(emote7)
@@ -167,9 +207,66 @@ func _input(event):
 		#$MiniSprite.texture = load(emote8)
 	#if Input.is_action_just_pressed("9"):
 		#$MiniSprite.texture = load(emote9)
-#endregion
+
+		
+func _compress_custom():
+	var image = Image.load_from_file(currentEmote)
+	var texture = ImageTexture.create_from_image(image)
+	$MiniSprite.texture = texture
 
 func _on_dash_timer_timeout():
 	dashState = false
 	print("Rest")
 
+
+#region Emote Menu
+func _on_emote_1_mouse_entered():
+	selectNodePath = emote1
+	_currentTuber()
+	menuHover = true
+	
+func _on_emote_1_mouse_exited():
+	menuHover = false
+	
+func _on_emote_2_mouse_entered():
+	selectNodePath = emote2
+	_currentTuber()
+	menuHover = true
+	
+func _on_emote_2_mouse_exited():
+	menuHover = false
+	
+func _on_emote_3_mouse_entered():
+	selectNodePath = emote3
+	_currentTuber()
+	menuHover = true
+	
+func _on_emote_3_mouse_exited():
+	menuHover = false
+	
+func _on_emote_4_mouse_entered():
+	selectNodePath = emote4
+	_currentTuber()
+	menuHover = true
+	
+func _on_emote_4_mouse_exited():
+	menuHover = false
+	
+func _on_emote_5_mouse_entered():
+	selectNodePath = emote5
+	_currentTuber()
+	menuHover = true
+	
+func _on_emote_5_mouse_exited():
+	menuHover = false
+	
+func _on_emote_6_mouse_entered():
+	selectNodePath = emote6
+	_currentTuber()
+	menuHover = true
+	
+func _on_emote_6_mouse_exited():
+	menuHover = false
+	
+
+#endregion

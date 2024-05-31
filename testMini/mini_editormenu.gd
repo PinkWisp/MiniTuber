@@ -59,9 +59,7 @@ func _process(delta):
 func _input(event):
 	# quick debugging
 	if Input.is_action_just_pressed("Close"):
-		get_tree().quit()
-	if Input.is_action_just_pressed("MMB"):
-		$RadialMenu.visible = true
+		self.visible = !self.visible
 		
 func _gui_input(event):
 	if emoteHover == true:
