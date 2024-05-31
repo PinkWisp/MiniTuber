@@ -11,6 +11,8 @@ var dashState = false
 #have menu add another folder for different tubers
 # Prep Emotes
 
+signal EmoteOpen
+
 # Not CompressedTexture2D and not able to load easily
 const emote1 = "emote1.png"
 const emote2 = "emote2.png"
@@ -131,17 +133,23 @@ func _input(event):
 	if Input.is_action_pressed("LMB"):
 		#$%WaveHand.visible = true
 		$%OrbitHand.visible = true
+	
+	# Open Emote Menu
+	if Input.is_action_just_pressed("MMB"):
+		$Window.position = DisplayServer.mouse_get_position()
+		$Window.popup()
+
 		
-func _compress_custom_imports():
-	var image = Image.load_from_file(emote1)
-	var texture = ImageTexture.create_from_image(image)
-	$MiniSprite.texture = texture
+#func _compress_custom_imports():
+	#var image = Image.load_from_file(emote1)
+	#var texture = ImageTexture.create_from_image(image)
+	#$MiniSprite.texture = texture
 
 
 #region Emotes
 	if Input.is_action_just_pressed("1"):
-		_compress_custom_imports()
-		#$MiniSprite.texture = load(emote1)
+		#_compress_custom_imports()
+		$MiniSprite.texture = load(emote1)
 	if Input.is_action_just_pressed("2"):
 		$MiniSprite.texture = load(emote2)
 	if Input.is_action_just_pressed("3"):
@@ -164,3 +172,4 @@ func _compress_custom_imports():
 func _on_dash_timer_timeout():
 	dashState = false
 	print("Rest")
+
