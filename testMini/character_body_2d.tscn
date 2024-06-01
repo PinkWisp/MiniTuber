@@ -128,15 +128,14 @@ one_shot = true
 
 [node name="EmoteMenu" type="Window" parent="."]
 transparent_bg = true
-title = "Emote Menu"
-size = Vector2i(155, 245)
+size = Vector2i(155, 235)
 visible = false
-wrap_controls = true
+transient = true
+exclusive = true
+unresizable = true
 borderless = true
-always_on_top = true
 transparent = true
-popup_window = true
-max_size = Vector2i(155, 245)
+max_size = Vector2i(155, 235)
 
 [node name="Panel" type="Panel" parent="EmoteMenu"]
 anchors_preset = 15
@@ -216,6 +215,8 @@ texture = ExtResource("10_bykbk")
 expand_mode = 1
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="close_requested" from="EmoteMenu" to="." method="_on_emote_menu_close_requested"]
+[connection signal="window_input" from="EmoteMenu" to="." method="_on_emote_menu_window_input"]
 [connection signal="mouse_entered" from="EmoteMenu/Emote1" to="." method="_on_emote_1_mouse_entered"]
 [connection signal="mouse_exited" from="EmoteMenu/Emote1" to="." method="_on_emote_1_mouse_exited"]
 [connection signal="mouse_entered" from="EmoteMenu/Emote2" to="." method="_on_emote_2_mouse_entered"]

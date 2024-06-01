@@ -1,43 +1,30 @@
 extends CharacterBody2D
 
-#EMOTEMENU NOT GETTING INPUT
-
 # Movement Variables
 var clickPos = Vector2()
 var targetPos = Vector2() 
 var dashState = false
 
-# Emote Variables
-
-
-#have menu save over premade files
-#have menu add another folder for different tubers
 # Prep Emotes
 var menuHover = false
 
-# Not CompressedTexture2D and not able to load easily
-const emote1 = "/emote1.png"
-const emote2 = "/emote2.png"
-const emote3 = "/emote3.png"
-const emote4 = "/emote4.png"
-const emote5 = "/emote5.png"
-const emote6 = "/emote6.png"
-const hand1 = "/hand1.png"
-const hand2 = "/hand2.png"
-const hand3 = "/hand3.png"
-const hand4 = "/hand4.png"
+var face = ["face1.png","face2.png","face3.png","face4.png","face5.png","face6.png"]
+var hand = ["hand1.png", "hand2.png", "hand3.png", "hand4.png"]
 
-var currentTuber = "" # use FileDialog.current_dir
-var selectNodePath = "" # selected emote
-var currentEmote = "" #str(currentTuber, selectNodePath) # current dir and selected emote
+var currentDir = "" 
+var selectedFace = "" # select png from face array
+var currentEmote = "" #str(currentTuber, selectedFace) # current dir and selected emote
 
 func _ready():
-	clickPos = position
-	# Make Model Folder and Placeholders 
+	clickPos = position # Set Sprite Starter Position
+	
+
+
+#region # Make Default Folder and Placeholders
 	var dir = DirAccess.open("user://")
 	if dir.dir_exists("user://models/default"):
 		var dirModel = DirAccess.open("user://models/default")
-		var image = Image.load_from_file("user://models/default/emote1.png")
+		var image = Image.load_from_file("user://models/default/face1.png")
 		var texture = ImageTexture.create_from_image(image)
 		$MiniSprite.texture = texture
 		_loadMenu()
@@ -46,24 +33,25 @@ func _ready():
 		var dirModel = DirAccess.open("user://models")
 		dirModel.make_dir("default")
 		_blank_png()
-		var image = Image.load_from_file("user://models/default/emote1.png")
+		var image = Image.load_from_file("user://models/default/face1.png")
 		var texture = ImageTexture.create_from_image(image)
 		$MiniSprite.texture = texture
-
-# Emote Placeholders
+#endregion
+	
+# Emote Placeholders when making new Default
 func _blank_png():
 	var blank_emote1 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
-	blank_emote1.save_png("user://models/default/emote1.png")
+	blank_emote1.save_png("user://models/default/face1.png")
 	var blank_emote2 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
-	blank_emote2.save_png("user://models/default/emote2.png")
+	blank_emote2.save_png("user://models/default/face2.png")
 	var blank_emote3 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
-	blank_emote3.save_png("user://models/default/emote3.png")
+	blank_emote3.save_png("user://models/default/face3.png")
 	var blank_emote4 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
-	blank_emote4.save_png("user://models/default/emote4.png")
+	blank_emote4.save_png("user://models/default/face4.png")
 	var blank_emote5 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
-	blank_emote5.save_png("user://models/default/emote5.png")
+	blank_emote5.save_png("user://models/default/face5.png")
 	var blank_emote6 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
-	blank_emote6.save_png("user://models/default/emote6.png")
+	blank_emote6.save_png("user://models/default/face6.png")
 	var blank_hand1 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
 	blank_hand1.save_png("user://models/default/hand1.png")
 	var blank_hand2 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
@@ -73,37 +61,37 @@ func _blank_png():
 	var blank_hand4 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
 	blank_hand4.save_png("user://models/default/hand4.png")
 
-func _currentTuber():
-	currentEmote = str(currentTuber,selectNodePath)
+func _change_face():
+	currentEmote = str(currentDir,"/",selectedFace)
 
 # COMPRESS AND LOAD Emote Menu Images
 func _loadMenu():
-	var face1 = Image.load_from_file("user://models/default/emote1.png")
+	var face1 = Image.load_from_file("user://models/default/face1.png")
 	var facetext1 = ImageTexture.new()
 	facetext1.set_image(face1)
 	$EmoteMenu/Emote1.texture = facetext1
 	
-	var face2 = Image.load_from_file("user://models/default/emote2.png")
+	var face2 = Image.load_from_file("user://models/default/face2.png")
 	var facetext2 = ImageTexture.new()
 	facetext2.set_image(face2)
 	$EmoteMenu/Emote2.texture = facetext2
 	
-	var face3 = Image.load_from_file("user://models/default/emote3.png")
+	var face3 = Image.load_from_file("user://models/default/face3.png")
 	var facetext3 = ImageTexture.new()
 	facetext3.set_image(face3)
 	$EmoteMenu/Emote3.texture = facetext3
 	
-	var face4 = Image.load_from_file("user://models/default/emote4.png")
+	var face4 = Image.load_from_file("user://models/default/face4.png")
 	var facetext4 = ImageTexture.new()
 	facetext4.set_image(face4)
 	$EmoteMenu/Emote4.texture = facetext4
 	
-	var face5 = Image.load_from_file("user://models/default/emote5.png")
+	var face5 = Image.load_from_file("user://models/default/face5.png")
 	var facetext5 = ImageTexture.new()
 	facetext5.set_image(face5)
 	$EmoteMenu/Emote5.texture = facetext5
 	
-	var face6 = Image.load_from_file("user://models/default/emote6.png")
+	var face6 = Image.load_from_file("user://models/default/face6.png")
 	var facetext6 = ImageTexture.new()
 	facetext6.set_image(face6)
 	$EmoteMenu/Emote6.texture = facetext6
@@ -165,27 +153,26 @@ func _physics_process(delta):
 
 func _input(event):
 	# quick debugging
-	if menuHover == false:
-		if Input.is_action_just_pressed("Close"):
-			get_tree().quit()
-
-		if Input.is_action_pressed("LMB"):
-			#$%WaveHand.visible = true
-			$%OrbitHand.visible = true
+	if Input.is_action_pressed("LMB"):
+		#$%WaveHand.visible = true
+		$%OrbitHand.visible = true
+	# Open Emote Menu
+	if Input.is_action_just_pressed("MMB"):
+		_loadMenu()
+		$EmoteMenu.position = DisplayServer.mouse_get_position()
+		$EmoteMenu.show()
 		
-		# Open Emote Menu
-		if Input.is_action_just_pressed("MMB"):
-			$EmoteMenu.position = DisplayServer.mouse_get_position()
-			$EmoteMenu.popup()
-			
-	if menuHover == true:
-		print(currentEmote)
-		if Input.is_action_pressed("LMB"):
-			_currentTuber()
-			_compress_custom()
-			$MiniSprite.texture = load(currentEmote)
-		if Input.is_action_just_released("LMB"):
-			$EmoteMenu.visible = false
+		
+#func _gui_input(event):
+	#if menuHover == true:
+		#print(currentTuber)
+	#if Input.is_action_pressed("LMB"):
+		#print(menuHover)
+		#_currentTuber()
+		#_compress_custom()
+		#$MiniSprite.texture = load(currentEmote)
+	#if Input.is_action_just_released("LMB"):
+		#$EmoteMenu.show()
 			
 	#if Input.is_action_just_pressed("1"):
 		##_compress_custom_imports()
@@ -208,7 +195,9 @@ func _input(event):
 	#if Input.is_action_just_pressed("9"):
 		#$MiniSprite.texture = load(emote9)
 
-		
+
+
+# Turn Imported Image into Sprite Texture
 func _compress_custom():
 	var image = Image.load_from_file(currentEmote)
 	var texture = ImageTexture.create_from_image(image)
@@ -221,52 +210,65 @@ func _on_dash_timer_timeout():
 
 #region Emote Menu
 func _on_emote_1_mouse_entered():
-	selectNodePath = emote1
-	_currentTuber()
+	selectedFace = face[0]
 	menuHover = true
+	_change_face()
 	
 func _on_emote_1_mouse_exited():
 	menuHover = false
 	
 func _on_emote_2_mouse_entered():
-	selectNodePath = emote2
-	_currentTuber()
+	selectedFace = face[1]
 	menuHover = true
+	_change_face()
 	
 func _on_emote_2_mouse_exited():
 	menuHover = false
 	
 func _on_emote_3_mouse_entered():
-	selectNodePath = emote3
-	_currentTuber()
+	selectedFace = face[2]
 	menuHover = true
+	_change_face()
 	
 func _on_emote_3_mouse_exited():
 	menuHover = false
 	
 func _on_emote_4_mouse_entered():
-	selectNodePath = emote4
-	_currentTuber()
+	selectedFace = face[3]
 	menuHover = true
+	_change_face()
 	
 func _on_emote_4_mouse_exited():
 	menuHover = false
 	
 func _on_emote_5_mouse_entered():
-	selectNodePath = emote5
-	_currentTuber()
+	selectedFace = face[4]
 	menuHover = true
+	_change_face()
 	
 func _on_emote_5_mouse_exited():
 	menuHover = false
 	
 func _on_emote_6_mouse_entered():
-	selectNodePath = emote6
-	_currentTuber()
+	selectedFace = face[5]
 	menuHover = true
+	_change_face()
 	
 func _on_emote_6_mouse_exited():
 	menuHover = false
 	
 
 #endregion
+
+
+func _on_emote_menu_window_input(event):
+	if menuHover == true:
+		print(currentEmote)
+		if Input.is_action_pressed("LMB"):
+			_compress_custom()
+		if Input.is_action_just_released("LMB"):
+			$EmoteMenu.visible = false
+
+
+func _on_load_dialog_dir_selected(dir):
+	currentDir = dir # Replace with function body.
