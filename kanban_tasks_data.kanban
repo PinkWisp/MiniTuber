@@ -87,9 +87,17 @@
 		{
 			"uuid": "ee82a70e-4c17-4109-ab4b-3dfe9db45577",
 			"title": "MiniTuber",
-			"description": "Floating Head (multiple emojis)\nFloating Hands\n\nhttps://www.youtube.com/watch?v=XYiCdOfy3J8",
+			"description": "Floating Head (multiple emojis)\nFloating Hands\n\nhttps://www.youtube.com/watch?v=XYiCdOfy3J8\n\ncounter rotation = https://www.reddit.com/r/godot/comments/13gqnxn/lock_rotation_of_child_object_while_parent_is/",
 			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
 			"steps": [
+				{
+					"details": "Emote particles",
+					"done": false
+				},
+				{
+					"details": "Save Settings per Node",
+					"done": false
+				},
 				{
 					"details": "Multi Expressions",
 					"done": true
@@ -97,10 +105,6 @@
 				{
 					"details": "Multi Hand Emotes",
 					"done": true
-				},
-				{
-					"details": "Emote particles",
-					"done": false
 				},
 				{
 					"details": "Movement",
@@ -111,7 +115,7 @@
 					"done": true
 				},
 				{
-					"details": "Add Path Variable",
+					"details": "Have Faces have their own Hands?",
 					"done": false
 				}
 			]

@@ -6,24 +6,26 @@ var targetPos = Vector2()
 var dashState = false
 
 var faceHover = false #Check if cursor is on face buttons
-var actionHover = false #Check if cursor is on action buttons
+var handHover = false #Check if cursor is on action buttons
+
+var counterRotation = false #Hand rotates against pivoit to stay pointed in a direction
+var prevRotation #Rotation before CounterRotation is true
 
 # Hand and Face Arrays
 var face = ["face1.png","face2.png","face3.png","face4.png","face5.png","face6.png"]
 var hand = ["hand1.png", "hand2.png", "hand3.png", "hand4.png"]
-#var action = ["action1", "action2", "action3", "action4"]
 
 # Directory Variables
 var currentDir = "" 
 var selectedFace = "" #select png from face array
-var currentFace = "" #str(currentTuber, selectedFace) # current dir and selected Face
-# Hand + Path = Action
-@export var selectAction: Sprite2D # preselect action in Menu
-@export var selectedAction = Sprite2D #plays selected action
+var currentFace = "" #str(currentTuber, selectedFace) 
+
+var selectedHand = ""
+var currentHand = "" #str(currentTuber, selectedHand) 
 
 func _ready():
 	clickPos = position #Set Sprite Starter Position
-	selectedAction = $%OrbitHand
+	prevRotation = %OrbitHand.rotation
 	
 
 #region # Make Default Folder and Placeholders
@@ -70,6 +72,9 @@ func _blank_png():
 # Get dir path to face.png for compress
 func _change_face():
 	currentFace = str(currentDir,"/",selectedFace)
+	
+func _change_hand():
+	currentHand = str(currentDir,"/",selectedHand)
 
 # COMPRESS AND LOAD Face Menu Images
 func _loadMenu():
@@ -108,26 +113,27 @@ func _loadMenu():
 	var hand1 = Image.load_from_file("user://models/default/hand1.png")
 	var handtext1 = ImageTexture.new()
 	handtext1.set_image(hand1)
-	$%Action1.texture = handtext1
+	$%Hand1.texture = handtext1
 	
 	var hand2 = Image.load_from_file("user://models/default/hand2.png")
 	var handtext2 = ImageTexture.new()
 	handtext2.set_image(hand2)
-	$%Action2.texture = handtext2
+	$%Hand2.texture = handtext2
 	
 	var hand3 = Image.load_from_file("user://models/default/hand3.png")
 	var handtext3 = ImageTexture.new()
 	handtext3.set_image(hand3)
-	$%Action3.texture = handtext3
+	$%Hand3.texture = handtext3
 	
 	var hand4 = Image.load_from_file("user://models/default/hand4.png")
 	var handtext4 = ImageTexture.new()
 	handtext4.set_image(hand4)
-	$%Action4.texture = handtext4
+	$%Hand4.texture = handtext4
 #endregion
 	
 func _process(delta):
-	$%Orbit.look_at(get_global_mouse_position())
+	$%Orbit.look_at(get_global_mouse_position()) #rotates Orbit node with mouse position
+
 	
 # Double Click within time limit to run
 func _dash_timer():
@@ -150,6 +156,10 @@ func _physics_process(delta):
 			$MiniSprite.flip_h = true
 		else:
 			$MiniSprite.flip_h = false
+			
+	#Hand rotates against pivoit to stay pointed in a direction
+	if counterRotation == true:
+		$%OrbitHand.global_rotation = !%Orbit.rotation
 	
 #region Movement
 	if Input.is_action_just_released("RMB"):
@@ -183,10 +193,10 @@ func _physics_process(delta):
 func _input(event):
 	# Action
 	if Input.is_action_pressed("LMB"):
-		if selectedAction.visible == false:
-			selectedAction.visible = true
+		if %OrbitHand.visible == false:
+			%OrbitHand.visible = true
 	if Input.is_action_pressed("WheelDown"):
-		selectedAction.visible = false
+		%OrbitHand.visible = false
 		
 		
 	# Open Face Menu. Can't use popup due to Rendering ordering bug with Always Ontop main window
@@ -195,18 +205,19 @@ func _input(event):
 		var menuPos = DisplayServer.mouse_get_position()
 		$Menu.position = Vector2i(menuPos.x-165,menuPos.y)
 		$Menu.show()
-		if selectedAction.visible == true:
-			selectedAction.visible = false
 
 # Confirms Face / Turn Imported Image into Sprite Texture
-func _compress_custom():
+func _convert_facetexture():
 	var image = Image.load_from_file(currentFace)
 	var texture = ImageTexture.create_from_image(image)
 	$MiniSprite.texture = texture
 	
-# Confirm Action selction in Menu 
-func _selectedAction():
-	selectedAction = selectAction
+# Confirms Hand / Turn Imported Image into Sprite Texture
+func _convert_handtexture():
+	var image = Image.load_from_file(currentHand)
+	var texture = ImageTexture.create_from_image(image)
+	%OrbitHand.texture = texture
+
 
 func _on_dash_timer_timeout():
 	dashState = false
@@ -264,48 +275,63 @@ func _on_face_6_mouse_exited():
 #endregion
 
 #region Hand Menu
-func _on_action_1_mouse_entered():
-	selectAction = %WaveHand
-	actionHover = true
+func _on_hand_1_mouse_entered():
+	selectedHand = hand[0]
+	handHover = true
+	_change_hand()
 	
-func _on_action_1_mouse_exited():
-	actionHover = false
+func _on_hand_1_mouse_exited():
+	handHover = false
 	
-func _on_action_2_mouse_entered():
-	selectAction = %OrbitHand
-	actionHover = true
+func _on_hand_2_mouse_entered():
+	selectedHand = hand[1]
+	handHover = true
+	_change_hand()
 	
-func _on_action_2_mouse_exited():
-	actionHover = false
+func _on_hand_2_mouse_exited():
+	handHover = false
 	
-func _on_action_3_mouse_entered():
-	selectAction = %VerticalHand
-	actionHover = true
+func _on_hand_3_mouse_entered():
+	selectedHand = hand[2]
+	handHover = true
+	_change_hand()
 	
-func _on_action_3_mouse_exited():
-	actionHover = false
+func _on_hand_3_mouse_exited():
+	handHover = false
 	
-func _on_action_4_mouse_entered():
-	selectAction = %HoritonalHand
-	actionHover = true
+func _on_hand_4_mouse_entered():
+	selectedHand = hand[3]
+	handHover = true
+	_change_hand()
 	
-func _on_action_4_mouse_exited():
-	actionHover = false
+func _on_hand_4_mouse_exited():
+	handHover = false
 #endregion
 
 func _on_face_menu_window_input(event):
 	if faceHover == true:
 		print(currentFace)
 		if Input.is_action_pressed("LMB"):
-			_compress_custom()
+			_convert_facetexture()
 		if Input.is_action_just_released("LMB"):
 			$Menu.visible = false
-	if actionHover == true:
-		print(actionHover)
+	if handHover == true:
+		print(currentHand)
 		if Input.is_action_pressed("LMB"):
-			_selectedAction()
+			_convert_handtexture()
 		if Input.is_action_just_released("LMB"):
 			$Menu.visible = false
 
 func _on_load_dialog_dir_selected(dir):
 	currentDir = dir # Replace with function body.
+
+func _on_mini_editor_hand_rotate():
+	#$%OrbitHand.rotate(90) # Replace with function body.
+	$%OrbitHand.rotation_degrees += 90
+	print("RotateClick")
+
+func _on_mini_editor_counter_rotate():
+	counterRotation = !counterRotation
+	if counterRotation == false: #gets previous rotation from _ready and reapplies
+		$%OrbitHand.rotation = prevRotation
+

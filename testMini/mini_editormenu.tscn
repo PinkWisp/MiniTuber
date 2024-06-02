@@ -43,6 +43,23 @@ offset_bottom = 346.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="AspectRatioContainer5"]
+layout_mode = 2
+size_flags_vertical = 0
+alignment = 1
+
+[node name="Title" type="Label" parent="AspectRatioContainer5/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "MiniTuber Editor"
+horizontal_alignment = 1
+
+[node name="CloseEditor" type="Button" parent="AspectRatioContainer5/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "X"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer5"]
 layout_mode = 2
 size_flags_vertical = 4
@@ -53,6 +70,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 
 [node name="Actions" type="BoxContainer" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 vertical = true
@@ -99,6 +117,7 @@ texture = ExtResource("1_um0wm")
 [node name="Hands" type="BoxContainer" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 4
 vertical = true
 
 [node name="HandTypes" type="Label" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands"]
@@ -143,14 +162,17 @@ expand_mode = 1
 [node name="HBoxContainer2" type="HBoxContainer" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands"]
 layout_mode = 2
 size_flags_horizontal = 8
+alignment = 2
 
-[node name="CheckButton" type="CheckButton" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/HBoxContainer2"]
+[node name="CodeRotate" type="Button" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/HBoxContainer2"]
 layout_mode = 2
-text = "H Flip"
+tooltip_text = "Rotate"
+theme_override_font_sizes/font_size = 20
+text = "↺"
 
-[node name="CheckButton2" type="CheckButton" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/HBoxContainer2"]
+[node name="NoRotate" type="Button" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/HBoxContainer2"]
 layout_mode = 2
-text = "V Flip"
+text = "No Rotation"
 
 [node name="VSeparator" type="VSeparator" parent="AspectRatioContainer5/HBoxContainer"]
 custom_minimum_size = Vector2(15, 0)
@@ -257,17 +279,9 @@ layout_mode = 2
 texture = ExtResource("1_um0wm")
 expand_mode = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="AspectRatioContainer5/HBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="Title" type="Label" parent="AspectRatioContainer5/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-text = "Editor"
-horizontal_alignment = 1
-
 [connection signal="close_requested" from="ImportDialog" to="." method="_on_file_dialog_close_requested"]
 [connection signal="file_selected" from="ImportDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="AspectRatioContainer5/HBoxContainer2/CloseEditor" to="." method="_on_close_editor_pressed"]
 [connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand1" to="." method="_on_hand_1_mouse_entered"]
 [connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand1" to="." method="_on_hand_1_mouse_exited"]
 [connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand2" to="." method="_on_hand_2_mouse_entered"]
@@ -276,6 +290,8 @@ horizontal_alignment = 1
 [connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand3" to="." method="_on_hand_3_mouse_exited"]
 [connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand4" to="." method="_on_hand_4_mouse_entered"]
 [connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand4" to="." method="_on_hand_4_mouse_exited"]
+[connection signal="pressed" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/HBoxContainer2/CodeRotate" to="." method="_on_code_rotate_pressed"]
+[connection signal="pressed" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/HBoxContainer2/NoRotate" to="." method="_on_no_rotate_pressed"]
 [connection signal="pressed" from="AspectRatioContainer5/HBoxContainer/VBoxContainer/HBoxContainer/LoadTuber" to="." method="_on_load_tuber_pressed"]
 [connection signal="item_rect_changed" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote1" to="." method="_on_emote_1_item_rect_changed"]
 [connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote1" to="." method="_on_emote_1_mouse_entered"]

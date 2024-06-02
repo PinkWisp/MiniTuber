@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cvr8vqtmaxym"]
+[gd_scene load_steps=12 format=3 uid="uid://cvr8vqtmaxym"]
 
 [ext_resource type="Texture2D" uid="uid://cbfydio3kgbjy" path="res://assets/EmoteTest/pispSMUG.png" id="1_6sasm"]
 [ext_resource type="Script" path="res://testMini/character_body_2d.gd" id="1_tenk8"]
@@ -6,8 +6,6 @@
 [ext_resource type="Script" path="res://testMini/HandPaths.gd" id="3_m0qaa"]
 [ext_resource type="Script" path="res://testMini/HandPathClick.gd" id="5_e7s7a"]
 [ext_resource type="Texture2D" uid="uid://o1u4qw3dqns7" path="res://assets/hands/pointertest.png" id="6_om0s2"]
-[ext_resource type="Texture2D" uid="uid://buktowx0fov3v" path="res://assets/hands/rudetest.png" id="7_4ggm6"]
-[ext_resource type="Texture2D" uid="uid://cqbjskgwv3sgh" path="res://assets/hands/fistholder.png" id="8_30ra7"]
 [ext_resource type="Texture2D" uid="uid://ksejbvld82qf" path="res://assets/hands/thumbsuptest.png" id="9_i0sne"]
 [ext_resource type="Texture2D" uid="uid://bnmo78phhfkdd" path="res://assets/EmoteTest/pispCRY.png" id="10_u7y72"]
 
@@ -19,19 +17,7 @@ point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_t8lb4"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 466.381, 0, 0, 0, 0, 0, 677.064, 0)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_f0kok"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 426.054, -160.87, 0, 0, 0, 0, 426.054, -447.826)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_03d4u"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -330.435, 65.2173, 0, 0, 0, 0, -665.217, 65.2173)
+"points": PackedVector2Array(0, 0, 0, 0, 450, 0, 0, 0, 0, 0, 677.064, 0)
 }
 point_count = 2
 
@@ -71,49 +57,16 @@ unique_name_in_owner = true
 curve = SubResource("Curve2D_t8lb4")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="MiniSprite/Orbit/Path2D"]
-position = Vector2(466.381, 0)
+position = Vector2(450, 0)
+rotates = false
 loop = false
 script = ExtResource("5_e7s7a")
 
 [node name="OrbitHand" type="Sprite2D" parent="MiniSprite/Orbit/Path2D/PathFollow2D"]
 unique_name_in_owner = true
-visible = false
-position = Vector2(0.00012207, 0)
 rotation = 1.5708
 scale = Vector2(2.02174, 2.02174)
 texture = ExtResource("6_om0s2")
-
-[node name="Vertical" type="Path2D" parent="MiniSprite"]
-curve = SubResource("Curve2D_f0kok")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="MiniSprite/Vertical"]
-position = Vector2(426.054, -160.87)
-rotation = -1.5708
-loop = false
-script = ExtResource("3_m0qaa")
-
-[node name="VerticalHand" type="Sprite2D" parent="MiniSprite/Vertical/PathFollow2D"]
-unique_name_in_owner = true
-visible = false
-rotation = 1.5708
-scale = Vector2(1.71, 1.71)
-texture = ExtResource("7_4ggm6")
-
-[node name="Horizontal" type="Path2D" parent="MiniSprite"]
-curve = SubResource("Curve2D_03d4u")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="MiniSprite/Horizontal"]
-position = Vector2(-330.435, 65.2173)
-rotation = 3.14159
-loop = false
-script = ExtResource("3_m0qaa")
-
-[node name="HoritonalHand" type="Sprite2D" parent="MiniSprite/Horizontal/PathFollow2D"]
-unique_name_in_owner = true
-visible = false
-scale = Vector2(1.82, 1.82)
-texture = ExtResource("8_30ra7")
-flip_v = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_txj0k")
@@ -151,28 +104,28 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 columns = 2
 
-[node name="Action1" type="TextureRect" parent="Menu/BoxContainer/HandMenu" groups=["ActionButtons"]]
+[node name="Hand1" type="TextureRect" parent="Menu/BoxContainer/HandMenu" groups=["ActionButtons"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture = ExtResource("9_i0sne")
 expand_mode = 1
 
-[node name="Action2" type="TextureRect" parent="Menu/BoxContainer/HandMenu" groups=["ActionButtons"]]
+[node name="Hand2" type="TextureRect" parent="Menu/BoxContainer/HandMenu" groups=["ActionButtons"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture = ExtResource("9_i0sne")
 expand_mode = 1
 
-[node name="Action3" type="TextureRect" parent="Menu/BoxContainer/HandMenu" groups=["ActionButtons"]]
+[node name="Hand3" type="TextureRect" parent="Menu/BoxContainer/HandMenu" groups=["ActionButtons"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture = ExtResource("9_i0sne")
 expand_mode = 1
 
-[node name="Action4" type="TextureRect" parent="Menu/BoxContainer/HandMenu" groups=["ActionButtons"]]
+[node name="Hand4" type="TextureRect" parent="Menu/BoxContainer/HandMenu" groups=["ActionButtons"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
@@ -233,14 +186,14 @@ expand_mode = 1
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="close_requested" from="Menu" to="." method="_on_emote_menu_close_requested"]
 [connection signal="window_input" from="Menu" to="." method="_on_face_menu_window_input"]
-[connection signal="mouse_entered" from="Menu/BoxContainer/HandMenu/Action1" to="." method="_on_action_1_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/BoxContainer/HandMenu/Action1" to="." method="_on_action_1_mouse_exited"]
-[connection signal="mouse_entered" from="Menu/BoxContainer/HandMenu/Action2" to="." method="_on_action_2_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/BoxContainer/HandMenu/Action2" to="." method="_on_action_2_mouse_exited"]
-[connection signal="mouse_entered" from="Menu/BoxContainer/HandMenu/Action3" to="." method="_on_action_3_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/BoxContainer/HandMenu/Action3" to="." method="_on_action_3_mouse_exited"]
-[connection signal="mouse_entered" from="Menu/BoxContainer/HandMenu/Action4" to="." method="_on_action_4_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/BoxContainer/HandMenu/Action4" to="." method="_on_action_4_mouse_exited"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/HandMenu/Hand1" to="." method="_on_hand_1_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/BoxContainer/HandMenu/Hand1" to="." method="_on_hand_1_mouse_exited"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/HandMenu/Hand2" to="." method="_on_hand_2_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/BoxContainer/HandMenu/Hand2" to="." method="_on_hand_2_mouse_exited"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/HandMenu/Hand3" to="." method="_on_hand_3_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/BoxContainer/HandMenu/Hand3" to="." method="_on_hand_3_mouse_exited"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/HandMenu/Hand4" to="." method="_on_hand_4_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/BoxContainer/HandMenu/Hand4" to="." method="_on_hand_4_mouse_exited"]
 [connection signal="mouse_entered" from="Menu/BoxContainer/FaceMenu/Face1" to="." method="_on_face_1_mouse_entered"]
 [connection signal="mouse_exited" from="Menu/BoxContainer/FaceMenu/Face1" to="." method="_on_face_1_mouse_exited"]
 [connection signal="mouse_entered" from="Menu/BoxContainer/FaceMenu/Face2" to="." method="_on_face_2_mouse_entered"]
