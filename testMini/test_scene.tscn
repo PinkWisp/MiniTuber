@@ -8,6 +8,7 @@
 script = ExtResource("1_8twc6")
 
 [node name="MiniEditor" parent="." instance=ExtResource("2_6qacn")]
+visible = false
 
 [node name="MiniTuber" parent="." instance=ExtResource("1_wm78w")]
 

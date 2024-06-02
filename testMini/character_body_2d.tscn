@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cvr8vqtmaxym"]
+[gd_scene load_steps=16 format=3 uid="uid://cvr8vqtmaxym"]
 
 [ext_resource type="Texture2D" uid="uid://cbfydio3kgbjy" path="res://assets/EmoteTest/pispSMUG.png" id="1_6sasm"]
 [ext_resource type="Script" path="res://testMini/character_body_2d.gd" id="1_tenk8"]
@@ -8,7 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://o1u4qw3dqns7" path="res://assets/hands/pointertest.png" id="6_om0s2"]
 [ext_resource type="Texture2D" uid="uid://buktowx0fov3v" path="res://assets/hands/rudetest.png" id="7_4ggm6"]
 [ext_resource type="Texture2D" uid="uid://cqbjskgwv3sgh" path="res://assets/hands/fistholder.png" id="8_30ra7"]
-[ext_resource type="Texture2D" uid="uid://dlc4s5lmbasr7" path="res://icon.svg" id="10_bykbk"]
+[ext_resource type="Texture2D" uid="uid://ksejbvld82qf" path="res://assets/hands/thumbsuptest.png" id="9_i0sne"]
+[ext_resource type="Texture2D" uid="uid://bnmo78phhfkdd" path="res://assets/EmoteTest/pispCRY.png" id="10_u7y72"]
 
 [sub_resource type="Curve2D" id="Curve2D_e66pm"]
 _data = {
@@ -63,10 +64,6 @@ scale = Vector2(0.465, 0.465)
 texture = ExtResource("3_ebc5x")
 flip_h = true
 
-[node name="Punch" type="Path2D" parent="MiniSprite"]
-scale = Vector2(4.34783, 4.34783)
-curve = SubResource("Curve2D_e66pm")
-
 [node name="Orbit" type="Node2D" parent="MiniSprite"]
 unique_name_in_owner = true
 
@@ -102,17 +99,16 @@ rotation = 1.5708
 scale = Vector2(1.71, 1.71)
 texture = ExtResource("7_4ggm6")
 
-[node name="Horizontal" type="Path2D" parent="."]
-scale = Vector2(0.23, 0.23)
+[node name="Horizontal" type="Path2D" parent="MiniSprite"]
 curve = SubResource("Curve2D_03d4u")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Horizontal"]
+[node name="PathFollow2D" type="PathFollow2D" parent="MiniSprite/Horizontal"]
 position = Vector2(-330.435, 65.2173)
 rotation = 3.14159
 loop = false
 script = ExtResource("3_m0qaa")
 
-[node name="HoritonalHand" type="Sprite2D" parent="Horizontal/PathFollow2D"]
+[node name="HoritonalHand" type="Sprite2D" parent="MiniSprite/Horizontal/PathFollow2D"]
 unique_name_in_owner = true
 visible = false
 scale = Vector2(1.82, 1.82)
@@ -126,106 +122,134 @@ shape = SubResource("RectangleShape2D_txj0k")
 wait_time = 0.3
 one_shot = true
 
-[node name="EmoteMenu" type="Window" parent="."]
+[node name="Menu" type="Window" parent="."]
 transparent_bg = true
-size = Vector2i(155, 235)
+size = Vector2i(333, 240)
 visible = false
+wrap_controls = true
 transient = true
 exclusive = true
 unresizable = true
 borderless = true
 transparent = true
-max_size = Vector2i(155, 235)
+max_size = Vector2i(500, 240)
 
-[node name="Panel" type="Panel" parent="EmoteMenu"]
+[node name="Panel" type="Panel" parent="Menu"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Emote1" type="TextureRect" parent="EmoteMenu"]
+[node name="BoxContainer" type="BoxContainer" parent="Menu"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HandMenu" type="GridContainer" parent="Menu/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+columns = 2
+
+[node name="Action1" type="TextureRect" parent="Menu/BoxContainer/HandMenu" groups=["ActionButtons"]]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
-offset_right = 75.0
-offset_bottom = 75.0
-texture = ExtResource("10_bykbk")
+layout_mode = 2
+texture = ExtResource("9_i0sne")
 expand_mode = 1
 
-[node name="Emote2" type="TextureRect" parent="EmoteMenu"]
+[node name="Action2" type="TextureRect" parent="Menu/BoxContainer/HandMenu" groups=["ActionButtons"]]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -75.0
-offset_bottom = 75.0
-grow_horizontal = 0
-texture = ExtResource("10_bykbk")
+layout_mode = 2
+texture = ExtResource("9_i0sne")
 expand_mode = 1
 
-[node name="Emote3" type="TextureRect" parent="EmoteMenu"]
+[node name="Action3" type="TextureRect" parent="Menu/BoxContainer/HandMenu" groups=["ActionButtons"]]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -37.5
-offset_right = 75.0
-offset_bottom = 37.5
-grow_vertical = 2
-texture = ExtResource("10_bykbk")
+layout_mode = 2
+texture = ExtResource("9_i0sne")
 expand_mode = 1
 
-[node name="Emote4" type="TextureRect" parent="EmoteMenu"]
+[node name="Action4" type="TextureRect" parent="Menu/BoxContainer/HandMenu" groups=["ActionButtons"]]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -37.5
-offset_bottom = 37.5
-grow_horizontal = 0
-grow_vertical = 2
-texture = ExtResource("10_bykbk")
+layout_mode = 2
+texture = ExtResource("9_i0sne")
 expand_mode = 1
 
-[node name="Emote5" type="TextureRect" parent="EmoteMenu"]
+[node name="VSeparator" type="VSeparator" parent="Menu/BoxContainer"]
+custom_minimum_size = Vector2(10.195, 0)
+layout_mode = 2
+
+[node name="FaceMenu" type="GridContainer" parent="Menu/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+columns = 2
+
+[node name="Face1" type="TextureRect" parent="Menu/BoxContainer/FaceMenu"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -75.0
-offset_right = 75.0
-grow_vertical = 0
-texture = ExtResource("10_bykbk")
+layout_mode = 2
+texture = ExtResource("10_u7y72")
 expand_mode = 1
 
-[node name="Emote6" type="TextureRect" parent="EmoteMenu"]
+[node name="Face2" type="TextureRect" parent="Menu/BoxContainer/FaceMenu"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -75.0
-offset_top = -75.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource("10_bykbk")
+layout_mode = 2
+texture = ExtResource("10_u7y72")
+expand_mode = 1
+
+[node name="Face3" type="TextureRect" parent="Menu/BoxContainer/FaceMenu"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("10_u7y72")
+expand_mode = 1
+
+[node name="Face4" type="TextureRect" parent="Menu/BoxContainer/FaceMenu"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("10_u7y72")
+expand_mode = 1
+
+[node name="Face5" type="TextureRect" parent="Menu/BoxContainer/FaceMenu"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("10_u7y72")
+expand_mode = 1
+
+[node name="Face6" type="TextureRect" parent="Menu/BoxContainer/FaceMenu"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("10_u7y72")
 expand_mode = 1
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
-[connection signal="close_requested" from="EmoteMenu" to="." method="_on_emote_menu_close_requested"]
-[connection signal="window_input" from="EmoteMenu" to="." method="_on_emote_menu_window_input"]
-[connection signal="mouse_entered" from="EmoteMenu/Emote1" to="." method="_on_emote_1_mouse_entered"]
-[connection signal="mouse_exited" from="EmoteMenu/Emote1" to="." method="_on_emote_1_mouse_exited"]
-[connection signal="mouse_entered" from="EmoteMenu/Emote2" to="." method="_on_emote_2_mouse_entered"]
-[connection signal="mouse_exited" from="EmoteMenu/Emote2" to="." method="_on_emote_2_mouse_exited"]
-[connection signal="mouse_entered" from="EmoteMenu/Emote3" to="." method="_on_emote_3_mouse_entered"]
-[connection signal="mouse_exited" from="EmoteMenu/Emote3" to="." method="_on_emote_3_mouse_exited"]
-[connection signal="mouse_entered" from="EmoteMenu/Emote4" to="." method="_on_emote_4_mouse_entered"]
-[connection signal="mouse_exited" from="EmoteMenu/Emote4" to="." method="_on_emote_4_mouse_exited"]
-[connection signal="mouse_entered" from="EmoteMenu/Emote5" to="." method="_on_emote_5_mouse_entered"]
-[connection signal="mouse_exited" from="EmoteMenu/Emote5" to="." method="_on_emote_5_mouse_exited"]
-[connection signal="mouse_entered" from="EmoteMenu/Emote6" to="." method="_on_emote_6_mouse_entered"]
-[connection signal="mouse_exited" from="EmoteMenu/Emote6" to="." method="_on_emote_6_mouse_exited"]
+[connection signal="close_requested" from="Menu" to="." method="_on_emote_menu_close_requested"]
+[connection signal="window_input" from="Menu" to="." method="_on_face_menu_window_input"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/HandMenu/Action1" to="." method="_on_action_1_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/BoxContainer/HandMenu/Action1" to="." method="_on_action_1_mouse_exited"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/HandMenu/Action2" to="." method="_on_action_2_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/BoxContainer/HandMenu/Action2" to="." method="_on_action_2_mouse_exited"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/HandMenu/Action3" to="." method="_on_action_3_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/BoxContainer/HandMenu/Action3" to="." method="_on_action_3_mouse_exited"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/HandMenu/Action4" to="." method="_on_action_4_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/BoxContainer/HandMenu/Action4" to="." method="_on_action_4_mouse_exited"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/FaceMenu/Face1" to="." method="_on_face_1_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/BoxContainer/FaceMenu/Face1" to="." method="_on_face_1_mouse_exited"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/FaceMenu/Face2" to="." method="_on_face_2_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/BoxContainer/FaceMenu/Face2" to="." method="_on_face_2_mouse_exited"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/FaceMenu/Face3" to="." method="_on_face_3_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/BoxContainer/FaceMenu/Face3" to="." method="_on_face_3_mouse_exited"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/FaceMenu/Face4" to="." method="_on_face_4_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/BoxContainer/FaceMenu/Face4" to="." method="_on_face_4_mouse_exited"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/FaceMenu/Face5" to="." method="_on_face_5_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/BoxContainer/FaceMenu/Face5" to="." method="_on_face_5_mouse_exited"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/FaceMenu/Face6" to="." method="_on_face_6_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/BoxContainer/FaceMenu/Face6" to="." method="_on_face_6_mouse_exited"]

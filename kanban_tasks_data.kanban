@@ -96,7 +96,7 @@
 				},
 				{
 					"details": "Multi Hand Emotes",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Emote particles",
@@ -108,6 +108,10 @@
 				},
 				{
 					"details": "Emote Menu",
+					"done": true
+				},
+				{
+					"details": "Add Path Variable",
 					"done": false
 				}
 			]
