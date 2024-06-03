@@ -184,6 +184,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="MiniName" type="Label" parent="AspectRatioContainer5/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "MiniTuberName"
 horizontal_alignment = 1
@@ -237,42 +238,42 @@ size_flags_vertical = 8
 columns = 2
 metadata/_edit_group_ = true
 
-[node name="Emote1" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/GridFace" groups=["custom"]]
+[node name="Face1" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/GridFace" groups=["custom"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("1_um0wm")
 expand_mode = 1
 
-[node name="Emote2" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/GridFace" groups=["custom"]]
+[node name="Face2" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/GridFace" groups=["custom"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("1_um0wm")
 expand_mode = 1
 
-[node name="Emote3" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/GridFace" groups=["custom"]]
+[node name="Face3" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/GridFace" groups=["custom"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("1_um0wm")
 expand_mode = 1
 
-[node name="Emote4" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/GridFace" groups=["custom"]]
+[node name="Face4" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/GridFace" groups=["custom"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("1_um0wm")
 expand_mode = 1
 
-[node name="Emote5" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/GridFace" groups=["custom"]]
+[node name="Face5" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/GridFace" groups=["custom"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("1_um0wm")
 expand_mode = 1
 
-[node name="Emote6" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/GridFace" groups=["custom"]]
+[node name="Face6" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/GridFace" groups=["custom"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -293,16 +294,15 @@ expand_mode = 1
 [connection signal="pressed" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/HBoxContainer2/CodeRotate" to="." method="_on_code_rotate_pressed"]
 [connection signal="pressed" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/HBoxContainer2/NoRotate" to="." method="_on_no_rotate_pressed"]
 [connection signal="pressed" from="AspectRatioContainer5/HBoxContainer/VBoxContainer/HBoxContainer/LoadTuber" to="." method="_on_load_tuber_pressed"]
-[connection signal="item_rect_changed" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote1" to="." method="_on_emote_1_item_rect_changed"]
-[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote1" to="." method="_on_emote_1_mouse_entered"]
-[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote1" to="." method="_on_emote_1_mouse_exited"]
-[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote2" to="." method="_on_emote_2_mouse_entered"]
-[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote2" to="." method="_on_emote_2_mouse_exited"]
-[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote3" to="." method="_on_emote_3_mouse_entered"]
-[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote3" to="." method="_on_emote_3_mouse_exited"]
-[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote4" to="." method="_on_emote_4_mouse_entered"]
-[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote4" to="." method="_on_emote_4_mouse_exited"]
-[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote5" to="." method="_on_emote_5_mouse_entered"]
-[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote5" to="." method="_on_emote_5_mouse_exited"]
-[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote6" to="." method="_on_emote_6_mouse_entered"]
-[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote6" to="." method="_on_emote_6_mouse_exited"]
+[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Face1" to="." method="_on_face_1_mouse_entered"]
+[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Face1" to="." method="_on_face_1_mouse_exited"]
+[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Face2" to="." method="_on_face_2_mouse_entered"]
+[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Face2" to="." method="_on_face_2_mouse_exited"]
+[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Face3" to="." method="_on_face_3_mouse_entered"]
+[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Face3" to="." method="_on_face_3_mouse_exited"]
+[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Face4" to="." method="_on_face_4_mouse_entered"]
+[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Face4" to="." method="_on_face_4_mouse_exited"]
+[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Face5" to="." method="_on_face_5_mouse_entered"]
+[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Face5" to="." method="_on_face_5_mouse_exited"]
+[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Face6" to="." method="_on_face_6_mouse_entered"]
+[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Face6" to="." method="_on_face_6_mouse_exited"]

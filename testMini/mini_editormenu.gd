@@ -5,6 +5,11 @@ var handHover = false # Check if mouse is over Hand Image
 
 @export var selectNode: TextureRect # Select TextureRect on hover
 
+# Dynamic path for loading 
+var currentDir = "" 
+var face = ["face1.png","face2.png","face3.png","face4.png","face5.png","face6.png"]
+var hand = ["hand1.png", "hand2.png", "hand3.png", "hand4.png"]
+
 var currentTuber = "" # use FileDialog.current_dir
 var selectedNode = "" # selected Hand/Face
 var currentEmote = "" #str(currentTuber, selectedNode) # current dir and selected Hand/Face
@@ -14,7 +19,8 @@ signal counterRotate
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_load_Imported()
+	#_load_Imported() # moved to LoadDiag cuz thats where we get currentDir.
+	pass
 
 #region File Dialog Face & Hands
 func _on_file_dialog_file_selected(path):
@@ -58,105 +64,115 @@ func _currentTuber():
 
 func _load_Imported():
 #region Face
-	var face1 = Image.load_from_file("user://models/default/face1.png")
+	var face1path = str(currentDir,"/",face[0])
+	var face1 = Image.load_from_file(face1path)
 	var facetext1 = ImageTexture.new()
 	facetext1.set_image(face1)
-	$%Emote1.texture = facetext1
+	$%Face1.texture = facetext1
 	
-	var face2 = Image.load_from_file("user://models/default/face2.png")
+	var face2path = str(currentDir,"/",face[1])
+	var face2 = Image.load_from_file(face2path)
 	var facetext2 = ImageTexture.new()
 	facetext2.set_image(face2)
-	$%Emote2.texture = facetext2
+	$%Face2.texture = facetext2
 	
-	var face3 = Image.load_from_file("user://models/default/face3.png")
+	var face3path = str(currentDir,"/",face[2])
+	var face3 = Image.load_from_file(face3path)
 	var facetext3 = ImageTexture.new()
 	facetext3.set_image(face3)
-	$%Emote3.texture = facetext3
+	$%Face3.texture = facetext3
 	
-	var face4 = Image.load_from_file("user://models/default/face4.png")
+	var face4path = str(currentDir,"/",face[3])
+	var face4 = Image.load_from_file(face4path)
 	var facetext4 = ImageTexture.new()
 	facetext4.set_image(face4)
-	$%Emote4.texture = facetext4
+	$%Face4.texture = facetext4
 	
-	var face5 = Image.load_from_file("user://models/default/face5.png")
+	var face5path = str(currentDir,"/",face[4])
+	var face5 = Image.load_from_file(face5path)
 	var facetext5 = ImageTexture.new()
 	facetext5.set_image(face5)
-	$%Emote5.texture = facetext5
+	$%Face5.texture = facetext5
 	
-	var face6 = Image.load_from_file("user://models/default/face6.png")
+	var face6path = str(currentDir,"/",face[5])
+	var face6 = Image.load_from_file(face6path)
 	var facetext6 = ImageTexture.new()
 	facetext6.set_image(face6)
-	$%Emote6.texture = facetext6
+	$%Face6.texture = facetext6
 #endregion
-#region Hand
-	var hand1 = Image.load_from_file("user://models/default/hand1.png")
+#region Hands
+	var hand1path = str(currentDir,"/",hand[0])
+	var hand1 = Image.load_from_file(hand1path)
 	var handtext1 = ImageTexture.new()
 	handtext1.set_image(hand1)
 	$%Hand1.texture = handtext1
 	
-	var hand2 = Image.load_from_file("user://models/default/hand2.png")
+	var hand2path = str(currentDir,"/",hand[1])
+	var hand2 = Image.load_from_file(hand2path)
 	var handtext2 = ImageTexture.new()
 	handtext2.set_image(hand2)
 	$%Hand2.texture = handtext2
 	
-	var hand3 = Image.load_from_file("user://models/default/hand3.png")
+	var hand3path = str(currentDir,"/",hand[2])
+	var hand3 = Image.load_from_file(hand3path)
 	var handtext3 = ImageTexture.new()
 	handtext3.set_image(hand3)
 	$%Hand3.texture = handtext3
 	
-	var hand4 = Image.load_from_file("user://models/default/hand4.png")
+	var hand4path = str(currentDir,"/",hand[3])
+	var hand4 = Image.load_from_file(hand4path)
 	var handtext4 = ImageTexture.new()
 	handtext4.set_image(hand4)
 	$%Hand4.texture = handtext4
 #endregion
 
 #region Emote Hover
-func _on_emote_1_mouse_entered():
+func _on_face_1_mouse_entered():
 	faceHover = true
-	selectNode = $%Emote1
+	selectNode = $%Face1
 	selectedNode = "face1.png"
 	
-func _on_emote_1_mouse_exited():
+func _on_face_1_mouse_exited():
 	faceHover = false
 
-func _on_emote_2_mouse_entered():
+func _on_face_2_mouse_entered():
 	faceHover = true
-	selectNode = $%Emote2
+	selectNode = $%Face2
 	selectedNode = "face2.png"
 	
-func _on_emote_2_mouse_exited():
+func _on_face_2_mouse_exited():
 	faceHover = false
 
-func _on_emote_3_mouse_entered():
+func _on_face_3_mouse_entered():
 	faceHover = true
-	selectNode = $%Emote3
+	selectNode = $%Face3
 	selectedNode = "face3.png"
 
-func _on_emote_3_mouse_exited():
+func _on_face_3_mouse_exited():
 	faceHover = false
 
-func _on_emote_4_mouse_entered():
+func _on_face_4_mouse_entered():
 	faceHover = true
-	selectNode = $%Emote4
+	selectNode = $%Face4
 	selectedNode = "face4.png"
 
-func _on_emote_4_mouse_exited():
+func _on_face_4_mouse_exited():
 	faceHover = false
 
-func _on_emote_5_mouse_entered():
+func _on_face_5_mouse_entered():
 	faceHover = true
-	selectNode = $%Emote5
+	selectNode = $%Face5
 	selectedNode = "face5.png"
 
-func _on_emote_5_mouse_exited():
+func _on_face_5_mouse_exited():
 	faceHover = false
 
-func _on_emote_6_mouse_entered():
+func _on_face_6_mouse_entered():
 	faceHover = true
-	selectNode = $%Emote6
+	selectNode = $%Face6
 	selectedNode = "face6.png"
 
-func _on_emote_6_mouse_exited():
+func _on_face_6_mouse_exited():
 	faceHover = false
 #endregion
 
@@ -207,6 +223,9 @@ func _on_load_tuber_pressed():
 	
 func _on_load_dialog_dir_selected(dir):
 	currentTuber = dir
+	currentDir = dir
+	$%MiniName.text = dir.replace("user://models/", "") #erases first part so only Folder name appears
+	_load_Imported()
 	print(dir)
 
 func _on_code_rotate_pressed():

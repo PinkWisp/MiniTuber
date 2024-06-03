@@ -98,10 +98,6 @@
 					"done": false
 				},
 				{
-					"details": "Save Settings per Node",
-					"done": false
-				},
-				{
 					"details": "Multi Expressions",
 					"done": true
 				},
@@ -119,6 +115,10 @@
 				},
 				{
 					"details": "Have Faces have their own Hands?",
+					"done": true
+				},
+				{
+					"details": "Fix File Paths",
 					"done": true
 				}
 			]
