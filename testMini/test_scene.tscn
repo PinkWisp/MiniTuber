@@ -8,6 +8,7 @@
 script = ExtResource("1_8twc6")
 
 [node name="MiniEditor" parent="." instance=ExtResource("2_6qacn")]
+visible = false
 
 [node name="MiniTuber" parent="." instance=ExtResource("1_wm78w")]
 
@@ -23,5 +24,7 @@ access = 1
 root_subfolder = "models"
 use_native_dialog = true
 
+[connection signal="counterRotate" from="MiniEditor" to="MiniTuber" method="_on_mini_editor_counter_rotate"]
+[connection signal="handRotate" from="MiniEditor" to="MiniTuber" method="_on_mini_editor_hand_rotate"]
 [connection signal="dir_selected" from="LoadDialog" to="MiniEditor" method="_on_load_dialog_dir_selected"]
 [connection signal="dir_selected" from="LoadDialog" to="MiniTuber" method="_on_load_dialog_dir_selected"]

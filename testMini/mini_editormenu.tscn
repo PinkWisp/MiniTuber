@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://co2ae5puffk8f" path="res://assets/catgoatlogosquare500.png" id="2_8gilh"]
 
 [node name="MiniEditor" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,6 +43,23 @@ offset_bottom = 346.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="AspectRatioContainer5"]
+layout_mode = 2
+size_flags_vertical = 0
+alignment = 1
+
+[node name="Title" type="Label" parent="AspectRatioContainer5/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "MiniTuber Editor"
+horizontal_alignment = 1
+
+[node name="CloseEditor" type="Button" parent="AspectRatioContainer5/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "X"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer5"]
 layout_mode = 2
 size_flags_vertical = 4
@@ -53,53 +69,55 @@ alignment = 2
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="Path" type="BoxContainer" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer"]
+[node name="Actions" type="BoxContainer" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 vertical = true
 
-[node name="PathTypes" type="Label" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Path"]
+[node name="ActionsTypes" type="Label" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Actions"]
 layout_mode = 2
-text = "Paths"
+text = "Actions"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Path"]
+[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Actions"]
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="CheckButton" type="CheckButton" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Path/HBoxContainer"]
+[node name="CheckButton" type="CheckButton" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Actions/HBoxContainer"]
 layout_mode = 2
 text = "H Flip"
 
-[node name="CheckButton2" type="CheckButton" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Path/HBoxContainer"]
+[node name="CheckButton2" type="CheckButton" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Actions/HBoxContainer"]
 layout_mode = 2
 text = "V Flip"
 
-[node name="Paths" type="GridContainer" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Path"]
+[node name="Paths" type="GridContainer" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Actions"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 columns = 2
 
-[node name="Arch" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Path/Paths"]
+[node name="Wave" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Actions/Paths"]
 layout_mode = 2
 texture = ExtResource("1_um0wm")
 
-[node name="Orbit" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Path/Paths"]
+[node name="Point" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Actions/Paths"]
 layout_mode = 2
 texture = ExtResource("1_um0wm")
 
-[node name="Vertical" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Path/Paths"]
+[node name="Vertical" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Actions/Paths"]
 layout_mode = 2
 texture = ExtResource("1_um0wm")
 
-[node name="Horizontal" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Path/Paths"]
+[node name="Horizontal" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Actions/Paths"]
 layout_mode = 2
 texture = ExtResource("1_um0wm")
 
 [node name="Hands" type="BoxContainer" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 4
 vertical = true
 
 [node name="HandTypes" type="Label" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands"]
@@ -144,14 +162,17 @@ expand_mode = 1
 [node name="HBoxContainer2" type="HBoxContainer" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands"]
 layout_mode = 2
 size_flags_horizontal = 8
+alignment = 2
 
-[node name="CheckButton" type="CheckButton" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/HBoxContainer2"]
+[node name="CodeRotate" type="Button" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/HBoxContainer2"]
 layout_mode = 2
-text = "H Flip"
+tooltip_text = "Rotate"
+theme_override_font_sizes/font_size = 20
+text = "↺"
 
-[node name="CheckButton2" type="CheckButton" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/HBoxContainer2"]
+[node name="NoRotate" type="Button" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/HBoxContainer2"]
 layout_mode = 2
-text = "V Flip"
+text = "No Rotation"
 
 [node name="VSeparator" type="VSeparator" parent="AspectRatioContainer5/HBoxContainer"]
 custom_minimum_size = Vector2(15, 0)
@@ -203,72 +224,64 @@ size_flags_horizontal = 8
 size_flags_vertical = 4
 vertical = true
 
-[node name="EmoteSprites" type="Label" parent="AspectRatioContainer5/HBoxContainer/Faces"]
+[node name="FaceSprites" type="Label" parent="AspectRatioContainer5/HBoxContainer/Faces"]
 layout_mode = 2
 size_flags_vertical = 0
-text = "Emotes"
+text = "Faces"
 horizontal_alignment = 1
 
-[node name="Emotes" type="GridContainer" parent="AspectRatioContainer5/HBoxContainer/Faces"]
+[node name="GridFace" type="GridContainer" parent="AspectRatioContainer5/HBoxContainer/Faces"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 columns = 2
 metadata/_edit_group_ = true
 
-[node name="Emote1" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/Emotes" groups=["custom"]]
+[node name="Emote1" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/GridFace" groups=["custom"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("1_um0wm")
 expand_mode = 1
 
-[node name="Emote2" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/Emotes" groups=["custom"]]
+[node name="Emote2" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/GridFace" groups=["custom"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("1_um0wm")
 expand_mode = 1
 
-[node name="Emote3" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/Emotes" groups=["custom"]]
+[node name="Emote3" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/GridFace" groups=["custom"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("1_um0wm")
 expand_mode = 1
 
-[node name="Emote4" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/Emotes" groups=["custom"]]
+[node name="Emote4" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/GridFace" groups=["custom"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("1_um0wm")
 expand_mode = 1
 
-[node name="Emote5" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/Emotes" groups=["custom"]]
+[node name="Emote5" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/GridFace" groups=["custom"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("1_um0wm")
 expand_mode = 1
 
-[node name="Emote6" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/Emotes" groups=["custom"]]
+[node name="Emote6" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/GridFace" groups=["custom"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("1_um0wm")
 expand_mode = 1
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="AspectRatioContainer5/HBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="Title" type="Label" parent="AspectRatioContainer5/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-text = "Editor"
-horizontal_alignment = 1
 
 [connection signal="close_requested" from="ImportDialog" to="." method="_on_file_dialog_close_requested"]
 [connection signal="file_selected" from="ImportDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="AspectRatioContainer5/HBoxContainer2/CloseEditor" to="." method="_on_close_editor_pressed"]
 [connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand1" to="." method="_on_hand_1_mouse_entered"]
 [connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand1" to="." method="_on_hand_1_mouse_exited"]
 [connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand2" to="." method="_on_hand_2_mouse_entered"]
@@ -277,17 +290,19 @@ horizontal_alignment = 1
 [connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand3" to="." method="_on_hand_3_mouse_exited"]
 [connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand4" to="." method="_on_hand_4_mouse_entered"]
 [connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand4" to="." method="_on_hand_4_mouse_exited"]
+[connection signal="pressed" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/HBoxContainer2/CodeRotate" to="." method="_on_code_rotate_pressed"]
+[connection signal="pressed" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/HBoxContainer2/NoRotate" to="." method="_on_no_rotate_pressed"]
 [connection signal="pressed" from="AspectRatioContainer5/HBoxContainer/VBoxContainer/HBoxContainer/LoadTuber" to="." method="_on_load_tuber_pressed"]
-[connection signal="item_rect_changed" from="AspectRatioContainer5/HBoxContainer/Faces/Emotes/Emote1" to="." method="_on_emote_1_item_rect_changed"]
-[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/Emotes/Emote1" to="." method="_on_emote_1_mouse_entered"]
-[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/Emotes/Emote1" to="." method="_on_emote_1_mouse_exited"]
-[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/Emotes/Emote2" to="." method="_on_emote_2_mouse_entered"]
-[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/Emotes/Emote2" to="." method="_on_emote_2_mouse_exited"]
-[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/Emotes/Emote3" to="." method="_on_emote_3_mouse_entered"]
-[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/Emotes/Emote3" to="." method="_on_emote_3_mouse_exited"]
-[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/Emotes/Emote4" to="." method="_on_emote_4_mouse_entered"]
-[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/Emotes/Emote4" to="." method="_on_emote_4_mouse_exited"]
-[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/Emotes/Emote5" to="." method="_on_emote_5_mouse_entered"]
-[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/Emotes/Emote5" to="." method="_on_emote_5_mouse_exited"]
-[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/Emotes/Emote6" to="." method="_on_emote_6_mouse_entered"]
-[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/Emotes/Emote6" to="." method="_on_emote_6_mouse_exited"]
+[connection signal="item_rect_changed" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote1" to="." method="_on_emote_1_item_rect_changed"]
+[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote1" to="." method="_on_emote_1_mouse_entered"]
+[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote1" to="." method="_on_emote_1_mouse_exited"]
+[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote2" to="." method="_on_emote_2_mouse_entered"]
+[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote2" to="." method="_on_emote_2_mouse_exited"]
+[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote3" to="." method="_on_emote_3_mouse_entered"]
+[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote3" to="." method="_on_emote_3_mouse_exited"]
+[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote4" to="." method="_on_emote_4_mouse_entered"]
+[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote4" to="." method="_on_emote_4_mouse_exited"]
+[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote5" to="." method="_on_emote_5_mouse_entered"]
+[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote5" to="." method="_on_emote_5_mouse_exited"]
+[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote6" to="." method="_on_emote_6_mouse_entered"]
+[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Emote6" to="." method="_on_emote_6_mouse_exited"]

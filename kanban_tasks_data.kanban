@@ -14,7 +14,9 @@
 				"0b4cc151-3bea-4a09-b3eb-40bd5d546a0b",
 				"e4a5cd66-670d-41e5-9e2e-167919a5f4a7",
 				"d08c836a-4853-48bf-b99b-0bf8246e274f",
-				"9a6c264c-d085-4dd8-a3b2-ee14d95e6c2a"
+				"07661e72-16c8-41a4-9ac6-592ea79049fc",
+				"9a6c264c-d085-4dd8-a3b2-ee14d95e6c2a",
+				"07cb7335-b4c7-4ff3-84ac-472a158c4f1f"
 			]
 		},
 		{
@@ -22,7 +24,8 @@
 			"title": "Doing",
 			"tasks": [
 				"ee82a70e-4c17-4109-ab4b-3dfe9db45577",
-				"07661e72-16c8-41a4-9ac6-592ea79049fc"
+				"29b2fdb6-7d5f-4c3e-8d5e-1ee0fc068f93",
+				"cd1afa4c-7460-4dba-ab12-b5fadfa4b92b"
 			]
 		},
 		{
@@ -88,20 +91,24 @@
 		{
 			"uuid": "ee82a70e-4c17-4109-ab4b-3dfe9db45577",
 			"title": "MiniTuber",
-			"description": "Floating Head (multiple emojis)\nFloating Hands\n\nhttps://www.youtube.com/watch?v=XYiCdOfy3J8",
+			"description": "Floating Head (multiple emojis)\nFloating Hands\n\nhttps://www.youtube.com/watch?v=XYiCdOfy3J8\n\ncounter rotation = https://www.reddit.com/r/godot/comments/13gqnxn/lock_rotation_of_child_object_while_parent_is/",
 			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
 			"steps": [
+				{
+					"details": "Emote particles",
+					"done": false
+				},
+				{
+					"details": "Save Settings per Node",
+					"done": false
+				},
 				{
 					"details": "Multi Expressions",
 					"done": true
 				},
 				{
 					"details": "Multi Hand Emotes",
-					"done": false
-				},
-				{
-					"details": "Emote particles",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Movement",
@@ -109,7 +116,11 @@
 				},
 				{
 					"details": "Emote Menu",
-					"done": false
+					"done": true
+				},
+				{
+					"details": "Have Faces have their own Hands?",
+					"done": true
 				}
 			]
 		},
@@ -139,6 +150,57 @@
 		{
 			"uuid": "07661e72-16c8-41a4-9ac6-592ea79049fc",
 			"title": "Make sample miniTuber for first loading (use Ink Cat?)",
+			"description": "",
+			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
+			"steps": []
+		},
+		{
+			"uuid": "29b2fdb6-7d5f-4c3e-8d5e-1ee0fc068f93",
+			"title": "Save File",
+			"description": "",
+			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
+			"steps": [
+				{
+					"details": "Notebook",
+					"done": false
+				},
+				{
+					"details": "Menu Position",
+					"done": false
+				},
+				{
+					"details": "MiniTuber Dir",
+					"done": false
+				},
+				{
+					"details": "MiniTuber Settings",
+					"done": false
+				},
+				{
+					"details": "Chalk Color?",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "cd1afa4c-7460-4dba-ab12-b5fadfa4b92b",
+			"title": "ConfigFile",
+			"description": "",
+			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
+			"steps": [
+				{
+					"details": "WindowSize",
+					"done": false
+				},
+				{
+					"details": "Window Position?",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "07cb7335-b4c7-4ff3-84ac-472a158c4f1f",
+			"title": "Make multiple notebooks",
 			"description": "",
 			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
 			"steps": []
