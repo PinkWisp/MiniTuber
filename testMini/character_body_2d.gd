@@ -1,4 +1,7 @@
 extends CharacterBody2D
+var screenSize
+
+var intoCage = false
 
 # Movement Variables
 var clickPos = Vector2()
@@ -7,9 +10,12 @@ var dashState = false
 
 var faceHover = false #Check if cursor is on face buttons
 var handHover = false #Check if cursor is on action buttons
+var editorON = false
 
 var counterRotation = false #Hand rotates against pivoit to stay pointed in a direction
 var prevRotation #Rotation before CounterRotation is true
+
+# Hand Settings
 
 # Hand and Face Arrays
 var face = ["face1.png","face2.png","face3.png","face4.png","face5.png","face6.png"]
@@ -26,6 +32,7 @@ var currentHand = "" #str(currentTuber, selectedHand)
 func _ready():
 	clickPos = position #Set Sprite Starter Position
 	prevRotation = %OrbitHand.rotation
+	screenSize = get_viewport_rect().size
 #region # Make Default Folder and Placeholders
 	var dir = DirAccess.open("user://")
 	# make another check for model thats already in use
@@ -181,7 +188,8 @@ func _physics_process(delta):
 	#Hand rotates against pivoit to stay pointed in a direction
 	if counterRotation == true:
 		$%OrbitHand.global_rotation = !%Orbit.rotation
-	
+		
+
 #region Movement
 	if Input.is_action_just_released("RMB"):
 		$DashTimer.start()
@@ -218,8 +226,7 @@ func _input(event):
 			%OrbitHand.visible = true
 	if Input.is_action_pressed("WheelDown"):
 		%OrbitHand.visible = false
-		
-		
+
 	# Open Face Menu. Can't use popup due to Rendering ordering bug with Always Ontop main window
 	if Input.is_action_just_pressed("MMB"):
 		_loadMenu()
@@ -356,4 +363,3 @@ func _on_mini_editor_counter_rotate():
 	counterRotation = !counterRotation
 	if counterRotation == false: #gets previous rotation from _ready and reapplies
 		$%OrbitHand.rotation = prevRotation
-

@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnvw4go1f1qb1"]
+[gd_scene load_steps=3 format=3 uid="uid://bnvw4go1f1qb1"]
 
 [ext_resource type="Texture2D" uid="uid://dlc4s5lmbasr7" path="res://icon.svg" id="1_um0wm"]
 [ext_resource type="Script" path="res://testMini/mini_editormenu.gd" id="1_vyx1n"]
-[ext_resource type="Texture2D" uid="uid://co2ae5puffk8f" path="res://assets/catgoatlogosquare500.png" id="2_8gilh"]
 
 [node name="MiniEditor" type="Control"]
 layout_mode = 3
@@ -29,280 +28,221 @@ access = 2
 root_subfolder = "G:\\Documents\\0 Godot Practice\\handtest"
 use_native_dialog = true
 
-[node name="AspectRatioContainer5" type="AspectRatioContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -357.5
-offset_top = -346.0
-offset_right = 357.5
-offset_bottom = 346.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_top = -30.0
+offset_right = 40.0
+offset_bottom = 10.0
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="AspectRatioContainer5"]
+[node name="Panel" type="Panel" parent="Control"]
+visible = false
 layout_mode = 2
+offset_left = 814.0
+offset_top = 818.0
+offset_right = 1106.0
+offset_bottom = 1110.0
+
+[node name="BoxContainer" type="BoxContainer" parent="Control"]
+layout_mode = 2
+offset_left = 302.0
+offset_top = 788.0
+offset_right = 1618.0
+offset_bottom = 1080.0
+vertical = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 0
 alignment = 1
 
-[node name="Title" type="Label" parent="AspectRatioContainer5/HBoxContainer2"]
+[node name="Title" type="Label" parent="Control/BoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "MiniTuber Editor"
 horizontal_alignment = 1
 
-[node name="CloseEditor" type="Button" parent="AspectRatioContainer5/HBoxContainer2"]
+[node name="CloseEditor" type="Button" parent="Control/BoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "X"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer5"]
+[node name="MiniName" type="Label" parent="Control/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "MiniTuberName"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/BoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 alignment = 2
 
-[node name="VSplitContainer" type="VSplitContainer" parent="AspectRatioContainer5/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="Actions" type="BoxContainer" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 0
-vertical = true
-
-[node name="ActionsTypes" type="Label" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Actions"]
-layout_mode = 2
-text = "Actions"
-horizontal_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Actions"]
-layout_mode = 2
-size_flags_horizontal = 8
-
-[node name="CheckButton" type="CheckButton" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Actions/HBoxContainer"]
-layout_mode = 2
-text = "H Flip"
-
-[node name="CheckButton2" type="CheckButton" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Actions/HBoxContainer"]
-layout_mode = 2
-text = "V Flip"
-
-[node name="Paths" type="GridContainer" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Actions"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-columns = 2
-
-[node name="Wave" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Actions/Paths"]
-layout_mode = 2
-texture = ExtResource("1_um0wm")
-
-[node name="Point" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Actions/Paths"]
-layout_mode = 2
-texture = ExtResource("1_um0wm")
-
-[node name="Vertical" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Actions/Paths"]
-layout_mode = 2
-texture = ExtResource("1_um0wm")
-
-[node name="Horizontal" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Actions/Paths"]
-layout_mode = 2
-texture = ExtResource("1_um0wm")
-
-[node name="Hands" type="BoxContainer" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer"]
+[node name="Hands" type="BoxContainer" parent="Control/BoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 vertical = true
 
-[node name="HandTypes" type="Label" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands"]
+[node name="HandTypes" type="Label" parent="Control/BoxContainer/HBoxContainer/Hands"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 1
 text = "Hands"
 horizontal_alignment = 1
 
-[node name="Hands" type="GridContainer" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands"]
+[node name="Hands" type="GridContainer" parent="Control/BoxContainer/HBoxContainer/Hands"]
 layout_mode = 2
 size_flags_horizontal = 0
-columns = 2
+columns = 4
 
-[node name="Hand1" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands" groups=["custom"]]
+[node name="Hand1" type="TextureRect" parent="Control/BoxContainer/HBoxContainer/Hands/Hands" groups=["custom"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("1_um0wm")
 expand_mode = 1
 
-[node name="Hand2" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands" groups=["custom"]]
+[node name="Hand2" type="TextureRect" parent="Control/BoxContainer/HBoxContainer/Hands/Hands" groups=["custom"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("1_um0wm")
 expand_mode = 1
 
-[node name="Hand3" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands" groups=["custom"]]
+[node name="Hand3" type="TextureRect" parent="Control/BoxContainer/HBoxContainer/Hands/Hands" groups=["custom"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("1_um0wm")
 expand_mode = 1
 
-[node name="Hand4" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands" groups=["custom"]]
+[node name="Hand4" type="TextureRect" parent="Control/BoxContainer/HBoxContainer/Hands/Hands" groups=["custom"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("1_um0wm")
 expand_mode = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/BoxContainer/HBoxContainer/Hands"]
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 0
 alignment = 2
 
-[node name="CodeRotate" type="Button" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/HBoxContainer2"]
+[node name="CodeRotate" type="Button" parent="Control/BoxContainer/HBoxContainer/Hands/HBoxContainer2"]
 layout_mode = 2
 tooltip_text = "Rotate"
 theme_override_font_sizes/font_size = 20
 text = "↺"
 
-[node name="NoRotate" type="Button" parent="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/HBoxContainer2"]
+[node name="NoRotate" type="Button" parent="Control/BoxContainer/HBoxContainer/Hands/HBoxContainer2"]
 layout_mode = 2
 text = "No Rotation"
 
-[node name="VSeparator" type="VSeparator" parent="AspectRatioContainer5/HBoxContainer"]
-custom_minimum_size = Vector2(15, 0)
+[node name="VSeparator" type="VSeparator" parent="Control/BoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer5/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="MiniName" type="Label" parent="AspectRatioContainer5/HBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "MiniTuberName"
-horizontal_alignment = 1
-
-[node name="PanelContainer" type="PanelContainer" parent="AspectRatioContainer5/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="Panel" type="Panel" parent="AspectRatioContainer5/HBoxContainer/VBoxContainer/PanelContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("2_8gilh")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer5/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-
-[node name="SaveTuber" type="Button" parent="AspectRatioContainer5/HBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Save"
-
-[node name="LoadTuber" type="Button" parent="AspectRatioContainer5/HBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Load"
-
-[node name="VSeparator2" type="VSeparator" parent="AspectRatioContainer5/HBoxContainer"]
-custom_minimum_size = Vector2(15, 0)
-layout_mode = 2
-
-[node name="Faces" type="BoxContainer" parent="AspectRatioContainer5/HBoxContainer"]
+[node name="Faces" type="BoxContainer" parent="Control/BoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 vertical = true
 
-[node name="FaceSprites" type="Label" parent="AspectRatioContainer5/HBoxContainer/Faces"]
+[node name="FaceSprites" type="Label" parent="Control/BoxContainer/HBoxContainer/Faces"]
 layout_mode = 2
 size_flags_vertical = 0
 text = "Faces"
 horizontal_alignment = 1
 
-[node name="GridFace" type="GridContainer" parent="AspectRatioContainer5/HBoxContainer/Faces"]
+[node name="GridFace" type="GridContainer" parent="Control/BoxContainer/HBoxContainer/Faces"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
-columns = 2
-metadata/_edit_group_ = true
+columns = 6
 
-[node name="Face1" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/GridFace" groups=["custom"]]
+[node name="Face1" type="TextureRect" parent="Control/BoxContainer/HBoxContainer/Faces/GridFace" groups=["custom"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("1_um0wm")
 expand_mode = 1
 
-[node name="Face2" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/GridFace" groups=["custom"]]
+[node name="Face2" type="TextureRect" parent="Control/BoxContainer/HBoxContainer/Faces/GridFace" groups=["custom"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("1_um0wm")
 expand_mode = 1
 
-[node name="Face3" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/GridFace" groups=["custom"]]
+[node name="Face3" type="TextureRect" parent="Control/BoxContainer/HBoxContainer/Faces/GridFace" groups=["custom"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("1_um0wm")
 expand_mode = 1
 
-[node name="Face4" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/GridFace" groups=["custom"]]
+[node name="Face4" type="TextureRect" parent="Control/BoxContainer/HBoxContainer/Faces/GridFace" groups=["custom"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("1_um0wm")
 expand_mode = 1
 
-[node name="Face5" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/GridFace" groups=["custom"]]
+[node name="Face5" type="TextureRect" parent="Control/BoxContainer/HBoxContainer/Faces/GridFace" groups=["custom"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("1_um0wm")
 expand_mode = 1
 
-[node name="Face6" type="TextureRect" parent="AspectRatioContainer5/HBoxContainer/Faces/GridFace" groups=["custom"]]
+[node name="Face6" type="TextureRect" parent="Control/BoxContainer/HBoxContainer/Faces/GridFace" groups=["custom"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("1_um0wm")
 expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/BoxContainer/HBoxContainer/Faces"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="SaveTuber" type="Button" parent="Control/BoxContainer/HBoxContainer/Faces/HBoxContainer"]
+layout_mode = 2
+text = "Save as"
+
+[node name="LoadTuber" type="Button" parent="Control/BoxContainer/HBoxContainer/Faces/HBoxContainer"]
+layout_mode = 2
+text = "Load Model"
+
+[node name="SaveDialog" type="FileDialog" parent="."]
 
 [connection signal="close_requested" from="ImportDialog" to="." method="_on_file_dialog_close_requested"]
 [connection signal="file_selected" from="ImportDialog" to="." method="_on_file_dialog_file_selected"]
-[connection signal="pressed" from="AspectRatioContainer5/HBoxContainer2/CloseEditor" to="." method="_on_close_editor_pressed"]
-[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand1" to="." method="_on_hand_1_mouse_entered"]
-[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand1" to="." method="_on_hand_1_mouse_exited"]
-[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand2" to="." method="_on_hand_2_mouse_entered"]
-[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand2" to="." method="_on_hand_2_mouse_exited"]
-[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand3" to="." method="_on_hand_3_mouse_entered"]
-[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand3" to="." method="_on_hand_3_mouse_exited"]
-[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand4" to="." method="_on_hand_4_mouse_entered"]
-[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/Hands/Hand4" to="." method="_on_hand_4_mouse_exited"]
-[connection signal="pressed" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/HBoxContainer2/CodeRotate" to="." method="_on_code_rotate_pressed"]
-[connection signal="pressed" from="AspectRatioContainer5/HBoxContainer/VSplitContainer/Hands/HBoxContainer2/NoRotate" to="." method="_on_no_rotate_pressed"]
-[connection signal="pressed" from="AspectRatioContainer5/HBoxContainer/VBoxContainer/HBoxContainer/LoadTuber" to="." method="_on_load_tuber_pressed"]
-[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Face1" to="." method="_on_face_1_mouse_entered"]
-[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Face1" to="." method="_on_face_1_mouse_exited"]
-[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Face2" to="." method="_on_face_2_mouse_entered"]
-[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Face2" to="." method="_on_face_2_mouse_exited"]
-[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Face3" to="." method="_on_face_3_mouse_entered"]
-[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Face3" to="." method="_on_face_3_mouse_exited"]
-[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Face4" to="." method="_on_face_4_mouse_entered"]
-[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Face4" to="." method="_on_face_4_mouse_exited"]
-[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Face5" to="." method="_on_face_5_mouse_entered"]
-[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Face5" to="." method="_on_face_5_mouse_exited"]
-[connection signal="mouse_entered" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Face6" to="." method="_on_face_6_mouse_entered"]
-[connection signal="mouse_exited" from="AspectRatioContainer5/HBoxContainer/Faces/GridFace/Face6" to="." method="_on_face_6_mouse_exited"]
+[connection signal="pressed" from="Control/BoxContainer/HBoxContainer2/CloseEditor" to="." method="_on_close_editor_pressed"]
+[connection signal="mouse_entered" from="Control/BoxContainer/HBoxContainer/Hands/Hands/Hand1" to="." method="_on_hand_1_mouse_entered"]
+[connection signal="mouse_exited" from="Control/BoxContainer/HBoxContainer/Hands/Hands/Hand1" to="." method="_on_hand_1_mouse_exited"]
+[connection signal="mouse_entered" from="Control/BoxContainer/HBoxContainer/Hands/Hands/Hand2" to="." method="_on_hand_2_mouse_entered"]
+[connection signal="mouse_exited" from="Control/BoxContainer/HBoxContainer/Hands/Hands/Hand2" to="." method="_on_hand_2_mouse_exited"]
+[connection signal="mouse_entered" from="Control/BoxContainer/HBoxContainer/Hands/Hands/Hand3" to="." method="_on_hand_3_mouse_entered"]
+[connection signal="mouse_exited" from="Control/BoxContainer/HBoxContainer/Hands/Hands/Hand3" to="." method="_on_hand_3_mouse_exited"]
+[connection signal="mouse_entered" from="Control/BoxContainer/HBoxContainer/Hands/Hands/Hand4" to="." method="_on_hand_4_mouse_entered"]
+[connection signal="mouse_exited" from="Control/BoxContainer/HBoxContainer/Hands/Hands/Hand4" to="." method="_on_hand_4_mouse_exited"]
+[connection signal="pressed" from="Control/BoxContainer/HBoxContainer/Hands/HBoxContainer2/CodeRotate" to="." method="_on_code_rotate_pressed"]
+[connection signal="pressed" from="Control/BoxContainer/HBoxContainer/Hands/HBoxContainer2/NoRotate" to="." method="_on_no_rotate_pressed"]
+[connection signal="mouse_entered" from="Control/BoxContainer/HBoxContainer/Faces/GridFace/Face1" to="." method="_on_face_1_mouse_entered"]
+[connection signal="mouse_exited" from="Control/BoxContainer/HBoxContainer/Faces/GridFace/Face1" to="." method="_on_face_1_mouse_exited"]
+[connection signal="mouse_entered" from="Control/BoxContainer/HBoxContainer/Faces/GridFace/Face2" to="." method="_on_face_2_mouse_entered"]
+[connection signal="mouse_exited" from="Control/BoxContainer/HBoxContainer/Faces/GridFace/Face2" to="." method="_on_face_2_mouse_exited"]
+[connection signal="mouse_entered" from="Control/BoxContainer/HBoxContainer/Faces/GridFace/Face3" to="." method="_on_face_3_mouse_entered"]
+[connection signal="mouse_exited" from="Control/BoxContainer/HBoxContainer/Faces/GridFace/Face3" to="." method="_on_face_3_mouse_exited"]
+[connection signal="mouse_entered" from="Control/BoxContainer/HBoxContainer/Faces/GridFace/Face4" to="." method="_on_face_4_mouse_entered"]
+[connection signal="mouse_exited" from="Control/BoxContainer/HBoxContainer/Faces/GridFace/Face4" to="." method="_on_face_4_mouse_exited"]
+[connection signal="mouse_entered" from="Control/BoxContainer/HBoxContainer/Faces/GridFace/Face5" to="." method="_on_face_5_mouse_entered"]
+[connection signal="mouse_exited" from="Control/BoxContainer/HBoxContainer/Faces/GridFace/Face5" to="." method="_on_face_5_mouse_exited"]
+[connection signal="mouse_entered" from="Control/BoxContainer/HBoxContainer/Faces/GridFace/Face6" to="." method="_on_face_6_mouse_entered"]
+[connection signal="mouse_exited" from="Control/BoxContainer/HBoxContainer/Faces/GridFace/Face6" to="." method="_on_face_6_mouse_exited"]
+[connection signal="pressed" from="Control/BoxContainer/HBoxContainer/Faces/HBoxContainer/LoadTuber" to="." method="_on_load_tuber_pressed"]

@@ -94,6 +94,10 @@
 			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
 			"steps": [
 				{
+					"details": "Save Button saves everything in current Folder\n(Face, Hands, Hand Settings)",
+					"done": false
+				},
+				{
 					"details": "Emote particles",
 					"done": false
 				},

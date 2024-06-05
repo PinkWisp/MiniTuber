@@ -11,6 +11,8 @@ script = ExtResource("1_8twc6")
 visible = false
 
 [node name="MiniTuber" parent="." instance=ExtResource("1_wm78w")]
+unique_name_in_owner = true
+position = Vector2(285, 902)
 
 [node name="LoadDialog" type="FileDialog" parent="."]
 title = "Open a Directory"
@@ -26,5 +28,6 @@ use_native_dialog = true
 
 [connection signal="counterRotate" from="MiniEditor" to="MiniTuber" method="_on_mini_editor_counter_rotate"]
 [connection signal="handRotate" from="MiniEditor" to="MiniTuber" method="_on_mini_editor_hand_rotate"]
+[connection signal="hidden" from="MiniEditor" to="MiniTuber" method="_on_mini_editor_hidden"]
 [connection signal="dir_selected" from="LoadDialog" to="MiniEditor" method="_on_load_dialog_dir_selected"]
 [connection signal="dir_selected" from="LoadDialog" to="MiniTuber" method="_on_load_dialog_dir_selected"]

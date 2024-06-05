@@ -220,7 +220,6 @@ func _on_hand_4_mouse_exited():
 func _on_load_tuber_pressed():
 	$LoadDialog.popup() # Replace with function body.
 	
-	
 func _on_load_dialog_dir_selected(dir):
 	currentTuber = dir
 	currentDir = dir
@@ -229,6 +228,7 @@ func _on_load_dialog_dir_selected(dir):
 	print(dir)
 
 func _on_code_rotate_pressed():
+	#Rotates image in code so it doesnt look weird in Editor and Emote Menu
 	emit_signal("handRotate")
 
 
