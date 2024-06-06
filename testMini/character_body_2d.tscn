@@ -183,6 +183,8 @@ layout_mode = 2
 texture = ExtResource("10_u7y72")
 expand_mode = 1
 
+[node name="Node" type="Node" parent="."]
+
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="close_requested" from="Menu" to="." method="_on_emote_menu_close_requested"]
 [connection signal="window_input" from="Menu" to="." method="_on_face_menu_window_input"]
