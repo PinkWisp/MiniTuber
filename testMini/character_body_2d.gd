@@ -1,7 +1,4 @@
 extends CharacterBody2D
-var screenSize
-
-var intoCage = false
 
 # Movement Variables
 var clickPos = Vector2()
@@ -18,11 +15,11 @@ var prevRotation #Rotation before CounterRotation is true
 # Hand Settings
 
 # Hand and Face Arrays
-var face = ["face1.png","face2.png","face3.png","face4.png","face5.png","face6.png"]
-var hand = ["hand1.png", "hand2.png", "hand3.png", "hand4.png"]
-
-# Directory Variables
-var currentDir = "" 
+#var face = ["face1.png","face2.png","face3.png","face4.png","face5.png","face6.png"]
+#var hand = ["hand1.png", "hand2.png", "hand3.png", "hand4.png"]
+#
+## Directory Variables
+#var currentDir = "" 
 var selectedFace = "" #select png from face array
 var currentFace = "" #str(currentTuber, selectedFace) 
 
@@ -32,7 +29,6 @@ var currentHand = "" #str(currentTuber, selectedHand)
 func _ready():
 	clickPos = position #Set Sprite Starter Position
 	prevRotation = %OrbitHand.rotation
-	screenSize = get_viewport_rect().size
 #region # Make Default Folder and Placeholders
 	var dir = DirAccess.open("user://")
 	# make another check for model thats already in use
@@ -79,50 +75,50 @@ func _blank_png():
 
 # Get dir path to face.png for compress
 func _change_face():
-	currentFace = str(currentDir,"/",selectedFace)
+	currentFace = str(MiniVariables.currentDir ,"/",selectedFace)
 	
 func _change_hand():
-	currentHand = str(currentDir,"/",selectedHand)
+	currentHand = str(MiniVariables.currentDir,"/",selectedHand)
 
 # COMPRESS AND LOAD Face Menu Images
 func _loadMenu():
 #region Face
-	var face1path = str(currentDir,"/",face[0])
+	var face1path = str(MiniVariables.currentDir,"/",MiniVariables.face[0])
 	var face1 = Image.load_from_file(face1path)
 	#var face1 = Image.load_from_file("user://models/default/face1.png")
 	var facetext1 = ImageTexture.new()
 	facetext1.set_image(face1)
 	$%Face1.texture = facetext1
 	
-	var face2path = str(currentDir,"/",face[1])
+	var face2path = str(MiniVariables.currentDir,"/",MiniVariables.face[1])
 	var face2 = Image.load_from_file(face2path)
 	#var face2 = Image.load_from_file("user://models/default/face2.png")
 	var facetext2 = ImageTexture.new()
 	facetext2.set_image(face2)
 	$%Face2.texture = facetext2
 	
-	var face3path = str(currentDir,"/",face[2])
+	var face3path = str(MiniVariables.currentDir,"/",MiniVariables.face[2])
 	var face3 = Image.load_from_file(face3path)
 	#var face3 = Image.load_from_file("user://models/default/face3.png")
 	var facetext3 = ImageTexture.new()
 	facetext3.set_image(face3)
 	$%Face3.texture = facetext3
 	
-	var face4path = str(currentDir,"/",face[3])
+	var face4path = str(MiniVariables.currentDir,"/",MiniVariables.face[3])
 	var face4 = Image.load_from_file(face4path)
 	#var face4 = Image.load_from_file("user://models/default/face4.png")
 	var facetext4 = ImageTexture.new()
 	facetext4.set_image(face4)
 	$%Face4.texture = facetext4
 	
-	var face5path = str(currentDir,"/",face[4])
+	var face5path = str(MiniVariables.currentDir,"/",MiniVariables.face[4])
 	var face5 = Image.load_from_file(face5path)
 	#var face5 = Image.load_from_file("user://models/default/face5.png")
 	var facetext5 = ImageTexture.new()
 	facetext5.set_image(face5)
 	$%Face5.texture = facetext5
 	
-	var face6path = str(currentDir,"/",face[5])
+	var face6path = str(MiniVariables.currentDir,"/",MiniVariables.face[5])
 	var face6 = Image.load_from_file(face6path)
 	#var face6 = Image.load_from_file("user://models/default/face6.png")
 	var facetext6 = ImageTexture.new()
@@ -130,28 +126,28 @@ func _loadMenu():
 	$%Face6.texture = facetext6
 #endregion
 #region Hands
-	var hand1path = str(currentDir,"/",hand[0])
+	var hand1path = str(MiniVariables.currentDir,"/",MiniVariables.hand[0])
 	var hand1 = Image.load_from_file(hand1path)
 	#var hand1 = Image.load_from_file("user://models/default/hand1.png")
 	var handtext1 = ImageTexture.new()
 	handtext1.set_image(hand1)
 	$%Hand1.texture = handtext1
 	
-	var hand2path = str(currentDir,"/",hand[1])
+	var hand2path = str(MiniVariables.currentDir,"/",MiniVariables.hand[1])
 	var hand2 = Image.load_from_file(hand2path)
 	#var hand2 = Image.load_from_file("user://models/default/hand2.png")
 	var handtext2 = ImageTexture.new()
 	handtext2.set_image(hand2)
 	$%Hand2.texture = handtext2
 	
-	var hand3path = str(currentDir,"/",hand[2])
+	var hand3path = str(MiniVariables.currentDir,"/",MiniVariables.hand[2])
 	var hand3 = Image.load_from_file(hand3path)
 	#var hand3 = Image.load_from_file("user://models/default/hand3.png")
 	var handtext3 = ImageTexture.new()
 	handtext3.set_image(hand3)
 	$%Hand3.texture = handtext3
 	
-	var hand4path = str(currentDir,"/",hand[3])
+	var hand4path = str(MiniVariables.currentDir,"/",MiniVariables.hand[3])
 	var hand4 = Image.load_from_file(hand4path)
 	#var hand4 = Image.load_from_file("user://models/default/hand4.png")
 	var handtext4 = ImageTexture.new()
@@ -202,7 +198,6 @@ func _physics_process(delta):
 				clickPos = clickPos.normalized() * 500
 			velocity = clickPos
 			move_and_slide()
-			print(dashState)
 
 	if dashState == true:
 		if Input.is_action_just_pressed("RMB"):
@@ -214,7 +209,6 @@ func _physics_process(delta):
 			targetPos = (clickPos - global_position).normalized()
 			velocity = targetPos * 2000
 			move_and_slide()
-			print("Target:", targetPos, '\n', "Pos:", position,'\n', "ClickPOS:", clickPos)
 		
 		if position.distance_to(clickPos) < 100:
 			$DashTimer.paused = false
@@ -249,12 +243,11 @@ func _convert_handtexture():
 
 func _on_dash_timer_timeout():
 	dashState = false
-	print("Rest")
 
 
 #region Face Menu
 func _on_face_1_mouse_entered():
-	selectedFace = face[0]
+	selectedFace = MiniVariables.face[0]
 	faceHover = true
 	_change_face()
 	
@@ -262,7 +255,7 @@ func _on_face_1_mouse_exited():
 	faceHover = false
 	
 func _on_face_2_mouse_entered():
-	selectedFace = face[1]
+	selectedFace = MiniVariables.face[1]
 	faceHover = true
 	_change_face()
 	
@@ -270,7 +263,7 @@ func _on_face_2_mouse_exited():
 	faceHover = false
 	
 func _on_face_3_mouse_entered():
-	selectedFace = face[2]
+	selectedFace = MiniVariables.face[2]
 	faceHover = true
 	_change_face()
 	
@@ -278,7 +271,7 @@ func _on_face_3_mouse_exited():
 	faceHover = false
 	
 func _on_face_4_mouse_entered():
-	selectedFace = face[3]
+	selectedFace = MiniVariables.face[3]
 	faceHover = true
 	_change_face()
 	
@@ -286,7 +279,7 @@ func _on_face_4_mouse_exited():
 	faceHover = false
 	
 func _on_face_5_mouse_entered():
-	selectedFace = face[4]
+	selectedFace = MiniVariables.face[4]
 	faceHover = true
 	_change_face()
 	
@@ -294,7 +287,7 @@ func _on_face_5_mouse_exited():
 	faceHover = false
 	
 func _on_face_6_mouse_entered():
-	selectedFace = face[5]
+	selectedFace = MiniVariables.face[5]
 	faceHover = true
 	_change_face()
 	
@@ -304,7 +297,7 @@ func _on_face_6_mouse_exited():
 
 #region Hand Menu
 func _on_hand_1_mouse_entered():
-	selectedHand = hand[0]
+	selectedHand = MiniVariables.hand[0]
 	handHover = true
 	_change_hand()
 	
@@ -312,7 +305,7 @@ func _on_hand_1_mouse_exited():
 	handHover = false
 	
 func _on_hand_2_mouse_entered():
-	selectedHand = hand[1]
+	selectedHand = MiniVariables.hand[1]
 	handHover = true
 	_change_hand()
 	
@@ -320,7 +313,7 @@ func _on_hand_2_mouse_exited():
 	handHover = false
 	
 func _on_hand_3_mouse_entered():
-	selectedHand = hand[2]
+	selectedHand = MiniVariables.hand[2]
 	handHover = true
 	_change_hand()
 	
@@ -328,7 +321,7 @@ func _on_hand_3_mouse_exited():
 	handHover = false
 	
 func _on_hand_4_mouse_entered():
-	selectedHand = hand[3]
+	selectedHand = MiniVariables.hand[3]
 	handHover = true
 	_change_hand()
 	
@@ -338,28 +331,50 @@ func _on_hand_4_mouse_exited():
 
 func _on_face_menu_window_input(event):
 	if faceHover == true:
-		print(currentFace)
 		if Input.is_action_pressed("LMB"):
 			_convert_facetexture()
 		if Input.is_action_just_released("LMB"):
 			$Menu.visible = false
 	if handHover == true:
-		print(currentHand)
 		if Input.is_action_pressed("LMB"):
 			_convert_handtexture()
 		if Input.is_action_just_released("LMB"):
 			$Menu.visible = false
 
 func _on_load_dialog_dir_selected(dir):
-	currentDir = dir # Replace with function body.
+	MiniVariables.currentDir = dir # Replace with function body.
 	_loadMenu()
 
 func _on_mini_editor_hand_rotate():
 	#$%OrbitHand.rotate(90) # Replace with function body.
 	$%OrbitHand.rotation_degrees += 90
-	print("RotateClick")
 
 func _on_mini_editor_counter_rotate():
 	counterRotation = !counterRotation
 	if counterRotation == false: #gets previous rotation from _ready and reapplies
 		$%OrbitHand.rotation = prevRotation
+
+#func _hand1_settings():
+	#pass
+#func _hand2_settings():
+	#pass
+#func _hand3_settings():
+	#pass
+#func _hand4_settings():
+	#pass
+	#
+#
+##region For Emote Particales
+#func _face1_settings():
+	#pass
+#func _face2_settings():
+	#pass
+#func _face3_settings():
+	#pass
+#func _face4_settings():
+	#pass
+#func _face5_settings():
+	#pass
+#func _face6_settings():
+	#pass
+##endregion

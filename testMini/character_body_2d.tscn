@@ -87,13 +87,6 @@ borderless = true
 transparent = true
 max_size = Vector2i(500, 240)
 
-[node name="Panel" type="Panel" parent="Menu"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="BoxContainer" type="BoxContainer" parent="Menu"]
 offset_right = 40.0
 offset_bottom = 40.0
@@ -182,8 +175,6 @@ custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture = ExtResource("10_u7y72")
 expand_mode = 1
-
-[node name="Node" type="Node" parent="."]
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="close_requested" from="Menu" to="." method="_on_emote_menu_close_requested"]
