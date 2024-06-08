@@ -1,8 +1,5 @@
 extends Control
 
-var faceHover = false # Check if mouse is over Face Image
-var handHover = false # Check if mouse is over Hand Image
-
 @export var selectNode: TextureButton # Select TextureRect on hover
 
 # Dynamic path for loading 
@@ -31,7 +28,7 @@ func _on_file_dialog_file_selected(path):
 	var emote_sprite = ImageTexture.new()
 	emote_sprite.set_image(emote)
 
-	selectNode.texture = emote_sprite
+	selectNode.texture_normal = emote_sprite
 #endregion
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

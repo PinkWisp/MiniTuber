@@ -82,77 +82,67 @@ func _change_hand():
 
 # COMPRESS AND LOAD Face Menu Images
 func _loadMenu():
-#region Face
+#region face
 	var face1path = str(MiniVariables.currentDir,"/",MiniVariables.face[0])
 	var face1 = Image.load_from_file(face1path)
-	#var face1 = Image.load_from_file("user://models/default/face1.png")
 	var facetext1 = ImageTexture.new()
 	facetext1.set_image(face1)
-	$%Face1.texture = facetext1
+	$%Face1.texture_normal = facetext1
 	
 	var face2path = str(MiniVariables.currentDir,"/",MiniVariables.face[1])
 	var face2 = Image.load_from_file(face2path)
-	#var face2 = Image.load_from_file("user://models/default/face2.png")
 	var facetext2 = ImageTexture.new()
 	facetext2.set_image(face2)
-	$%Face2.texture = facetext2
+	$%Face2.texture_normal = facetext2
 	
 	var face3path = str(MiniVariables.currentDir,"/",MiniVariables.face[2])
 	var face3 = Image.load_from_file(face3path)
-	#var face3 = Image.load_from_file("user://models/default/face3.png")
 	var facetext3 = ImageTexture.new()
 	facetext3.set_image(face3)
-	$%Face3.texture = facetext3
+	$%Face3.texture_normal = facetext3
 	
 	var face4path = str(MiniVariables.currentDir,"/",MiniVariables.face[3])
 	var face4 = Image.load_from_file(face4path)
-	#var face4 = Image.load_from_file("user://models/default/face4.png")
 	var facetext4 = ImageTexture.new()
 	facetext4.set_image(face4)
-	$%Face4.texture = facetext4
+	$%Face4.texture_normal = facetext4
 	
 	var face5path = str(MiniVariables.currentDir,"/",MiniVariables.face[4])
 	var face5 = Image.load_from_file(face5path)
-	#var face5 = Image.load_from_file("user://models/default/face5.png")
 	var facetext5 = ImageTexture.new()
 	facetext5.set_image(face5)
-	$%Face5.texture = facetext5
+	$%Face5.texture_normal = facetext5
 	
 	var face6path = str(MiniVariables.currentDir,"/",MiniVariables.face[5])
 	var face6 = Image.load_from_file(face6path)
-	#var face6 = Image.load_from_file("user://models/default/face6.png")
 	var facetext6 = ImageTexture.new()
 	facetext6.set_image(face6)
-	$%Face6.texture = facetext6
+	$%Face6.texture_normal = facetext6
 #endregion
 #region Hands
 	var hand1path = str(MiniVariables.currentDir,"/",MiniVariables.hand[0])
 	var hand1 = Image.load_from_file(hand1path)
-	#var hand1 = Image.load_from_file("user://models/default/hand1.png")
 	var handtext1 = ImageTexture.new()
 	handtext1.set_image(hand1)
-	$%Hand1.texture = handtext1
+	$%Hand1.texture_normal = handtext1
 	
 	var hand2path = str(MiniVariables.currentDir,"/",MiniVariables.hand[1])
 	var hand2 = Image.load_from_file(hand2path)
-	#var hand2 = Image.load_from_file("user://models/default/hand2.png")
 	var handtext2 = ImageTexture.new()
 	handtext2.set_image(hand2)
-	$%Hand2.texture = handtext2
+	$%Hand2.texture_normal = handtext2
 	
 	var hand3path = str(MiniVariables.currentDir,"/",MiniVariables.hand[2])
 	var hand3 = Image.load_from_file(hand3path)
-	#var hand3 = Image.load_from_file("user://models/default/hand3.png")
 	var handtext3 = ImageTexture.new()
 	handtext3.set_image(hand3)
-	$%Hand3.texture = handtext3
+	$%Hand3.texture_normal = handtext3
 	
 	var hand4path = str(MiniVariables.currentDir,"/",MiniVariables.hand[3])
 	var hand4 = Image.load_from_file(hand4path)
-	#var hand4 = Image.load_from_file("user://models/default/hand4.png")
 	var handtext4 = ImageTexture.new()
 	handtext4.set_image(hand4)
-	$%Hand4.texture = handtext4
+	$%Hand4.texture_normal = handtext4
 #endregion
 	
 func _process(delta):
@@ -244,103 +234,6 @@ func _convert_handtexture():
 func _on_dash_timer_timeout():
 	dashState = false
 
-
-#region Face Menu
-func _on_face_1_mouse_entered():
-	selectedFace = MiniVariables.face[0]
-	faceHover = true
-	_change_face()
-	
-func _on_face_1_mouse_exited():
-	faceHover = false
-	
-func _on_face_2_mouse_entered():
-	selectedFace = MiniVariables.face[1]
-	faceHover = true
-	_change_face()
-	
-func _on_face_2_mouse_exited():
-	faceHover = false
-	
-func _on_face_3_mouse_entered():
-	selectedFace = MiniVariables.face[2]
-	faceHover = true
-	_change_face()
-	
-func _on_face_3_mouse_exited():
-	faceHover = false
-	
-func _on_face_4_mouse_entered():
-	selectedFace = MiniVariables.face[3]
-	faceHover = true
-	_change_face()
-	
-func _on_face_4_mouse_exited():
-	faceHover = false
-	
-func _on_face_5_mouse_entered():
-	selectedFace = MiniVariables.face[4]
-	faceHover = true
-	_change_face()
-	
-func _on_face_5_mouse_exited():
-	faceHover = false
-	
-func _on_face_6_mouse_entered():
-	selectedFace = MiniVariables.face[5]
-	faceHover = true
-	_change_face()
-	
-func _on_face_6_mouse_exited():
-	faceHover = false
-#endregion
-
-#region Hand Menu
-func _on_hand_1_mouse_entered():
-	selectedHand = MiniVariables.hand[0]
-	handHover = true
-	_change_hand()
-	
-func _on_hand_1_mouse_exited():
-	handHover = false
-	
-func _on_hand_2_mouse_entered():
-	selectedHand = MiniVariables.hand[1]
-	handHover = true
-	_change_hand()
-	
-func _on_hand_2_mouse_exited():
-	handHover = false
-	
-func _on_hand_3_mouse_entered():
-	selectedHand = MiniVariables.hand[2]
-	handHover = true
-	_change_hand()
-	
-func _on_hand_3_mouse_exited():
-	handHover = false
-	
-func _on_hand_4_mouse_entered():
-	selectedHand = MiniVariables.hand[3]
-	handHover = true
-	_change_hand()
-	
-func _on_hand_4_mouse_exited():
-	handHover = false
-#endregion
-
-func _on_face_menu_window_input(event):
-	if faceHover == true:
-		if Input.is_action_pressed("LMB"):
-			_convert_facetexture()
-		if Input.is_action_just_released("LMB"):
-			$Menu.visible = false
-	if handHover == true:
-		if Input.is_action_pressed("LMB"):
-			_convert_handtexture()
-		if Input.is_action_just_released("LMB"):
-			$Menu.visible = false
-
 func _on_load_dialog_dir_selected(dir):
 	MiniVariables.currentDir = dir # Replace with function body.
 	_loadMenu()
@@ -378,3 +271,65 @@ func _on_mini_editor_counter_rotate():
 #func _face6_settings():
 	#pass
 ##endregion
+
+
+func _on_hand_1_pressed():
+	selectedHand = MiniVariables.hand[0]
+	_change_hand()
+	_convert_handtexture()
+	$Menu.visible = false
+
+func _on_hand_2_pressed():
+	selectedHand = MiniVariables.hand[1]
+	_change_hand()
+	_convert_handtexture()
+	$Menu.visible = false
+
+func _on_hand_3_pressed():
+	selectedHand = MiniVariables.hand[2]
+	_change_hand()
+	_convert_handtexture()
+	$Menu.visible = false
+
+func _on_hand_4_pressed():
+	selectedHand = MiniVariables.hand[3]
+	_change_hand()
+	_convert_handtexture()
+	$Menu.visible = false
+
+func _on_face_1_pressed():
+	selectedFace = MiniVariables.face[0]
+	_change_face()
+	_convert_facetexture()
+	$Menu.visible = false
+
+func _on_face_2_pressed():
+	selectedFace = MiniVariables.face[1]
+	_change_face()
+	_convert_facetexture()
+	$Menu.visible = false
+
+func _on_face_3_pressed():
+	selectedFace = MiniVariables.face[2]
+	_change_face()
+	_convert_facetexture()
+	$Menu.visible = false
+
+func _on_face_4_pressed():
+	selectedFace = MiniVariables.face[3]
+	faceHover = true
+	_change_face()
+	_convert_facetexture()
+	$Menu.visible = false
+
+func _on_face_5_pressed():
+	selectedFace = MiniVariables.face[4]
+	_change_face()
+	_convert_facetexture()
+	$Menu.visible = false
+
+func _on_face_6_pressed():
+	selectedFace = MiniVariables.face[5]
+	_change_face()
+	_convert_facetexture()
+	$Menu.visible = false
