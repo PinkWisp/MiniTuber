@@ -239,8 +239,8 @@ func _on_hand_1_pressed():
 	_change_hand()
 	_convert_handtexture()
 	$Menu.visible = false
-	$%OrbitHand.rotation_degrees = MiniVariables.H1_Rotation_Offset
-	counterRotation = MiniVariables.H1_Counter_Rotation
+	#$%OrbitHand.rotation_degrees = MiniVariables.H1_Rotation_Offset
+	#counterRotation = MiniVariables.H1_Counter_Rotation
 
 func _on_hand_2_mouse_entered():
 	selectedHand = MiniVariables.hand[1]
@@ -249,8 +249,8 @@ func _on_hand_2_pressed():
 	_change_hand()
 	_convert_handtexture()
 	$Menu.visible = false
-	$%OrbitHand.rotation_degrees = MiniVariables.H2_Rotation_Offset
-	counterRotation = MiniVariables.H2_Counter_Rotation
+	#$%OrbitHand.rotation_degrees = MiniVariables.H2_Rotation_Offset
+	#counterRotation = MiniVariables.H2_Counter_Rotation
 
 func _on_hand_3_mouse_entered():
 	selectedHand = MiniVariables.hand[2]
@@ -259,8 +259,8 @@ func _on_hand_3_pressed():
 	_change_hand()
 	_convert_handtexture()
 	$Menu.visible = false
-	$%OrbitHand.rotation_degrees = MiniVariables.H3_Rotation_Offset
-	counterRotation = MiniVariables.H3_Counter_Rotation
+	#$%OrbitHand.rotation_degrees = MiniVariables.H3_Rotation_Offset
+	#counterRotation = MiniVariables.H3_Counter_Rotation
 
 func _on_hand_4_mouse_entered():
 	selectedHand = MiniVariables.hand[3]
@@ -269,8 +269,8 @@ func _on_hand_4_pressed():
 	_change_hand()
 	_convert_handtexture()
 	$Menu.visible = false
-	$%OrbitHand.rotation_degrees = MiniVariables.H4_Rotation_Offset
-	counterRotation = MiniVariables.H4_Counter_Rotation
+	#$%OrbitHand.rotation_degrees = MiniVariables.H4_Rotation_Offset
+	#counterRotation = MiniVariables.H4_Counter_Rotation
 
 #endregion
 
@@ -333,20 +333,42 @@ func _on_mini_editor_counter_rotate():
 	if counterRotation == false: #gets previous rotation from _ready and reapplies
 		$%OrbitHand.rotation = prevRotation
 
-# Load ModelSettings.tres in current folder to variables (in Mini_Variable)
-#func _load_settings():
-	#var data: ModelSettings = load(MiniVariables.savePath)
-	#MiniVariables.H1_Rotation_Offset = data.H1_Rotation_Offset
-	#MiniVariables.H1_Counter_Rotation = data.H1_Counter_Rotation
-	#
-	#MiniVariables.H2_Rotation_Offset = data.H2_Rotation_Offset
-	#MiniVariables.H2_Counter_Rotation = data.H2_Counter_Rotation
-	#
-	#MiniVariables.H3_Rotation_Offset = data.H3_Rotation_Offset
-	#MiniVariables.H3_Counter_Rotation = data.H3_Counter_Rotation
-	#MiniVariables.H4_Counter_Rotation = data.H4_Counter_Rotation
-	
 func _load_model_settings():
 	if ResourceLoader.exists(MiniVariables.savePath):
 		return load(MiniVariables.savePath)
 	return null
+
+
+func _on_mini_editor_editor_select():
+	if MiniVariables.editorSelect == "H1":
+		_on_hand_1_mouse_entered()
+		_on_hand_1_pressed()
+	if MiniVariables.editorSelect == "H2":
+		_on_hand_2_mouse_entered()
+		_on_hand_2_pressed()
+	if MiniVariables.editorSelect == "H3":
+		_on_hand_3_mouse_entered()
+		_on_hand_3_pressed()
+	if MiniVariables.editorSelect == "H4":
+		_on_hand_4_mouse_entered()
+		_on_hand_4_pressed()
+
+
+	if MiniVariables.editorSelect == "F2":
+		_on_face_1_mouse_entered()
+		_on_face_1_pressed()
+	if MiniVariables.editorSelect == "F2":
+		_on_face_2_mouse_entered()
+		_on_face_2_pressed()
+	if MiniVariables.editorSelect == "F3":
+		_on_face_3_mouse_entered()
+		_on_face_3_pressed()
+	if MiniVariables.editorSelect == "F4":
+		_on_face_4_mouse_entered()
+		_on_face_4_pressed()
+	if MiniVariables.editorSelect == "F5":
+		_on_face_5_mouse_entered()
+		_on_face_5_pressed()
+	if MiniVariables.editorSelect == "F6":
+		_on_face_6_mouse_entered()
+		_on_face_6_pressed()

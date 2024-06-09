@@ -27,6 +27,7 @@ root_subfolder = "models"
 use_native_dialog = true
 
 [connection signal="counterRotate" from="MiniEditor" to="MiniTuber" method="_on_mini_editor_counter_rotate"]
+[connection signal="editorSelect" from="MiniEditor" to="MiniTuber" method="_on_mini_editor_editor_select"]
 [connection signal="handRotate" from="MiniEditor" to="MiniTuber" method="_on_mini_editor_hand_rotate"]
 [connection signal="hidden" from="MiniEditor" to="MiniTuber" method="_on_mini_editor_hidden"]
 [connection signal="dir_selected" from="LoadDialog" to="MiniEditor" method="_on_load_dialog_dir_selected"]

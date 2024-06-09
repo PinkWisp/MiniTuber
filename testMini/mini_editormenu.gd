@@ -3,8 +3,9 @@ extends Control
 @export var selectNode: TextureButton # Select TextureRect on hover
 
 var currentTuber = "" # use FileDialog.current_dir
-var selectedNode = "" # selected Hand/Face
+var selectedNode = "" # finds .png in face or hand array
 
+signal editorSelect
 
 signal handRotate
 signal counterRotate
@@ -109,7 +110,7 @@ func _on_load_dialog_dir_selected(dir):
 	$%MiniName.text = dir.replace("user://models/", "") #erases first part so only Folder name appears
 	_load_Imported()
 	_save_path()
-	save_settings()
+	#save_settings()
 	_load_model_settings()
 
 func _on_code_rotate_pressed():
@@ -130,114 +131,164 @@ func _on_hand_1_mouse_entered():
 	selectNode = $%Hand1
 	selectedNode = MiniVariables.hand[0]
 
-func _on_hand_1_pressed():
-	if MOUSE_BUTTON_MASK_LEFT:
-		pass
-	if MOUSE_BUTTON_MASK_RIGHT:
-		_currentTuber()
-		$ImportDialog.popup()
-
 func _on_hand_2_mouse_entered():
 	selectNode = $%Hand2
 	selectedNode = MiniVariables.hand[1]
-
-func _on_hand_2_pressed():
-	_currentTuber()
-	$ImportDialog.popup()
 
 func _on_hand_3_mouse_entered():
 	selectNode = $%Hand3
 	selectedNode = MiniVariables.hand[2]
 
-func _on_hand_3_pressed():
-	_currentTuber()
-	$ImportDialog.popup()
-
 func _on_hand_4_mouse_entered():
 	selectNode = $%Hand4
 	selectedNode = MiniVariables.hand[3]
+	
+func _on_hand_1_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			emit_signal("editorSelect")
+			MiniVariables.editorSelect = "H1"
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			_currentTuber()
+			$ImportDialog.popup()
 
-func _on_hand_4_pressed():
-	_currentTuber()
-	$ImportDialog.popup()
+func _on_hand_2_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			emit_signal("editorSelect")
+			MiniVariables.editorSelect = "H2"
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			_currentTuber()
+			$ImportDialog.popup()
+			
+func _on_hand_3_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			emit_signal("editorSelect")
+			MiniVariables.editorSelect = "H3"
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			_currentTuber()
+			$ImportDialog.popup()
+			
+func _on_hand_4_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			emit_signal("editorSelect")
+			MiniVariables.editorSelect = "H4"
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			_currentTuber()
+			$ImportDialog.popup()
 #endregion
 
 #region Face Buttons
 func _on_face_1_mouse_entered():
 	selectNode = $%Face1
 	selectedNode = MiniVariables.face[0]
-	
-func _on_face_1_pressed():
-	_currentTuber()
-	$ImportDialog.popup()
 
 func _on_face_2_mouse_entered():
 	selectNode = $%Face2
 	selectedNode = MiniVariables.face[1]
-
-func _on_face_2_pressed():
-	_currentTuber()
-	$ImportDialog.popup()
-
+	
 func _on_face_3_mouse_entered():
 	selectNode = $%Face3
 	selectedNode = MiniVariables.face[2]
-
-func _on_face_3_pressed():
-	_currentTuber()
-	$ImportDialog.popup()
 
 func _on_face_4_mouse_entered():
 	selectNode = $%Face4
 	selectedNode = MiniVariables.face[3]
 
-func _on_face_4_pressed():
-	_currentTuber()
-	$ImportDialog.popup()
-
 func _on_face_5_mouse_entered():
 	selectNode = $%Face5
 	selectedNode = MiniVariables.face[4]
-
-func _on_face_5_pressed():
-	_currentTuber()
-	$ImportDialog.popup()
 
 func _on_face_6_mouse_entered():
 	selectNode = $%Face6
 	selectedNode = MiniVariables.face[5]
 
-func _on_face_6_pressed():
-	_currentTuber()
-	$ImportDialog.popup()
+func _on_face_1_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			emit_signal("editorSelect")
+			MiniVariables.editorSelect = "F1"
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			_currentTuber()
+			$ImportDialog.popup()
+
+func _on_face_2_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			emit_signal("editorSelect")
+			MiniVariables.editorSelect = "F2"
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			_currentTuber()
+			$ImportDialog.popup()
+			
+func _on_face_3_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			emit_signal("editorSelect")
+			MiniVariables.editorSelect = "F3"
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			_currentTuber()
+			$ImportDialog.popup()
+			
+func _on_face_4_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			emit_signal("editorSelect")
+			MiniVariables.editorSelect = "F4"
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			_currentTuber()
+			$ImportDialog.popup()
+	
+func _on_face_5_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			emit_signal("editorSelect")
+			MiniVariables.editorSelect = "F5"
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			_currentTuber()
+			$ImportDialog.popup()
+			
+func _on_face_6_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			emit_signal("editorSelect")
+			MiniVariables.editorSelect = "F6"
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			_currentTuber()
+			$ImportDialog.popup()
+	
 #endregion
 
 func _save_path():
 	MiniVariables.savePath = str(MiniVariables.currentDir,"/","ModelSettings.tres")
 
  #Make new ModelSettings.tres in current folder and save current variables (in Mini_Variable)
-func save_settings():
-	var data:= ModelSettings.new()
-	data.H1_Rotation_Offset = MiniVariables.H1_Rotation_Offset
-	data.H1_Counter_Rotation = MiniVariables.H1_Counter_Rotation
-	
-	data.H2_Rotation_Offset = MiniVariables.H2_Rotation_Offset
-	data.H2_Counter_Rotation = MiniVariables.H2_Counter_Rotation
-	
-	data.H3_Rotation_Offset = MiniVariables.H3_Rotation_Offset
-	data.H3_Counter_Rotation = MiniVariables.H3_Counter_Rotation
-	
-	data.H4_Rotation_Offset = MiniVariables.H4_Rotation_Offset
-	data.H4_Counter_Rotation =  MiniVariables.H4_Counter_Rotation
-	
-	var error := ResourceSaver.save(data, MiniVariables.savePath)
-	if error:
-		print("An error happened while saving data: ", error)
+#func save_settings():
+	#var data:= ModelSettings.new()
+	#data.H1_Rotation_Offset = MiniVariables.H1_Rotation_Offset
+	#data.H1_Counter_Rotation = MiniVariables.H1_Counter_Rotation
+	#
+	#data.H2_Rotation_Offset = MiniVariables.H2_Rotation_Offset
+	#data.H2_Counter_Rotation = MiniVariables.H2_Counter_Rotation
+	#
+	#data.H3_Rotation_Offset = MiniVariables.H3_Rotation_Offset
+	#data.H3_Counter_Rotation = MiniVariables.H3_Counter_Rotation
+	#
+	#data.H4_Rotation_Offset = MiniVariables.H4_Rotation_Offset
+	#data.H4_Counter_Rotation =  MiniVariables.H4_Counter_Rotation
+	#
+	#var error := ResourceSaver.save(data, MiniVariables.savePath)
+	#if error:
+		#print("An error happened while saving data: ", error)
 
 func _load_model_settings():
 	if ResourceLoader.exists(MiniVariables.savePath):
 		return load(MiniVariables.savePath)
 	return null
 	
-func _on_save_tuber_pressed():
-	save_settings()
+#func _on_save_tuber_pressed():
+	#save_settings()
+
+
