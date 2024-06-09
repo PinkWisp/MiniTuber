@@ -103,6 +103,7 @@ columns = 4
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
+button_mask = 3
 texture_normal = ExtResource("1_um0wm")
 ignore_texture_size = true
 stretch_mode = 0
@@ -111,6 +112,7 @@ stretch_mode = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
+button_mask = 3
 texture_normal = ExtResource("1_um0wm")
 ignore_texture_size = true
 stretch_mode = 0
@@ -119,6 +121,7 @@ stretch_mode = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
+button_mask = 3
 texture_normal = ExtResource("1_um0wm")
 ignore_texture_size = true
 stretch_mode = 0
@@ -127,6 +130,7 @@ stretch_mode = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
+button_mask = 3
 texture_normal = ExtResource("1_um0wm")
 ignore_texture_size = true
 stretch_mode = 0
@@ -264,3 +268,4 @@ text = "Load Model"
 [connection signal="pressed" from="Control/BoxContainer/HBoxContainer/Faces/GridFace/Face5" to="." method="_on_face_5_pressed"]
 [connection signal="mouse_entered" from="Control/BoxContainer/HBoxContainer/Faces/GridFace/Face6" to="." method="_on_face_6_mouse_entered"]
 [connection signal="pressed" from="Control/BoxContainer/HBoxContainer/Faces/GridFace/Face6" to="." method="_on_face_6_pressed"]
+[connection signal="pressed" from="Control/BoxContainer/HBoxContainer/Faces/HSplitContainer/HBoxContainer/SaveTuber" to="." method="_on_save_tuber_pressed"]

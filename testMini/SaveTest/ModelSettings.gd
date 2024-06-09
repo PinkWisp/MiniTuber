@@ -2,7 +2,6 @@ extends Resource
 class_name ModelSettings
 #Format for Saving
 
-
 @export var Current_Directory: String = ""
 
 # Hand Settings
