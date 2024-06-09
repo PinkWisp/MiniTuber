@@ -95,11 +95,11 @@
 			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
 			"steps": [
 				{
-					"details": "Emote particles",
-					"done": false
+					"details": "Save Button saves everything in current Folder\n(Face, Hands, Hand Settings)",
+					"done": true
 				},
 				{
-					"details": "Save Settings per Node",
+					"details": "Emote particles",
 					"done": false
 				},
 				{
@@ -120,6 +120,10 @@
 				},
 				{
 					"details": "Have Faces have their own Hands?",
+					"done": true
+				},
+				{
+					"details": "Fix File Paths",
 					"done": true
 				}
 			]

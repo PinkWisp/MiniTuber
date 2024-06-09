@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ModelSettings" load_steps=2 format=3 uid="uid://dn1nd2yxuip1w"]
+
+[ext_resource type="Script" path="res://testMini/SaveTest/ModelSettings.gd" id="1_34qx4"]
+
+[resource]
+script = ExtResource("1_34qx4")
+Current_Directory = ""
+H1_Rotation_Offset = 90
+H1_Counter_Rotation = false
+H2_Rotation_Offset = 90
+H2_Counter_Rotation = false
+H3_Rotation_Offset = 90
+H3_Counter_Rotation = false
+H4_Rotation_Offset = 90
+H4_Counter_Rotation = false

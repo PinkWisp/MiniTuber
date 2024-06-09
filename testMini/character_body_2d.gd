@@ -5,19 +5,11 @@ var clickPos = Vector2()
 var targetPos = Vector2() 
 var dashState = false
 
-var faceHover = false #Check if cursor is on face buttons
-var handHover = false #Check if cursor is on action buttons
-
 var counterRotation = false #Hand rotates against pivoit to stay pointed in a direction
 var prevRotation #Rotation before CounterRotation is true
 
-# Hand and Face Arrays
-var face = ["face1.png","face2.png","face3.png","face4.png","face5.png","face6.png"]
-var hand = ["hand1.png", "hand2.png", "hand3.png", "hand4.png"]
 
-# Directory Variables
-var currentDir = "" 
-var selectedFace = "" #select png from face array
+var selectedFace = "" 
 var currentFace = "" #str(currentTuber, selectedFace) 
 
 var selectedHand = ""
@@ -26,16 +18,17 @@ var currentHand = "" #str(currentTuber, selectedHand)
 func _ready():
 	clickPos = position #Set Sprite Starter Position
 	prevRotation = %OrbitHand.rotation
-	
-
 #region # Make Default Folder and Placeholders
 	var dir = DirAccess.open("user://")
+	# make another check for model thats already in use
 	if dir.dir_exists("user://models/default"):
 		var dirModel = DirAccess.open("user://models/default")
+		# Loads first face
 		var image = Image.load_from_file("user://models/default/face1.png")
 		var texture = ImageTexture.create_from_image(image)
 		$MiniSprite.texture = texture
-		_loadMenu()
+		#_loadMenu() # moved to LoadDiag cuz thats where we get currentDir.
+	# Makes folder and blank .png for first start up
 	else:
 		dir.make_dir("models")
 		var dirModel = DirAccess.open("user://models")
@@ -69,66 +62,77 @@ func _blank_png():
 	var blank_hand4 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
 	blank_hand4.save_png("user://models/default/hand4.png")
 
-# Get dir path to face.png for compress
+# Get dir path to face.png to convert
 func _change_face():
-	currentFace = str(currentDir,"/",selectedFace)
+	currentFace = str(MiniVariables.currentDir ,"/",selectedFace)
 	
+# Get dir path to hand.png to convert
 func _change_hand():
-	currentHand = str(currentDir,"/",selectedHand)
+	currentHand = str(MiniVariables.currentDir,"/",selectedHand)
 
 # COMPRESS AND LOAD Face Menu Images
-func _loadMenu():
-#region Face
-	var face1 = Image.load_from_file("user://models/default/face1.png")
+func _load_menu():
+#region face
+	var face1path = str(MiniVariables.currentDir,"/",MiniVariables.face[0])
+	var face1 = Image.load_from_file(face1path)
 	var facetext1 = ImageTexture.new()
 	facetext1.set_image(face1)
-	$%Face1.texture = facetext1
+	$%Face1.texture_normal = facetext1
 	
-	var face2 = Image.load_from_file("user://models/default/face2.png")
+	var face2path = str(MiniVariables.currentDir,"/",MiniVariables.face[1])
+	var face2 = Image.load_from_file(face2path)
 	var facetext2 = ImageTexture.new()
 	facetext2.set_image(face2)
-	$%Face2.texture = facetext2
+	$%Face2.texture_normal = facetext2
 	
-	var face3 = Image.load_from_file("user://models/default/face3.png")
+	var face3path = str(MiniVariables.currentDir,"/",MiniVariables.face[2])
+	var face3 = Image.load_from_file(face3path)
 	var facetext3 = ImageTexture.new()
 	facetext3.set_image(face3)
-	$%Face3.texture = facetext3
+	$%Face3.texture_normal = facetext3
 	
-	var face4 = Image.load_from_file("user://models/default/face4.png")
+	var face4path = str(MiniVariables.currentDir,"/",MiniVariables.face[3])
+	var face4 = Image.load_from_file(face4path)
 	var facetext4 = ImageTexture.new()
 	facetext4.set_image(face4)
-	$%Face4.texture = facetext4
+	$%Face4.texture_normal = facetext4
 	
-	var face5 = Image.load_from_file("user://models/default/face5.png")
+	var face5path = str(MiniVariables.currentDir,"/",MiniVariables.face[4])
+	var face5 = Image.load_from_file(face5path)
 	var facetext5 = ImageTexture.new()
 	facetext5.set_image(face5)
-	$%Face5.texture = facetext5
+	$%Face5.texture_normal = facetext5
 	
-	var face6 = Image.load_from_file("user://models/default/face6.png")
+	var face6path = str(MiniVariables.currentDir,"/",MiniVariables.face[5])
+	var face6 = Image.load_from_file(face6path)
 	var facetext6 = ImageTexture.new()
 	facetext6.set_image(face6)
-	$%Face6.texture = facetext6
+	$%Face6.texture_normal = facetext6
 #endregion
 #region Hands
-	var hand1 = Image.load_from_file("user://models/default/hand1.png")
+	var hand1path = str(MiniVariables.currentDir,"/",MiniVariables.hand[0])
+	var hand1 = Image.load_from_file(hand1path)
 	var handtext1 = ImageTexture.new()
 	handtext1.set_image(hand1)
-	$%Hand1.texture = handtext1
+	$%Hand1.texture_normal = handtext1
 	
-	var hand2 = Image.load_from_file("user://models/default/hand2.png")
+	var hand2path = str(MiniVariables.currentDir,"/",MiniVariables.hand[1])
+	var hand2 = Image.load_from_file(hand2path)
 	var handtext2 = ImageTexture.new()
 	handtext2.set_image(hand2)
-	$%Hand2.texture = handtext2
+	$%Hand2.texture_normal = handtext2
 	
-	var hand3 = Image.load_from_file("user://models/default/hand3.png")
+	var hand3path = str(MiniVariables.currentDir,"/",MiniVariables.hand[2])
+	var hand3 = Image.load_from_file(hand3path)
 	var handtext3 = ImageTexture.new()
 	handtext3.set_image(hand3)
-	$%Hand3.texture = handtext3
+	$%Hand3.texture_normal = handtext3
 	
-	var hand4 = Image.load_from_file("user://models/default/hand4.png")
+	var hand4path = str(MiniVariables.currentDir,"/",MiniVariables.hand[3])
+	var hand4 = Image.load_from_file(hand4path)
 	var handtext4 = ImageTexture.new()
 	handtext4.set_image(hand4)
-	$%Hand4.texture = handtext4
+	$%Hand4.texture_normal = handtext4
 #endregion
 	
 func _process(delta):
@@ -160,7 +164,8 @@ func _physics_process(delta):
 	#Hand rotates against pivoit to stay pointed in a direction
 	if counterRotation == true:
 		$%OrbitHand.global_rotation = !%Orbit.rotation
-	
+		
+
 #region Movement
 	if Input.is_action_just_released("RMB"):
 		$DashTimer.start()
@@ -173,7 +178,6 @@ func _physics_process(delta):
 				clickPos = clickPos.normalized() * 500
 			velocity = clickPos
 			move_and_slide()
-			print(dashState)
 
 	if dashState == true:
 		if Input.is_action_just_pressed("RMB"):
@@ -185,7 +189,6 @@ func _physics_process(delta):
 			targetPos = (clickPos - global_position).normalized()
 			velocity = targetPos * 2000
 			move_and_slide()
-			print("Target:", targetPos, '\n', "Pos:", position,'\n', "ClickPOS:", clickPos)
 		
 		if position.distance_to(clickPos) < 100:
 			$DashTimer.paused = false
@@ -193,15 +196,15 @@ func _physics_process(delta):
 func _input(event):
 	# Action
 	if Input.is_action_pressed("LMB"):
-		if %OrbitHand.visible == false:
+		if %OrbitHand.visible == false: #Check if Hand is visible
 			%OrbitHand.visible = true
-	if Input.is_action_pressed("WheelDown"):
+	if Input.is_action_pressed("WheelDown"): #Hide hand
 		%OrbitHand.visible = false
-		
-		
+
 	# Open Face Menu. Can't use popup due to Rendering ordering bug with Always Ontop main window
 	if Input.is_action_just_pressed("MMB"):
-		_loadMenu()
+		_load_menu()
+		_load_model_settings()
 		var menuPos = DisplayServer.mouse_get_position()
 		$Menu.position = Vector2i(menuPos.x-165,menuPos.y)
 		$Menu.show()
@@ -218,120 +221,187 @@ func _convert_handtexture():
 	var texture = ImageTexture.create_from_image(image)
 	%OrbitHand.texture = texture
 
-
 func _on_dash_timer_timeout():
 	dashState = false
-	print("Rest")
-
-
-#region Face Menu
-func _on_face_1_mouse_entered():
-	selectedFace = face[0]
-	faceHover = true
-	_change_face()
-	
-func _on_face_1_mouse_exited():
-	faceHover = false
-	
-func _on_face_2_mouse_entered():
-	selectedFace = face[1]
-	faceHover = true
-	_change_face()
-	
-func _on_face_2_mouse_exited():
-	faceHover = false
-	
-func _on_face_3_mouse_entered():
-	selectedFace = face[2]
-	faceHover = true
-	_change_face()
-	
-func _on_face_3_mouse_exited():
-	faceHover = false
-	
-func _on_face_4_mouse_entered():
-	selectedFace = face[3]
-	faceHover = true
-	_change_face()
-	
-func _on_face_4_mouse_exited():
-	faceHover = false
-	
-func _on_face_5_mouse_entered():
-	selectedFace = face[4]
-	faceHover = true
-	_change_face()
-	
-func _on_face_5_mouse_exited():
-	faceHover = false
-	
-func _on_face_6_mouse_entered():
-	selectedFace = face[5]
-	faceHover = true
-	_change_face()
-	
-func _on_face_6_mouse_exited():
-	faceHover = false
-#endregion
-
-#region Hand Menu
-func _on_hand_1_mouse_entered():
-	selectedHand = hand[0]
-	handHover = true
-	_change_hand()
-	
-func _on_hand_1_mouse_exited():
-	handHover = false
-	
-func _on_hand_2_mouse_entered():
-	selectedHand = hand[1]
-	handHover = true
-	_change_hand()
-	
-func _on_hand_2_mouse_exited():
-	handHover = false
-	
-func _on_hand_3_mouse_entered():
-	selectedHand = hand[2]
-	handHover = true
-	_change_hand()
-	
-func _on_hand_3_mouse_exited():
-	handHover = false
-	
-func _on_hand_4_mouse_entered():
-	selectedHand = hand[3]
-	handHover = true
-	_change_hand()
-	
-func _on_hand_4_mouse_exited():
-	handHover = false
-#endregion
-
-func _on_face_menu_window_input(event):
-	if faceHover == true:
-		print(currentFace)
-		if Input.is_action_pressed("LMB"):
-			_convert_facetexture()
-		if Input.is_action_just_released("LMB"):
-			$Menu.visible = false
-	if handHover == true:
-		print(currentHand)
-		if Input.is_action_pressed("LMB"):
-			_convert_handtexture()
-		if Input.is_action_just_released("LMB"):
-			$Menu.visible = false
 
 func _on_load_dialog_dir_selected(dir):
-	currentDir = dir # Replace with function body.
+	MiniVariables.currentDir = dir # Replace with function body.
+	_load_menu()
+	_load_model_settings()
+	#loadModelSettings
+
+
+#region Hands Buttons
+func _on_hand_1_mouse_entered():
+	selectedHand = MiniVariables.hand[0]
+
+func _on_hand_1_pressed():
+	_change_hand()
+	_convert_handtexture()
+	$Menu.visible = false
+	$%OrbitHand.rotation_degrees = MiniVariables.H1_Rotation_Offset
+	counterRotation = MiniVariables.H1_Counter_Rotation
+
+func _on_hand_2_mouse_entered():
+	selectedHand = MiniVariables.hand[1]
+	
+func _on_hand_2_pressed():
+	_change_hand()
+	_convert_handtexture()
+	$Menu.visible = false
+	$%OrbitHand.rotation_degrees = MiniVariables.H2_Rotation_Offset
+	counterRotation = MiniVariables.H2_Counter_Rotation
+
+func _on_hand_3_mouse_entered():
+	selectedHand = MiniVariables.hand[2]
+	
+func _on_hand_3_pressed():
+	_change_hand()
+	_convert_handtexture()
+	$Menu.visible = false
+	$%OrbitHand.rotation_degrees = MiniVariables.H3_Rotation_Offset
+	counterRotation = MiniVariables.H3_Counter_Rotation
+
+func _on_hand_4_mouse_entered():
+	selectedHand = MiniVariables.hand[3]
+	
+func _on_hand_4_pressed():
+	_change_hand()
+	_convert_handtexture()
+	$Menu.visible = false
+	$%OrbitHand.rotation_degrees = MiniVariables.H4_Rotation_Offset
+	counterRotation = MiniVariables.H4_Counter_Rotation
+
+#endregion
+
+#region Face Buttons
+func _on_face_1_mouse_entered():
+	selectedFace = MiniVariables.face[0]
+
+func _on_face_1_pressed():
+	_change_face()
+	_convert_facetexture()
+	$Menu.visible = false
+
+func _on_face_2_mouse_entered():
+	selectedFace = MiniVariables.face[1]
+
+func _on_face_2_pressed():
+	_change_face()
+	_convert_facetexture()
+	$Menu.visible = false
+
+func _on_face_3_mouse_entered():
+	selectedFace = MiniVariables.face[2]
+
+func _on_face_3_pressed():
+	_change_face()
+	_convert_facetexture()
+	$Menu.visible = false
+
+func _on_face_4_mouse_entered():
+	selectedFace = MiniVariables.face[3]
+
+func _on_face_4_pressed():
+	_change_face()
+	_convert_facetexture()
+	$Menu.visible = false
+
+func _on_face_5_mouse_entered():
+	selectedFace = MiniVariables.face[4]
+
+func _on_face_5_pressed():
+	_change_face()
+	_convert_facetexture()
+	$Menu.visible = false
+
+func _on_face_6_mouse_entered():
+	selectedFace = MiniVariables.face[5]
+
+func _on_face_6_pressed():
+	_change_face()
+	_convert_facetexture()
+	$Menu.visible = false
+#endregion
 
 func _on_mini_editor_hand_rotate():
-	#$%OrbitHand.rotate(90) # Replace with function body.
 	$%OrbitHand.rotation_degrees += 90
-	print("RotateClick")
+	if $%OrbitHand.rotation_degrees >= 360:
+		$%OrbitHand.rotation_degrees = 0
+		
+	if MiniVariables.editorSelect == "H1":
+		MiniVariables.H1_Rotation_Offset = $%OrbitHand.rotation_degrees
+		
+	if MiniVariables.editorSelect == "H2":
+		MiniVariables.H3_Rotation_Offset = $%OrbitHand.rotation_degrees
+		
+	if MiniVariables.editorSelect == "H3":
+		MiniVariables.H3_Rotation_Offset = $%OrbitHand.rotation_degrees
+		
+	if MiniVariables.editorSelect == "H4":
+		MiniVariables.H4_Rotation_Offset = $%OrbitHand.rotation_degrees
 
 func _on_mini_editor_counter_rotate():
 	counterRotation = !counterRotation
 	if counterRotation == false: #gets previous rotation from _ready and reapplies
 		$%OrbitHand.rotation = prevRotation
+		
+	if MiniVariables.editorSelect == "H1":
+		MiniVariables.H1_Counter_Rotation = counterRotation
+		
+	if MiniVariables.editorSelect == "H2":
+		MiniVariables.H2_Counter_Rotation = counterRotation
+		
+	if MiniVariables.editorSelect == "H3":
+		MiniVariables.H3_Counter_Rotation = counterRotation
+		
+	if MiniVariables.editorSelect == "H4":
+		MiniVariables.H4_Counter_Rotation = counterRotation
 
+func _load_model_settings():
+	if ResourceLoader.exists(MiniVariables.savePath):
+		return load(MiniVariables.savePath)
+	return null
+
+# if Handx is selected in Editor then change mini's hand and load settings
+func _on_mini_editor_editor_select():
+	if MiniVariables.editorSelect == "H1":
+		_on_hand_1_mouse_entered() #Gets path for .png
+		_on_hand_1_pressed() #Change image
+		$%OrbitHand.rotation_degrees = MiniVariables.H1_Rotation_Offset #Load settings
+		counterRotation = MiniVariables.H1_Counter_Rotation
+	if MiniVariables.editorSelect == "H2":
+		_on_hand_2_mouse_entered()
+		_on_hand_2_pressed()
+		$%OrbitHand.rotation_degrees = MiniVariables.H2_Rotation_Offset
+		counterRotation = MiniVariables.H2_Counter_Rotation
+	if MiniVariables.editorSelect == "H3":
+		_on_hand_3_mouse_entered()
+		_on_hand_3_pressed()
+		$%OrbitHand.rotation_degrees = MiniVariables.H3_Rotation_Offset
+		counterRotation = MiniVariables.H3_Counter_Rotation
+	if MiniVariables.editorSelect == "H4":
+		_on_hand_4_mouse_entered()
+		_on_hand_4_pressed()
+		$%OrbitHand.rotation_degrees = MiniVariables.H4_Rotation_Offset
+		counterRotation = MiniVariables.H4_Counter_Rotation
+
+
+	if MiniVariables.editorSelect == "F2":
+		_on_face_1_mouse_entered()
+		_on_face_1_pressed()
+	if MiniVariables.editorSelect == "F2":
+		_on_face_2_mouse_entered()
+		_on_face_2_pressed()
+	if MiniVariables.editorSelect == "F3":
+		_on_face_3_mouse_entered()
+		_on_face_3_pressed()
+	if MiniVariables.editorSelect == "F4":
+		_on_face_4_mouse_entered()
+		_on_face_4_pressed()
+	if MiniVariables.editorSelect == "F5":
+		_on_face_5_mouse_entered()
+		_on_face_5_pressed()
+	if MiniVariables.editorSelect == "F6":
+		_on_face_6_mouse_entered()
+		_on_face_6_pressed()
