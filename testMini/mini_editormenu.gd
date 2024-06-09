@@ -110,7 +110,6 @@ func _on_load_dialog_dir_selected(dir):
 	$%MiniName.text = dir.replace("user://models/", "") #erases first part so only Folder name appears
 	_load_Imported()
 	_save_path()
-	#save_settings()
 	_load_model_settings()
 
 func _on_code_rotate_pressed():
@@ -148,6 +147,7 @@ func _on_hand_1_gui_input(event):
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			emit_signal("editorSelect")
 			MiniVariables.editorSelect = "H1"
+			save_settings()
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			_currentTuber()
 			$ImportDialog.popup()
@@ -157,6 +157,7 @@ func _on_hand_2_gui_input(event):
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			emit_signal("editorSelect")
 			MiniVariables.editorSelect = "H2"
+			save_settings()
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			_currentTuber()
 			$ImportDialog.popup()
@@ -166,6 +167,7 @@ func _on_hand_3_gui_input(event):
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			emit_signal("editorSelect")
 			MiniVariables.editorSelect = "H3"
+			save_settings()
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			_currentTuber()
 			$ImportDialog.popup()
@@ -175,6 +177,7 @@ func _on_hand_4_gui_input(event):
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			emit_signal("editorSelect")
 			MiniVariables.editorSelect = "H4"
+			save_settings()
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			_currentTuber()
 			$ImportDialog.popup()
@@ -264,31 +267,34 @@ func _on_face_6_gui_input(event):
 func _save_path():
 	MiniVariables.savePath = str(MiniVariables.currentDir,"/","ModelSettings.tres")
 
+	
+func _on_save_tuber_pressed():
+	save_settings()
+
+
  #Make new ModelSettings.tres in current folder and save current variables (in Mini_Variable)
-#func save_settings():
-	#var data:= ModelSettings.new()
-	#data.H1_Rotation_Offset = MiniVariables.H1_Rotation_Offset
-	#data.H1_Counter_Rotation = MiniVariables.H1_Counter_Rotation
-	#
-	#data.H2_Rotation_Offset = MiniVariables.H2_Rotation_Offset
-	#data.H2_Counter_Rotation = MiniVariables.H2_Counter_Rotation
-	#
-	#data.H3_Rotation_Offset = MiniVariables.H3_Rotation_Offset
-	#data.H3_Counter_Rotation = MiniVariables.H3_Counter_Rotation
-	#
-	#data.H4_Rotation_Offset = MiniVariables.H4_Rotation_Offset
-	#data.H4_Counter_Rotation =  MiniVariables.H4_Counter_Rotation
-	#
-	#var error := ResourceSaver.save(data, MiniVariables.savePath)
-	#if error:
-		#print("An error happened while saving data: ", error)
+func save_settings():
+	var data:= ModelSettings.new()
+	data.Current_Directory = MiniVariables.currentDir
+	data.H1_Rotation_Offset = MiniVariables.H1_Rotation_Offset
+	data.H1_Counter_Rotation = MiniVariables.H1_Counter_Rotation
+	
+	data.H2_Rotation_Offset = MiniVariables.H2_Rotation_Offset
+	data.H2_Counter_Rotation = MiniVariables.H2_Counter_Rotation
+	
+	data.H3_Rotation_Offset = MiniVariables.H3_Rotation_Offset
+	data.H3_Counter_Rotation = MiniVariables.H3_Counter_Rotation
+	
+	data.H4_Rotation_Offset = MiniVariables.H4_Rotation_Offset
+	data.H4_Counter_Rotation =  MiniVariables.H4_Counter_Rotation
+	
+	var error := ResourceSaver.save(data, MiniVariables.savePath)
+	if error:
+		print("An error happened while saving data: ", error)
 
 func _load_model_settings():
 	if ResourceLoader.exists(MiniVariables.savePath):
 		return load(MiniVariables.savePath)
 	return null
-	
-#func _on_save_tuber_pressed():
-	#save_settings()
 
 

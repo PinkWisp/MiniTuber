@@ -239,8 +239,8 @@ func _on_hand_1_pressed():
 	_change_hand()
 	_convert_handtexture()
 	$Menu.visible = false
-	#$%OrbitHand.rotation_degrees = MiniVariables.H1_Rotation_Offset
-	#counterRotation = MiniVariables.H1_Counter_Rotation
+	$%OrbitHand.rotation_degrees = MiniVariables.H1_Rotation_Offset
+	counterRotation = MiniVariables.H1_Counter_Rotation
 
 func _on_hand_2_mouse_entered():
 	selectedHand = MiniVariables.hand[1]
@@ -249,8 +249,8 @@ func _on_hand_2_pressed():
 	_change_hand()
 	_convert_handtexture()
 	$Menu.visible = false
-	#$%OrbitHand.rotation_degrees = MiniVariables.H2_Rotation_Offset
-	#counterRotation = MiniVariables.H2_Counter_Rotation
+	$%OrbitHand.rotation_degrees = MiniVariables.H2_Rotation_Offset
+	counterRotation = MiniVariables.H2_Counter_Rotation
 
 func _on_hand_3_mouse_entered():
 	selectedHand = MiniVariables.hand[2]
@@ -259,8 +259,8 @@ func _on_hand_3_pressed():
 	_change_hand()
 	_convert_handtexture()
 	$Menu.visible = false
-	#$%OrbitHand.rotation_degrees = MiniVariables.H3_Rotation_Offset
-	#counterRotation = MiniVariables.H3_Counter_Rotation
+	$%OrbitHand.rotation_degrees = MiniVariables.H3_Rotation_Offset
+	counterRotation = MiniVariables.H3_Counter_Rotation
 
 func _on_hand_4_mouse_entered():
 	selectedHand = MiniVariables.hand[3]
@@ -269,8 +269,8 @@ func _on_hand_4_pressed():
 	_change_hand()
 	_convert_handtexture()
 	$Menu.visible = false
-	#$%OrbitHand.rotation_degrees = MiniVariables.H4_Rotation_Offset
-	#counterRotation = MiniVariables.H4_Counter_Rotation
+	$%OrbitHand.rotation_degrees = MiniVariables.H4_Rotation_Offset
+	counterRotation = MiniVariables.H4_Counter_Rotation
 
 #endregion
 
@@ -325,33 +325,66 @@ func _on_face_6_pressed():
 #endregion
 
 func _on_mini_editor_hand_rotate():
-	#$%OrbitHand.rotate(90) # Replace with function body.
 	$%OrbitHand.rotation_degrees += 90
+	if $%OrbitHand.rotation_degrees >= 360:
+		$%OrbitHand.rotation_degrees = 0
+		
+	if MiniVariables.editorSelect == "H1":
+		MiniVariables.H1_Rotation_Offset = $%OrbitHand.rotation_degrees
+		
+	if MiniVariables.editorSelect == "H2":
+		MiniVariables.H3_Rotation_Offset = $%OrbitHand.rotation_degrees
+		
+	if MiniVariables.editorSelect == "H3":
+		MiniVariables.H3_Rotation_Offset = $%OrbitHand.rotation_degrees
+		
+	if MiniVariables.editorSelect == "H4":
+		MiniVariables.H4_Rotation_Offset = $%OrbitHand.rotation_degrees
 
 func _on_mini_editor_counter_rotate():
 	counterRotation = !counterRotation
 	if counterRotation == false: #gets previous rotation from _ready and reapplies
 		$%OrbitHand.rotation = prevRotation
+		
+	if MiniVariables.editorSelect == "H1":
+		MiniVariables.H1_Counter_Rotation = counterRotation
+		
+	if MiniVariables.editorSelect == "H2":
+		MiniVariables.H2_Counter_Rotation = counterRotation
+		
+	if MiniVariables.editorSelect == "H3":
+		MiniVariables.H3_Counter_Rotation = counterRotation
+		
+	if MiniVariables.editorSelect == "H4":
+		MiniVariables.H4_Counter_Rotation = counterRotation
 
 func _load_model_settings():
 	if ResourceLoader.exists(MiniVariables.savePath):
 		return load(MiniVariables.savePath)
 	return null
 
-
+# if Handx is selected in Editor then change mini's hand and load settings
 func _on_mini_editor_editor_select():
 	if MiniVariables.editorSelect == "H1":
-		_on_hand_1_mouse_entered()
-		_on_hand_1_pressed()
+		_on_hand_1_mouse_entered() #Gets path for .png
+		_on_hand_1_pressed() #Change image
+		$%OrbitHand.rotation_degrees = MiniVariables.H1_Rotation_Offset #Load settings
+		counterRotation = MiniVariables.H1_Counter_Rotation
 	if MiniVariables.editorSelect == "H2":
 		_on_hand_2_mouse_entered()
 		_on_hand_2_pressed()
+		$%OrbitHand.rotation_degrees = MiniVariables.H2_Rotation_Offset
+		counterRotation = MiniVariables.H2_Counter_Rotation
 	if MiniVariables.editorSelect == "H3":
 		_on_hand_3_mouse_entered()
 		_on_hand_3_pressed()
+		$%OrbitHand.rotation_degrees = MiniVariables.H3_Rotation_Offset
+		counterRotation = MiniVariables.H3_Counter_Rotation
 	if MiniVariables.editorSelect == "H4":
 		_on_hand_4_mouse_entered()
 		_on_hand_4_pressed()
+		$%OrbitHand.rotation_degrees = MiniVariables.H4_Rotation_Offset
+		counterRotation = MiniVariables.H4_Counter_Rotation
 
 
 	if MiniVariables.editorSelect == "F2":
