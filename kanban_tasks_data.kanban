@@ -95,7 +95,7 @@
 			"steps": [
 				{
 					"details": "Save Button saves everything in current Folder\n(Face, Hands, Hand Settings)",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Emote particles",
