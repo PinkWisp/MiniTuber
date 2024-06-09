@@ -2,21 +2,17 @@ extends Control
 
 @export var selectNode: TextureButton # Select TextureRect on hover
 
-# Dynamic path for loading 
-#var currentDir = "" 
-#var face = ["face1.png","face2.png","face3.png","face4.png","face5.png","face6.png"]
-#var hand = ["hand1.png", "hand2.png", "hand3.png", "hand4.png"]
-
 var currentTuber = "" # use FileDialog.current_dir
 var selectedNode = "" # selected Hand/Face
-#var currentEmote = "" #str(currentTuber, selectedNode) # current dir and selected Hand/Face
+
 
 signal handRotate
 signal counterRotate
 
+signal saveSettings
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#_load_Imported() # moved to LoadDiag cuz thats where we get currentDir.
 	pass
 
 #region File Dialog Face & Hands
@@ -80,7 +76,7 @@ func _load_Imported():
 	var facetext6 = ImageTexture.new()
 	facetext6.set_image(face6)
 	$%Face6.texture_normal = facetext6
-##endregion
+#endregion
 #region Hands
 	var hand1path = str(MiniVariables.currentDir,"/",MiniVariables.hand[0])
 	var hand1 = Image.load_from_file(hand1path)
@@ -128,72 +124,91 @@ func _on_no_rotate_pressed():
 func _on_close_editor_pressed():
 	self.visible = !self.visible
 
-func _on_hand_1_pressed():
-	_currentTuber()
+
+#region Hand Buttons
+func _on_hand_1_mouse_entered():
 	selectNode = $%Hand1
 	selectedNode = MiniVariables.hand[0]
+
+func _on_hand_1_pressed():
+	_currentTuber()
 	$ImportDialog.popup()
 
+func _on_hand_2_mouse_entered():
+	selectNode = $%Hand2
+	selectedNode = MiniVariables.hand[1]
 
 func _on_hand_2_pressed():
 	_currentTuber()
-	selectNode = $%Hand2
-	selectedNode = MiniVariables.hand[1]
 	$ImportDialog.popup()
 
+func _on_hand_3_mouse_entered():
+	selectNode = $%Hand3
+	selectedNode = MiniVariables.hand[2]
 
 func _on_hand_3_pressed():
 	_currentTuber()
-	selectNode = $%Hand3
-	selectedNode = MiniVariables.hand[2]
 	$ImportDialog.popup()
 
+func _on_hand_4_mouse_entered():
+	selectNode = $%Hand4
+	selectedNode = MiniVariables.hand[3]
 
 func _on_hand_4_pressed():
 	_currentTuber()
-	selectNode = $%Hand4
-	selectedNode = MiniVariables.hand[1]
 	$ImportDialog.popup()
+#endregion
 
-
-
-func _on_face_1_pressed():
-	_currentTuber()
+#region Face Buttons
+func _on_face_1_mouse_entered():
 	selectNode = $%Face1
 	selectedNode = MiniVariables.face[0]
+	
+func _on_face_1_pressed():
+	_currentTuber()
 	$ImportDialog.popup()
 
+func _on_face_2_mouse_entered():
+	selectNode = $%Face2
+	selectedNode = MiniVariables.face[1]
 
 func _on_face_2_pressed():
 	_currentTuber()
-	selectNode = $%Face2
-	selectedNode = MiniVariables.face[1]
 	$ImportDialog.popup()
 
+func _on_face_3_mouse_entered():
+	selectNode = $%Face3
+	selectedNode = MiniVariables.face[2]
 
 func _on_face_3_pressed():
 	_currentTuber()
-	selectNode = $%Face3
-	selectedNode = MiniVariables.face[2]
 	$ImportDialog.popup()
 
+func _on_face_4_mouse_entered():
+	selectNode = $%Face4
+	selectedNode = MiniVariables.face[3]
 
 func _on_face_4_pressed():
 	_currentTuber()
-	selectNode = $%Face4
-	selectedNode = MiniVariables.face[3]
 	$ImportDialog.popup()
 
+func _on_face_5_mouse_entered():
+	selectNode = $%Face5
+	selectedNode = MiniVariables.face[4]
 
 func _on_face_5_pressed():
 	_currentTuber()
-	selectNode = $%Face5
-	selectedNode = MiniVariables.face[4]
 	$ImportDialog.popup()
 
+func _on_face_6_mouse_entered():
+	selectNode = $%Face6
+	selectedNode = MiniVariables.hand[5]
 
 func _on_face_6_pressed():
 	_currentTuber()
-	selectNode = $%Face6
-	selectedNode = MiniVariables.hand[5]
 	$ImportDialog.popup()
+#endregion
+
+
+func _on_save_tuber_pressed():
+	emit_signal("saveSettings")

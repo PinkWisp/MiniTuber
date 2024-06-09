@@ -6,7 +6,6 @@ var noteState = false
 # Add Folder for exporting
 func _ready():
 	var dir = DirAccess.open("user://")
-	#var dir_notes = "user://notebook/"
 	if dir.dir_exists("user://notebook/"):
 		var noteFile = FileAccess.open("user://notebook/Notes.txt", FileAccess.READ)
 		$%NoteEdit.text = noteFile.get_as_text()

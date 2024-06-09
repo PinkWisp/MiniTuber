@@ -77,6 +77,7 @@ one_shot = true
 [node name="Menu" type="Window" parent="."]
 transparent_bg = true
 size = Vector2i(335, 235)
+visible = false
 wrap_controls = true
 transient = true
 exclusive = true
@@ -197,13 +198,23 @@ stretch_mode = 0
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="close_requested" from="Menu" to="." method="_on_emote_menu_close_requested"]
 [connection signal="window_input" from="Menu" to="." method="_on_face_menu_window_input"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/HandMenu/Hand1" to="." method="_on_hand_1_mouse_entered"]
 [connection signal="pressed" from="Menu/BoxContainer/HandMenu/Hand1" to="." method="_on_hand_1_pressed"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/HandMenu/Hand2" to="." method="_on_hand_2_mouse_entered"]
 [connection signal="pressed" from="Menu/BoxContainer/HandMenu/Hand2" to="." method="_on_hand_2_pressed"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/HandMenu/Hand3" to="." method="_on_hand_3_mouse_entered"]
 [connection signal="pressed" from="Menu/BoxContainer/HandMenu/Hand3" to="." method="_on_hand_3_pressed"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/HandMenu/Hand4" to="." method="_on_hand_4_mouse_entered"]
 [connection signal="pressed" from="Menu/BoxContainer/HandMenu/Hand4" to="." method="_on_hand_4_pressed"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/FaceMenu/Face1" to="." method="_on_face_1_mouse_entered"]
 [connection signal="pressed" from="Menu/BoxContainer/FaceMenu/Face1" to="." method="_on_face_1_pressed"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/FaceMenu/Face2" to="." method="_on_face_2_mouse_entered"]
 [connection signal="pressed" from="Menu/BoxContainer/FaceMenu/Face2" to="." method="_on_face_2_pressed"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/FaceMenu/Face3" to="." method="_on_face_3_mouse_entered"]
 [connection signal="pressed" from="Menu/BoxContainer/FaceMenu/Face3" to="." method="_on_face_3_pressed"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/FaceMenu/Face4" to="." method="_on_face_4_mouse_entered"]
 [connection signal="pressed" from="Menu/BoxContainer/FaceMenu/Face4" to="." method="_on_face_4_pressed"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/FaceMenu/Face5" to="." method="_on_face_5_mouse_entered"]
 [connection signal="pressed" from="Menu/BoxContainer/FaceMenu/Face5" to="." method="_on_face_5_pressed"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/FaceMenu/Face6" to="." method="_on_face_6_mouse_entered"]
 [connection signal="pressed" from="Menu/BoxContainer/FaceMenu/Face6" to="." method="_on_face_6_pressed"]
