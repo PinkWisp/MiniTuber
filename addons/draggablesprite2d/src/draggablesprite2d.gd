@@ -44,7 +44,8 @@ var is_grabbed := false :
 
 # Helps a bit to make the dragging less choppy
 var grabbed_offset := Vector2.ZERO
-# Mouse button pressed tracker, used to essentially replicate the behavior of 'is_action_just_released'
+# Mouse button pressed tracker, used to essentially replicate the 
+# behavior of 'is_action_just_released'
 var mb_pressed = false
 
 # Passthrough Check

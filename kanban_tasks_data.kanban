@@ -125,6 +125,10 @@
 				{
 					"details": "Fix File Paths",
 					"done": true
+				},
+				{
+					"details": "Easy way to exit Tuber Mode like Chalk and Notebook",
+					"done": false
 				}
 			]
 		},

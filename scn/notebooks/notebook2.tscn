@@ -1,0 +1,150 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc3fltjp24rja"]
+
+[ext_resource type="Texture2D" uid="uid://cufb5traovods" path="res://assets/TransNotebook.png" id="1_qv5ph"]
+[ext_resource type="Script" path="res://notebook/NotebookDrag.gd" id="2_ye5sf"]
+[ext_resource type="Script" path="res://scn/notebooks/notebook2.gd" id="3_f8rov"]
+
+[node name="NoteBook" type="Sprite2D"]
+position = Vector2(611, 470)
+texture = ExtResource("1_qv5ph")
+script = ExtResource("2_ye5sf")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -145.0
+offset_top = -197.5
+offset_right = -145.0
+offset_bottom = -197.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_f8rov")
+
+[node name="SplitContainer" type="SplitContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -145.0
+offset_top = -197.5
+offset_right = -145.0
+offset_bottom = -197.5
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+
+[node name="SplitContainer" type="SplitContainer" parent="SplitContainer"]
+layout_mode = 2
+split_offset = 260
+dragger_visibility = 2
+
+[node name="NoteMove" type="Button" parent="SplitContainer/SplitContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Notebook Name"
+
+[node name="CloseNote" type="Button" parent="SplitContainer/SplitContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+text = "X"
+
+[node name="Control" type="Control" parent="SplitContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="TabContainer2" type="TabContainer" parent="SplitContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -37.0
+offset_right = 46.0
+offset_bottom = -98.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+pivot_offset = Vector2(146.73, 172.525)
+
+[node name="Notes" type="TabBar" parent="SplitContainer/Control/TabContainer2"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="NoteEdit" type="TextEdit" parent="SplitContainer/Control/TabContainer2/Notes" groups=["Notes"]]
+unique_name_in_owner = true
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 260.0
+offset_right = -104.0
+offset_bottom = 365.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5708
+mouse_filter = 1
+placeholder_text = "Save notes before closing MiniTuber App!
+
+'X' button saves."
+wrap_mode = 1
+
+[node name="Info" type="TabBar" parent="SplitContainer/Control/TabContainer2"]
+visible = false
+layout_mode = 2
+mouse_filter = 1
+
+[node name="InfoEdit" type="TextEdit" parent="SplitContainer/Control/TabContainer2/Info"]
+unique_name_in_owner = true
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 260.425
+offset_right = -105.0
+offset_bottom = 365.426
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5708
+mouse_filter = 1
+wrap_mode = 1
+
+[node name="Other" type="TabBar" parent="SplitContainer/Control/TabContainer2"]
+visible = false
+layout_mode = 2
+mouse_filter = 1
+
+[node name="OtherEdit" type="TextEdit" parent="SplitContainer/Control/TabContainer2/Other"]
+unique_name_in_owner = true
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 260.425
+offset_right = -105.0
+offset_bottom = 365.426
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5708
+mouse_filter = 1
+wrap_mode = 1
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a Directory"
+initial_position = 1
+size = Vector2i(547, 319)
+ok_button_text = "Select Current Folder"
+file_mode = 2
+access = 1
+root_subfolder = "notebooks"
+use_native_dialog = true
+
+[connection signal="button_down" from="SplitContainer/SplitContainer/NoteMove" to="." method="_on_note_move_button_down"]
+[connection signal="button_up" from="SplitContainer/SplitContainer/NoteMove" to="." method="_on_note_move_button_up"]
+[connection signal="gui_input" from="SplitContainer/SplitContainer/NoteMove" to="." method="_on_note_move_gui_input"]
+[connection signal="pressed" from="SplitContainer/SplitContainer/CloseNote" to="." method="_on_close_note_pressed"]
+[connection signal="dir_selected" from="FileDialog" to="Control" method="_on_file_dialog_dir_selected"]

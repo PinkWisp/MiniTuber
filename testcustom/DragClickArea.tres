@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="DragClickArea" load_steps=2 format=3 uid="uid://bsrikobiaw1wv"]
+
+[ext_resource type="Script" path="res://testcustom/DragClickArea.gd" id="1_lem85"]
+
+[resource]
+script = ExtResource("1_lem85")
