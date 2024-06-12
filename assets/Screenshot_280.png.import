@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbmuybh5q5msf"
-path="res://.godot/imported/idleout.png-d8598d9ce18cb71caac9d80cdc69e301.ctex"
+uid="uid://bhx7y27q6t377"
+path="res://.godot/imported/Screenshot_280.png-0a94d5c178b67526fa0489b8ade04237.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/handtest/idleout.png"
-dest_files=["res://.godot/imported/idleout.png-d8598d9ce18cb71caac9d80cdc69e301.ctex"]
+source_file="res://assets/Screenshot_280.png"
+dest_files=["res://.godot/imported/Screenshot_280.png-0a94d5c178b67526fa0489b8ade04237.ctex"]
 
 [params]
 

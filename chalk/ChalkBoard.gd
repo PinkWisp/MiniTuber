@@ -4,11 +4,10 @@ extends Node2D
 
 var chalk = load("res://assets/chalk.png")
 
-var chalkState = false #Chalk button is off
 var chalkPressed := false #not drawing
 
 func _input(event: InputEvent): 
-	if chalkState == true:
+	if GlobalVar.chalkState == true:
 		Input.set_custom_mouse_cursor(chalk)
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT:
@@ -21,12 +20,17 @@ func _input(event: InputEvent):
 		if Input.is_action_just_pressed("RMB"): #Chalk State off and turns cursor to normal
 				for chalkLine in get_children(): #get all lines made
 					chalkLine.queue_free() #delete all lines made
-				chalkState = false
+				GlobalVar.chalkState = false
 				Input.set_custom_mouse_cursor(null)
 
 		if event is InputEventMouseMotion && chalkPressed: #Draws lines
 			chalkLine.add_point(event.position)
 			
+	if GlobalVar.chalkState == false:
+		for chalkLine in get_children(): #get all lines made
+			chalkLine.queue_free() #delete all lines made
+		Input.set_custom_mouse_cursor(null)
+		
 func _process(_delta):
 	pass
 
@@ -42,7 +46,7 @@ func _process(_delta):
 #func _on_chalk_toggled(toggled_on):
 	#pass # Replace with function body.
 
-
-func _on_chalk_toggled(toggled_on):
-	chalkState = true #Turns Chalk Button ON
+func _on_chalk_button_toggled(toggled_on):
+	GlobalVar.chalkState = true #Turns Chalk Button ON
 	Input.set_custom_mouse_cursor(chalk)
+	DisplayServer.window_set_mouse_passthrough(GlobalVar.transBG)

@@ -5,6 +5,7 @@ var offSet = Vector2(0,0)
 
 func _ready():
 	_set_passthrough()
+	MiniVariables.homePos = $HomePos.global_position
 	
 func _process(delta):
 	if dragging:
@@ -13,12 +14,13 @@ func _process(delta):
 func _on_bottom_move_button_down():
 	dragging = true
 	offSet = get_global_mouse_position() - global_position
-	DisplayServer.window_set_mouse_passthrough($%TransBG.polygon)
+	DisplayServer.window_set_mouse_passthrough(GlobalVar.transBG)
 
 
 func _on_bottom_move_button_up():
 	dragging = false # Replace with function body.
 	_set_passthrough()
+	print(MiniVariables.homePos)
 
 func _set_passthrough():
 	var areaCenter : Vector2 = texture.get_size() / 2 # Center
@@ -31,4 +33,5 @@ func _set_passthrough():
   ]
 	print(areaCorners)
 	DisplayServer.window_set_mouse_passthrough(areaCorners)
+	GlobalVar.buttonMenu = areaCorners
 

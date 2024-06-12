@@ -9,10 +9,11 @@ signal editorSelect
 
 signal handRotate
 signal counterRotate
+signal loadDialog
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	$LoadDialog.popup()
 
 #region File Dialog Face & Hands
 func _on_file_dialog_file_selected(path):
@@ -32,8 +33,9 @@ func _process(delta):
 
 func _input(event):
 	# quick debugging
-	if Input.is_action_just_pressed("Close"):
-		self.visible = !self.visible
+	if GlobalVar.miniState == false:
+		if Input.is_action_just_pressed("Close"):
+			self.visible = !self.visible
 		
 func _currentTuber():
 	currentTuber = str(MiniVariables.currentDir, "/", selectedNode)
@@ -108,6 +110,7 @@ func _load_Imported():
 func _on_load_dialog_dir_selected(dir):
 	MiniVariables.currentDir = dir
 	$%MiniName.text = dir.replace("user://models/", "") #erases first part so only Folder name appears
+	emit_signal("loadDialog")
 	_load_Imported()
 	_save_path()
 	_load_model_settings()

@@ -1,22 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://w2mi5vb30kyv"]
+[gd_scene load_steps=8 format=3 uid="uid://w2mi5vb30kyv"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_gmujt"]
-[ext_resource type="Script" path="res://addons/draggablesprite2d/src/draggablesprite2d.gd" id="2_sjub7"]
 [ext_resource type="Script" path="res://chalk/ChalkBoard.gd" id="3_elxl8"]
 [ext_resource type="PackedScene" uid="uid://cc3fltjp24rja" path="res://scn/notebooks/notebook2.tscn" id="4_jlwh1"]
-[ext_resource type="Script" path="res://notebook/notebook.gd" id="4_nlxft"]
-[ext_resource type="Texture2D" uid="uid://dlc4s5lmbasr7" path="res://icon.svg" id="6_buqcl"]
-[ext_resource type="PackedScene" uid="uid://nxom3gyyo33n" path="res://testMini/test_scene.tscn" id="7_3cdcg"]
+[ext_resource type="PackedScene" uid="uid://bnvw4go1f1qb1" path="res://testMini/mini_editormenu.tscn" id="4_s7obh"]
+[ext_resource type="Texture2D" uid="uid://buv4fogvmvtue" path="res://assets/buttonMenu.png" id="5_al02g"]
 [ext_resource type="Script" path="res://BottomUIArea.gd" id="7_cn8uq"]
+[ext_resource type="PackedScene" uid="uid://cvr8vqtmaxym" path="res://testMini/character_body_2d.tscn" id="7_xo871"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_gmujt")
-
-[node name="ButtonArea" type="Polygon2D" parent="."]
-unique_name_in_owner = true
-visible = false
-color = Color(1, 1, 0.321569, 0.368627)
-polygon = PackedVector2Array(163, 783, 158, 1102, 767, 1104, 756, 781)
 
 [node name="TransBG" type="Polygon2D" parent="."]
 unique_name_in_owner = true
@@ -24,198 +17,92 @@ visible = false
 color = Color(1, 0.847059, 1, 0.470588)
 polygon = PackedVector2Array(-20, -24, -35, 1100, 1955, 1105, 1935, -19)
 
-[node name="NoteBook" type="Area2D" parent="."]
-visible = false
-position = Vector2(257, 301)
-script = ExtResource("2_sjub7")
+[node name="BottomUIArea" type="Sprite2D" parent="."]
+position = Vector2(593, 1012)
+texture = ExtResource("5_al02g")
+script = ExtResource("7_cn8uq")
 
-[node name="Control" type="Control" parent="NoteBook"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -146.0
-offset_top = -198.0
-offset_right = 146.0
-offset_bottom = 198.0
-mouse_filter = 1
-script = ExtResource("4_nlxft")
-
-[node name="TabContainer2" type="TabContainer" parent="NoteBook/Control"]
-layout_mode = 1
+[node name="Panel" type="Panel" parent="BottomUIArea"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -65.0
+offset_right = -110.0
+offset_bottom = -65.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Notes" type="TabBar" parent="NoteBook/Control/TabContainer2"]
+[node name="HSplitContainer" type="HSplitContainer" parent="BottomUIArea"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -65.0
+offset_right = -110.0
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 130
+dragger_visibility = 2
+
+[node name="MiniTuber" type="Button" parent="BottomUIArea/HSplitContainer"]
 layout_mode = 2
-mouse_filter = 1
+toggle_mode = true
+text = "MiniTuber"
 
-[node name="NoteEdit" type="TextEdit" parent="NoteBook/Control/TabContainer2/Notes" groups=["Notes"]]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-placeholder_text = "Save notes before closing MiniTuber!
-
-'X' button also saves"
-wrap_mode = 1
-
-[node name="Info" type="TabBar" parent="NoteBook/Control/TabContainer2"]
-visible = false
+[node name="VBoxContainer" type="VBoxContainer" parent="BottomUIArea/HSplitContainer"]
 layout_mode = 2
-mouse_filter = 1
+size_flags_horizontal = 8
 
-[node name="InfoEdit" type="TextEdit" parent="NoteBook/Control/TabContainer2/Info"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-wrap_mode = 1
-
-[node name="Other" type="TabBar" parent="NoteBook/Control/TabContainer2"]
-visible = false
+[node name="BottomMove" type="Button" parent="BottomUIArea/HSplitContainer/VBoxContainer"]
 layout_mode = 2
-mouse_filter = 1
+size_flags_vertical = 8
+tooltip_text = "Click and drag here to reposition menu."
+text = "user.ttv"
 
-[node name="OtherEdit" type="TextEdit" parent="NoteBook/Control/TabContainer2/Other"]
+[node name="ChalkButton" type="CheckButton" parent="BottomUIArea/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+tooltip_text = "LMB draws lines.
+RMB clears the board.
+Toggling Off clears the board."
+text = "Chalk"
+alignment = 1
+
+[node name="NotesButton" type="CheckButton" parent="BottomUIArea/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Notes"
+alignment = 1
+
+[node name="Settings" type="Button" parent="BottomUIArea/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Settings"
+
+[node name="MiniTuber" parent="BottomUIArea" instance=ExtResource("7_xo871")]
+position = Vector2(-47, 0)
+
+[node name="HomePos" type="Node2D" parent="BottomUIArea"]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-wrap_mode = 1
+position = Vector2(-46, 0)
 
-[node name="CloseNote" type="Button" parent="NoteBook/Control"]
-layout_mode = 0
-offset_left = 253.0
-offset_top = -1.0
-offset_right = 287.0
-offset_bottom = 30.0
-text = "X"
-
-[node name="Save" type="Button" parent="NoteBook/Control"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -85.0
-offset_top = -31.0
-grow_horizontal = 0
-grow_vertical = 0
-mouse_filter = 1
-text = "Save"
-
-[node name="Sprite2D" parent="." instance=ExtResource("4_jlwh1")]
+[node name="NoteBook" parent="." instance=ExtResource("4_jlwh1")]
+visible = false
+position = Vector2(170, 488)
 
 [node name="ChalkBoard" type="Node2D" parent="."]
 script = ExtResource("3_elxl8")
 
 [node name="ChalkLine" type="Node2D" parent="ChalkBoard"]
 
-[node name="BottomUIArea" type="Sprite2D" parent="."]
-position = Vector2(593, 1012)
-texture = ExtResource("6_buqcl")
-script = ExtResource("7_cn8uq")
-
-[node name="BottomMove" type="Button" parent="BottomUIArea"]
-offset_left = -60.0
-offset_top = -65.0
-offset_right = 62.0
-offset_bottom = -45.0
-tooltip_text = "Drag Menu"
-theme_override_font_sizes/font_size = 31
-
-[node name="BottomUI" type="Control" parent="BottomUIArea"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -86.0
-offset_top = -48.0
-offset_right = 95.0
-offset_bottom = 53.0
-size_flags_vertical = 4
-metadata/_edit_group_ = true
-
-[node name="Panel" type="Panel" parent="BottomUIArea/BottomUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-metadata/_edit_lock_ = true
-
-[node name="Chalk" type="Button" parent="BottomUIArea/BottomUI" groups=["UI"]]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -75.0
-offset_bottom = 60.0
-grow_horizontal = 0
-toggle_mode = true
-text = "Chalk"
-metadata/_edit_lock_ = true
-
-[node name="Notes" type="Button" parent="BottomUIArea/BottomUI" groups=["UI"]]
-layout_mode = 1
-offset_right = 75.0
-offset_bottom = 60.0
-toggle_mode = true
-text = "Notes"
-metadata/_edit_lock_ = true
-
-[node name="MiniTuber" type="Button" parent="BottomUIArea/BottomUI" groups=["UI"]]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -51.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Recalculate Button Area"
-metadata/_edit_lock_ = true
-
-[node name="Settings" type="Button" parent="BottomUIArea/BottomUI" groups=["UI"]]
+[node name="MiniEditor" parent="." instance=ExtResource("4_s7obh")]
 visible = false
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -63.0
-grow_horizontal = 0
-grow_vertical = 2
-text = "Settings"
-metadata/_edit_lock_ = true
 
-[node name="TestScene" parent="BottomUIArea" instance=ExtResource("7_3cdcg")]
-
-[connection signal="pressed" from="NoteBook/Control/CloseNote" to="NoteBook" method="_on_close_note_pressed"]
-[connection signal="pressed" from="NoteBook/Control/CloseNote" to="NoteBook/Control" method="_on_close_note_pressed"]
-[connection signal="pressed" from="NoteBook/Control/Save" to="NoteBook/Control" method="_on_save_pressed"]
-[connection signal="button_down" from="BottomUIArea/BottomMove" to="BottomUIArea" method="_on_bottom_move_button_down"]
-[connection signal="button_up" from="BottomUIArea/BottomMove" to="BottomUIArea" method="_on_bottom_move_button_up"]
-[connection signal="pressed" from="BottomUIArea/BottomUI/Chalk" to="." method="_on_chalk_pressed"]
-[connection signal="toggled" from="BottomUIArea/BottomUI/Chalk" to="." method="_on_chalk_toggled"]
-[connection signal="toggled" from="BottomUIArea/BottomUI/Chalk" to="ChalkBoard" method="_on_chalk_toggled"]
-[connection signal="pressed" from="BottomUIArea/BottomUI/Notes" to="." method="_on_note_pad_pressed"]
-[connection signal="pressed" from="BottomUIArea/BottomUI/Notes" to="NoteBook" method="_on_notes_pressed"]
-[connection signal="pressed" from="BottomUIArea/BottomUI/Notes" to="NoteBook/Control" method="_on_notes_pressed"]
-[connection signal="toggled" from="BottomUIArea/BottomUI/Notes" to="ChalkBoard" method="_on_note_pad_toggled"]
-[connection signal="pressed" from="BottomUIArea/BottomUI/MiniTuber" to="." method="_on_mini_tuber_pressed"]
+[connection signal="toggled" from="BottomUIArea/HSplitContainer/MiniTuber" to="BottomUIArea/MiniTuber" method="_on_mini_tuber_toggled"]
+[connection signal="button_down" from="BottomUIArea/HSplitContainer/VBoxContainer/BottomMove" to="BottomUIArea" method="_on_bottom_move_button_down"]
+[connection signal="button_up" from="BottomUIArea/HSplitContainer/VBoxContainer/BottomMove" to="BottomUIArea" method="_on_bottom_move_button_up"]
+[connection signal="toggled" from="BottomUIArea/HSplitContainer/VBoxContainer/ChalkButton" to="ChalkBoard" method="_on_chalk_button_toggled"]
+[connection signal="toggled" from="BottomUIArea/HSplitContainer/VBoxContainer/NotesButton" to="NoteBook" method="_on_notes_button_toggled"]
+[connection signal="loadDialog" from="MiniEditor" to="BottomUIArea/MiniTuber" method="_on_mini_editor_load_dialog"]

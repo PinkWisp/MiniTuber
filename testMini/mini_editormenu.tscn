@@ -14,20 +14,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_vyx1n")
 
-[node name="ImportDialog" type="FileDialog" parent="."]
-title = "Open a File"
-initial_position = 2
-size = Vector2i(700, 425)
-transient = false
-exclusive = false
-always_on_top = true
-popup_window = true
-ok_button_text = "Open"
-file_mode = 0
-access = 2
-root_subfolder = "G:\\Documents\\0 Godot Practice\\handtest"
-use_native_dialog = true
-
 [node name="Control" type="Control" parent="."]
 anchors_preset = 0
 offset_top = -30.0
@@ -243,8 +229,32 @@ layout_mode = 2
 size_flags_horizontal = 8
 text = "Load Model"
 
-[connection signal="close_requested" from="ImportDialog" to="." method="_on_file_dialog_close_requested"]
-[connection signal="file_selected" from="ImportDialog" to="." method="_on_file_dialog_file_selected"]
+[node name="ImportDialog" type="FileDialog" parent="."]
+title = "Open a File"
+initial_position = 2
+size = Vector2i(700, 425)
+transient = false
+exclusive = false
+always_on_top = true
+popup_window = true
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+root_subfolder = "G:\\Documents\\0 Godot Practice\\handtest"
+use_native_dialog = true
+
+[node name="LoadDialog" type="FileDialog" parent="."]
+title = "Open a Directory"
+initial_position = 2
+size = Vector2i(700, 425)
+wrap_controls = false
+popup_window = true
+ok_button_text = "Select Current Folder"
+file_mode = 2
+access = 1
+root_subfolder = "models"
+use_native_dialog = true
+
 [connection signal="pressed" from="Control/BoxContainer/HBoxContainer2/CloseEditor" to="." method="_on_close_editor_pressed"]
 [connection signal="gui_input" from="Control/BoxContainer/HBoxContainer/Hands/Hands/Hand1" to="." method="_on_hand_1_gui_input"]
 [connection signal="mouse_entered" from="Control/BoxContainer/HBoxContainer/Hands/Hands/Hand1" to="." method="_on_hand_1_mouse_entered"]
@@ -269,3 +279,6 @@ text = "Load Model"
 [connection signal="gui_input" from="Control/BoxContainer/HBoxContainer/Faces/GridFace/Face6" to="." method="_on_face_6_gui_input"]
 [connection signal="mouse_entered" from="Control/BoxContainer/HBoxContainer/Faces/GridFace/Face6" to="." method="_on_face_6_mouse_entered"]
 [connection signal="pressed" from="Control/BoxContainer/HBoxContainer/Faces/HSplitContainer/HBoxContainer/SaveTuber" to="." method="_on_save_tuber_pressed"]
+[connection signal="close_requested" from="ImportDialog" to="." method="_on_file_dialog_close_requested"]
+[connection signal="file_selected" from="ImportDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="dir_selected" from="LoadDialog" to="." method="_on_load_dialog_dir_selected"]

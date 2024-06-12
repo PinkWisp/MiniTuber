@@ -141,10 +141,11 @@ func _process(delta):
 	
 # Double Click within time limit to run
 func _dash_timer():
-	if $DashTimer.time_left > 0:
-		dashState = true
-	else:
-		dashState = false
+	if GlobalVar.miniState == true:
+		if $DashTimer.time_left > 0:
+			dashState = true
+		else:
+			dashState = false
 	
 func _physics_process(delta):
 	# LMB press punch
@@ -152,62 +153,63 @@ func _physics_process(delta):
 	# MMB Face wheel
 	# RMB press run to position
 	# RMB hold follow mouse
-	
-	if InputEventMouseMotion:
-		var miniDirect = get_viewport().get_mouse_position().x
-		# change to scale.x?? scale needs to be 1 but flips child nodes
-		if miniDirect > position.x:
-			$MiniSprite.flip_h = true
-		else:
-			$MiniSprite.flip_h = false
+	if GlobalVar.miniState == true:
+		if InputEventMouseMotion:
+			var miniDirect = get_viewport().get_mouse_position().x
+			# change to scale.x?? scale needs to be 1 but flips child nodes
+			if miniDirect > position.x:
+				$MiniSprite.flip_h = true
+			else:
+				$MiniSprite.flip_h = false
+				
+		#Hand rotates against pivoit to stay pointed in a direction
+		if counterRotation == true:
+			$%OrbitHand.global_rotation = !%Orbit.rotation
 			
-	#Hand rotates against pivoit to stay pointed in a direction
-	if counterRotation == true:
-		$%OrbitHand.global_rotation = !%Orbit.rotation
+
+	#region Movement
+		if Input.is_action_just_released("RMB"):
+			$DashTimer.start()
 		
+		if dashState == false:
+			if Input.is_action_pressed("RMB"):
+				_dash_timer()
+				clickPos = (get_global_mouse_position() - global_position)
+				if clickPos.length() > 100:
+					clickPos = clickPos.normalized() * 500
+				velocity = clickPos
+				move_and_slide()
 
-#region Movement
-	if Input.is_action_just_released("RMB"):
-		$DashTimer.start()
-	
-	if dashState == false:
-		if Input.is_action_pressed("RMB"):
-			_dash_timer()
-			clickPos = (get_global_mouse_position() - global_position)
-			if clickPos.length() > 100:
-				clickPos = clickPos.normalized() * 500
-			velocity = clickPos
-			move_and_slide()
-
-	if dashState == true:
-		if Input.is_action_just_pressed("RMB"):
-			_dash_timer()
-			$DashTimer.paused = true
-			clickPos = get_global_mouse_position()
+		if dashState == true:
+			if Input.is_action_just_pressed("RMB"):
+				_dash_timer()
+				$DashTimer.paused = true
+				clickPos = get_global_mouse_position()
+				
+			if position.distance_to(clickPos) > 100:
+				targetPos = (clickPos - global_position).normalized()
+				velocity = targetPos * 2000
+				move_and_slide()
 			
-		if position.distance_to(clickPos) > 100:
-			targetPos = (clickPos - global_position).normalized()
-			velocity = targetPos * 2000
-			move_and_slide()
-		
-		if position.distance_to(clickPos) < 100:
-			$DashTimer.paused = false
+			if position.distance_to(clickPos) < 100:
+				$DashTimer.paused = false
 
 func _input(event):
 	# Action
-	if Input.is_action_pressed("LMB"):
-		if %OrbitHand.visible == false: #Check if Hand is visible
-			%OrbitHand.visible = true
-	if Input.is_action_pressed("WheelDown"): #Hide hand
-		%OrbitHand.visible = false
+	if GlobalVar.miniState == true:
+		if Input.is_action_pressed("LMB"):
+			if %OrbitHand.visible == false: #Check if Hand is visible
+				%OrbitHand.visible = true
+		if Input.is_action_pressed("WheelDown"): #Hide hand
+			%OrbitHand.visible = false
 
-	# Open Face Menu. Can't use popup due to Rendering ordering bug with Always Ontop main window
-	if Input.is_action_just_pressed("MMB"):
-		_load_menu()
-		_load_model_settings()
-		var menuPos = DisplayServer.mouse_get_position()
-		$Menu.position = Vector2i(menuPos.x-165,menuPos.y)
-		$Menu.show()
+		# Open Face Menu. Can't use popup due to Rendering ordering bug with Always Ontop main window
+		if Input.is_action_just_pressed("MMB"):
+			_load_menu()
+			_load_model_settings()
+			var menuPos = DisplayServer.mouse_get_position()
+			$Menu.position = Vector2i(menuPos.x-165,menuPos.y)
+			$Menu.show()
 
 # Confirms Face / Turn Imported Image into Sprite Texture
 func _convert_facetexture():
@@ -223,12 +225,6 @@ func _convert_handtexture():
 
 func _on_dash_timer_timeout():
 	dashState = false
-
-func _on_load_dialog_dir_selected(dir):
-	MiniVariables.currentDir = dir # Replace with function body.
-	_load_menu()
-	_load_model_settings()
-	#loadModelSettings
 
 
 #region Hands Buttons
@@ -405,3 +401,14 @@ func _on_mini_editor_editor_select():
 	if MiniVariables.editorSelect == "F6":
 		_on_face_6_mouse_entered()
 		_on_face_6_pressed()
+
+
+func _on_mini_editor_load_dialog():
+	_load_menu()
+	_load_model_settings()
+
+
+
+func _on_mini_tuber_toggled(toggled_on):
+	GlobalVar.miniState = true 
+	DisplayServer.window_set_mouse_passthrough(GlobalVar.transBG)

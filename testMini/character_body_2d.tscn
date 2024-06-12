@@ -63,6 +63,7 @@ script = ExtResource("5_e7s7a")
 
 [node name="OrbitHand" type="Sprite2D" parent="MiniSprite/Orbit/Path2D/PathFollow2D"]
 unique_name_in_owner = true
+visible = false
 rotation = 1.5708
 scale = Vector2(2.02174, 2.02174)
 texture = ExtResource("6_om0s2")

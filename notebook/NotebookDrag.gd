@@ -4,16 +4,17 @@ var dragging = false
 var offSet = Vector2(0,0)
 
 func _ready():
-	if visible == true:
-		_set_passthrough()
+	pass
 
 func _on_note_move_button_down():
 	dragging = true
 	offSet = get_global_mouse_position() - global_position
+	DisplayServer.window_set_mouse_passthrough(GlobalVar.transBG)
 
 func _on_note_move_button_up():
 	dragging = false # Replace with function body.
-	_set_passthrough()
+	if GlobalVar.chalkState == false:
+		_set_passthrough()
 	
 func _process(delta):
 	if dragging:
@@ -38,4 +39,12 @@ func _on_note_move_gui_input(event):
 			$FileDialog.popup()
 
 func _on_close_note_pressed():
-	visible = false # Replace with function body.
+	visible = false 
+	if GlobalVar.chalkState == false:
+		DisplayServer.window_set_mouse_passthrough(GlobalVar.buttonMenu)
+
+
+func _on_notes_button_toggled(toggled_on):
+	visible = true 
+	if GlobalVar.chalkState == false:
+		_set_passthrough()

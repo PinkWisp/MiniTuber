@@ -24,7 +24,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-MiniVariables="*res://testMini/mini_variables.gd"
+GlobalVar="*res://scripts/global_var.gd"
+EventBus="*res://scripts/event_bus.gd"
+MiniVariables="*res://scripts/mini_variables.gd"
 
 [display]
 
