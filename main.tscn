@@ -11,18 +11,29 @@
 [node name="Main" type="Node"]
 script = ExtResource("1_gmujt")
 
-[node name="TransBG" type="Polygon2D" parent="."]
-unique_name_in_owner = true
+[node name="NoteBook" parent="." instance=ExtResource("4_jlwh1")]
 visible = false
-color = Color(1, 0.847059, 1, 0.470588)
-polygon = PackedVector2Array(-20, -24, -35, 1100, 1955, 1105, 1935, -19)
+position = Vector2(170, 488)
+
+[node name="MiniTuber2" parent="." instance=ExtResource("7_xo871")]
+position = Vector2(546, 1012)
+
+[node name="ChalkBoard" type="Node2D" parent="."]
+script = ExtResource("3_elxl8")
+
+[node name="ChalkLine" type="Node2D" parent="ChalkBoard"]
+
+[node name="MiniEditor" parent="." instance=ExtResource("4_s7obh")]
+visible = false
 
 [node name="BottomUIArea" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(593, 1012)
 texture = ExtResource("5_al02g")
 script = ExtResource("7_cn8uq")
 
 [node name="Panel" type="Panel" parent="BottomUIArea"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -47,6 +58,7 @@ split_offset = 130
 dragger_visibility = 2
 
 [node name="MiniTuber" type="Button" parent="BottomUIArea/HSplitContainer"]
+visible = false
 layout_mode = 2
 toggle_mode = true
 text = "MiniTuber"
@@ -81,28 +93,99 @@ layout_mode = 2
 size_flags_vertical = 8
 text = "Settings"
 
-[node name="MiniTuber" parent="BottomUIArea" instance=ExtResource("7_xo871")]
-position = Vector2(-47, 0)
-
 [node name="HomePos" type="Node2D" parent="BottomUIArea"]
 unique_name_in_owner = true
 position = Vector2(-46, 0)
 
-[node name="NoteBook" parent="." instance=ExtResource("4_jlwh1")]
-visible = false
-position = Vector2(170, 488)
+[node name="Settings" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="ChalkBoard" type="Node2D" parent="."]
-script = ExtResource("3_elxl8")
+[node name="SplitContainer2" type="SplitContainer" parent="Settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -102.0
+offset_right = 150.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
 
-[node name="ChalkLine" type="Node2D" parent="ChalkBoard"]
+[node name="LineEdit" type="LineEdit" parent="Settings/SplitContainer2"]
+layout_mode = 2
+placeholder_text = "user.ttv"
+alignment = 1
 
-[node name="MiniEditor" parent="." instance=ExtResource("4_s7obh")]
-visible = false
+[node name="SplitContainer" type="SplitContainer" parent="Settings/SplitContainer2"]
+layout_mode = 2
 
-[connection signal="toggled" from="BottomUIArea/HSplitContainer/MiniTuber" to="BottomUIArea/MiniTuber" method="_on_mini_tuber_toggled"]
+[node name="BoxContainer2" type="BoxContainer" parent="Settings/SplitContainer2/SplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+vertical = true
+
+[node name="Button" type="Button" parent="Settings/SplitContainer2/SplitContainer/BoxContainer2"]
+layout_mode = 2
+text = "Save Menu Position"
+
+[node name="Button3" type="Button" parent="Settings/SplitContainer2/SplitContainer/BoxContainer2"]
+layout_mode = 2
+text = "Help"
+
+[node name="Button2" type="Button" parent="Settings/SplitContainer2/SplitContainer/BoxContainer2"]
+layout_mode = 2
+text = "Window Position"
+
+[node name="Label" type="Label" parent="Settings/SplitContainer2/SplitContainer/BoxContainer2"]
+layout_mode = 2
+text = "Window Size"
+
+[node name="OptionButton" type="OptionButton" parent="Settings/SplitContainer2/SplitContainer/BoxContainer2"]
+layout_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="Settings/SplitContainer2/SplitContainer"]
+layout_mode = 2
+vertical = true
+
+[node name="CheckButton3" type="CheckButton" parent="Settings/SplitContainer2/SplitContainer/BoxContainer"]
+layout_mode = 2
+text = "Chalk"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Settings/SplitContainer2/SplitContainer/BoxContainer"]
+layout_mode = 2
+text = "Chalk Color"
+
+[node name="CheckButton" type="CheckButton" parent="Settings/SplitContainer2/SplitContainer/BoxContainer"]
+layout_mode = 2
+text = "Notebook"
+
+[node name="OptionButton" type="OptionButton" parent="Settings/SplitContainer2/SplitContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="CheckButton2" type="CheckButton" parent="Settings/SplitContainer2/SplitContainer/BoxContainer"]
+layout_mode = 2
+text = "MiniTuber"
+
+[node name="OptionButton2" type="OptionButton" parent="Settings/SplitContainer2/SplitContainer/BoxContainer"]
+layout_mode = 2
+
+[connection signal="loadDialog" from="MiniEditor" to="MiniTuber2" method="_on_mini_editor_load_dialog"]
+[connection signal="toggled" from="BottomUIArea/HSplitContainer/MiniTuber" to="MiniTuber2" method="_on_mini_tuber_toggled"]
+[connection signal="button_down" from="BottomUIArea/HSplitContainer/VBoxContainer/BottomMove" to="MiniTuber2" method="_on_bottom_move_button_down"]
 [connection signal="button_down" from="BottomUIArea/HSplitContainer/VBoxContainer/BottomMove" to="BottomUIArea" method="_on_bottom_move_button_down"]
+[connection signal="button_up" from="BottomUIArea/HSplitContainer/VBoxContainer/BottomMove" to="MiniTuber2" method="_on_bottom_move_button_up"]
 [connection signal="button_up" from="BottomUIArea/HSplitContainer/VBoxContainer/BottomMove" to="BottomUIArea" method="_on_bottom_move_button_up"]
 [connection signal="toggled" from="BottomUIArea/HSplitContainer/VBoxContainer/ChalkButton" to="ChalkBoard" method="_on_chalk_button_toggled"]
 [connection signal="toggled" from="BottomUIArea/HSplitContainer/VBoxContainer/NotesButton" to="NoteBook" method="_on_notes_button_toggled"]
-[connection signal="loadDialog" from="MiniEditor" to="BottomUIArea/MiniTuber" method="_on_mini_editor_load_dialog"]

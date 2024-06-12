@@ -34,18 +34,6 @@ func _input(event: InputEvent):
 func _process(_delta):
 	pass
 
-#func _on_notepad_toggled(toggled_on):
-	#chalkState = false #Turns Chalk Button ON
-	#Input.set_custom_mouse_cursor(null)
-
-#func _on_mini_tuber_tmp_toggled(toggled_on):
-	#chalkState = false #Turns Chalk Button ON
-	#Input.set_custom_mouse_cursor(null)
-#
-#
-#func _on_chalk_toggled(toggled_on):
-	#pass # Replace with function body.
-
 func _on_chalk_button_toggled(toggled_on):
 	GlobalVar.chalkState = true #Turns Chalk Button ON
 	Input.set_custom_mouse_cursor(chalk)

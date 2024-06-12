@@ -1,5 +1,10 @@
 extends CharacterBody2D
 
+@onready var homePos = get_node("/root/Main/BottomUIArea/HomePos")
+
+var menuDragging = false
+var offSet = Vector2(0,0)
+
 # Movement Variables
 var clickPos = Vector2()
 var targetPos = Vector2() 
@@ -7,7 +12,6 @@ var dashState = false
 
 var counterRotation = false #Hand rotates against pivoit to stay pointed in a direction
 var prevRotation #Rotation before CounterRotation is true
-
 
 var selectedFace = "" 
 var currentFace = "" #str(currentTuber, selectedFace) 
@@ -137,7 +141,6 @@ func _load_menu():
 	
 func _process(delta):
 	$%Orbit.look_at(get_global_mouse_position()) #rotates Orbit node with mouse position
-
 	
 # Double Click within time limit to run
 func _dash_timer():
@@ -154,6 +157,7 @@ func _physics_process(delta):
 	# RMB press run to position
 	# RMB hold follow mouse
 	if GlobalVar.miniState == true:
+		# Flips Sprite
 		if InputEventMouseMotion:
 			var miniDirect = get_viewport().get_mouse_position().x
 			# change to scale.x?? scale needs to be 1 but flips child nodes
@@ -162,12 +166,10 @@ func _physics_process(delta):
 			else:
 				$MiniSprite.flip_h = false
 				
-		#Hand rotates against pivoit to stay pointed in a direction
+		# Hand rotates against pivoit to stay pointed in a direction
 		if counterRotation == true:
 			$%OrbitHand.global_rotation = !%Orbit.rotation
-			
-
-	#region Movement
+#region Walk
 		if Input.is_action_just_released("RMB"):
 			$DashTimer.start()
 		
@@ -179,7 +181,8 @@ func _physics_process(delta):
 					clickPos = clickPos.normalized() * 500
 				velocity = clickPos
 				move_and_slide()
-
+#endregion
+#region Dash
 		if dashState == true:
 			if Input.is_action_just_pressed("RMB"):
 				_dash_timer()
@@ -193,6 +196,14 @@ func _physics_process(delta):
 			
 			if position.distance_to(clickPos) < 100:
 				$DashTimer.paused = false
+#endregion
+	if GlobalVar.miniState == false:
+		if position.distance_to(clickPos) > 5:
+			clickPos = (homePos.global_position - global_position)
+			if clickPos.length() > 15:
+				clickPos = clickPos.normalized() * 1250
+			velocity = clickPos
+			move_and_slide()
 
 func _input(event):
 	# Action
@@ -402,13 +413,18 @@ func _on_mini_editor_editor_select():
 		_on_face_6_mouse_entered()
 		_on_face_6_pressed()
 
-
 func _on_mini_editor_load_dialog():
 	_load_menu()
 	_load_model_settings()
 
-
-
 func _on_mini_tuber_toggled(toggled_on):
 	GlobalVar.miniState = true 
 	DisplayServer.window_set_mouse_passthrough(GlobalVar.transBG)
+
+func _on_bottom_move_button_up():
+	menuDragging = false # Replace with function body.
+
+
+func _on_bottom_move_button_down():
+	menuDragging = true # Replace with function body.
+	clickPos = (homePos.global_position - global_position)

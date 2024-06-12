@@ -14,22 +14,7 @@ func _input(event):
 		if GlobalVar.chalkState == true:                                   
 			DisplayServer.window_set_mouse_passthrough($%ButtonArea.polygon)
 			GlobalVar.chalkState = false
-			print("RMB")
 
 
 func _process(_delta):
 	pass
-
-#func _on_chalk_pressed():
-	#DisplayServer.window_set_mouse_passthrough($TransBG.polygon)
-	#chalkState = true
-	#noteState = false
-	#
-#func _on_note_pad_pressed():
-	#chalkState = false
-	#noteState = true
-
-#func _on_mini_tuber_pressed():
-	#DisplayServer.window_set_mouse_passthrough($TransBG.polygon)
-	#chalkState = false
-	#noteState = false

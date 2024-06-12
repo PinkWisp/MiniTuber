@@ -13,7 +13,6 @@
 			"tasks": [
 				"0b4cc151-3bea-4a09-b3eb-40bd5d546a0b",
 				"e4a5cd66-670d-41e5-9e2e-167919a5f4a7",
-				"d08c836a-4853-48bf-b99b-0bf8246e274f",
 				"07661e72-16c8-41a4-9ac6-592ea79049fc"
 			]
 		},
@@ -34,7 +33,8 @@
 				"02624b29-b43c-4c10-83a7-5a50535b9f0c",
 				"f704ed5c-6ea8-4fda-adda-9392182590a7",
 				"9a6c264c-d085-4dd8-a3b2-ee14d95e6c2a",
-				"07cb7335-b4c7-4ff3-84ac-472a158c4f1f"
+				"07cb7335-b4c7-4ff3-84ac-472a158c4f1f",
+				"c5a5061b-cc88-40b5-a440-30fd575cfe06"
 			]
 		}
 	],
@@ -208,6 +208,13 @@
 		{
 			"uuid": "07cb7335-b4c7-4ff3-84ac-472a158c4f1f",
 			"title": "Make multiple notebooks",
+			"description": "",
+			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
+			"steps": []
+		},
+		{
+			"uuid": "c5a5061b-cc88-40b5-a440-30fd575cfe06",
+			"title": "BUG Minituber flickers after dashing when node is in ButtonMenu",
 			"description": "",
 			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
 			"steps": []
