@@ -17,7 +17,7 @@ func _input(event: InputEvent):
 					chalkLine = Line2D.new() #create multiple lines
 					add_child(chalkLine) #create current line
 					
-		if Input.is_action_just_pressed("Clear Chalk"): #Chalk State off and turns cursor to normal
+		if Input.is_action_just_pressed("Clear_Chalk"): #Chalk State off and turns cursor to normal
 				for chalkLine in get_children(): #get all lines made
 					chalkLine.queue_free() #delete all lines made
 				GlobalVar.chalkState = false

@@ -5,12 +5,12 @@ const settingsPath = "user://settings.ini"
 
 func _ready():
 	if !FileAccess.file_exists(settingsPath):
-		# Keybindings
-		config.set_value("keybindings", "Action", "Left Mouse Button")
-		config.set_value("keybindings", "Move", "Right Mouse Button")
-		config.set_value("keybindings", "Emote Menu", "Middle Mouse Button")
-		config.set_value("keybindings", "Cancel Action", "Mouse Wheel Down")
-		config.set_value("keybindings", "Clear Chalk", "Right Mouse Button")
+		# keybinding
+		config.set_value("keybinding", "Action", "mouse_1")
+		config.set_value("keybinding", "Move", "mouse_2")
+		config.set_value("keybinding", "Emote_Menu", "mouse_3")
+		config.set_value("keybinding", "Cancel_Action", "mouse_5")
+		config.set_value("keybinding", "Clear_Chalk", "mouse_2")
 
 		config.set_value("video", "aspect_ratio", true)
 		config.set_value("video", "window_position", Vector2())
@@ -59,7 +59,7 @@ func load_customization_settings():
 	return customizationSettings
 
 
-# Keybindings
+# keybinding
 func save_keybinds(action: StringName, event: InputEvent):
 	var event_str
 	if event is InputEventKey:
@@ -67,16 +67,15 @@ func save_keybinds(action: StringName, event: InputEvent):
 	elif event is InputEventMouseButton:
 		event_str = "mouse_" + str(event.button_index)
 	
-	config.set_value("keybindings", action, event_str)
+	config.set_value("keybinding", action, event_str)
 	config.save(settingsPath)
 	
 func load_keybindings():
 	var keybindings = {}
-	var keys = config.get_sections_keys("keybindings")
-	
+	var keys = config.get_section_keys("keybinding")
 	for key in keys:
 		var input_event
-		var event_str = config.get_value("keybindings", key)
+		var event_str = config.get_value("keybinding", key)
 		
 		if event_str.contains("mouse_"):
 			input_event = InputEventMouseButton.new()

@@ -153,7 +153,7 @@ func _dash_timer():
 func _physics_process(delta):
 	# Action press punch
 	# Action hold Carry, release throw
-	# Emote Menu Face wheel
+	# Emote_Menu Face wheel
 	# Move press run to position
 	# Move hold follow mouse
 	
@@ -216,7 +216,7 @@ func _input(event):
 			%OrbitHand.visible = false
 
 		# Open Face Menu. Can't use popup due to Rendering ordering bug with Always Ontop main window
-		if Input.is_action_just_pressed("Emote Menu"):
+		if Input.is_action_just_pressed("Emote_Menu"):
 			_load_menu()
 			_load_model_settings()
 			var menuPos = DisplayServer.mouse_get_position()

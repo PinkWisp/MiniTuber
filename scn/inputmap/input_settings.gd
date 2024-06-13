@@ -10,9 +10,9 @@ var remapping_button = null
 var input_actions = {
 	"Action": "Action",
 	"Move": "Move",
-	"Emote Menu": "Emote Menu",
-	"Cancel Action": "Cancel Action",
-	"Clear Chalk": "Clear Chalk",
+	"Emote_Menu": "Emote Menu",
+	"Cancel_Action": "Cancel Action",
+	"Clear_Chalk": "Clear Chalk",
 }
 
 func _ready():
@@ -26,7 +26,6 @@ func _load_keybindings_from_settings():
 		InputMap.action_add_event(action, keybindings[action])
 	
 func _create_action_list():
-	InputMap.load_from_project_settings()
 	for item in action_list.get_children():
 		item.queue_free()
 		
@@ -57,10 +56,11 @@ func _input(event):
 	if is_remapping:
 		if(
 			event is InputEventKey ||
-			(event is InputEventMouse && event.pressed)
+			(event is InputEventMouseButton && event.pressed)
 		):
 			InputMap.action_erase_events(action_to_remap)
 			InputMap.action_add_event(action_to_remap, event)
+			ConfigHandler.save_keybinds(action_to_remap, event)
 			_update_action_list(remapping_button, event)
 			
 			is_remapping = false
@@ -70,7 +70,7 @@ func _input(event):
 			accept_event()
 			
 func _update_action_list(button, event):
-	button.find_child("LabelIniput").text = event.as_text().trim_suffix(" (Physical)")
+	button.find_child("LabelInput").text = event.as_text().trim_suffix(" (Physical)")
 
 
 func _on_settings_keybindings():
@@ -78,4 +78,9 @@ func _on_settings_keybindings():
 
 
 func _on_reset_button_pressed():
+	InputMap.load_from_project_settings()
+	for action in input_actions:
+		var events = InputMap.action_get_events(action)
+		if events.size() > 0:
+			ConfigHandler.save_keybinds(action, events[0])
 	_create_action_list()
