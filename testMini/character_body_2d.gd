@@ -151,30 +151,31 @@ func _dash_timer():
 			dashState = false
 	
 func _physics_process(delta):
-	# LMB press punch
-	# LMB hold Carry, release throw
-	# MMB Face wheel
-	# RMB press run to position
-	# RMB hold follow mouse
+	# Action press punch
+	# Action hold Carry, release throw
+	# Emote Menu Face wheel
+	# Move press run to position
+	# Move hold follow mouse
+	
+	# Flips Sprite
+	if InputEventMouseMotion:
+		var miniDirect = get_viewport().get_mouse_position().x
+		# change to scale.x?? scale needs to be 1 but flips child nodes
+		if miniDirect > position.x:
+			$MiniSprite.flip_h = true
+		else:
+			$MiniSprite.flip_h = false
+			
 	if GlobalVar.miniState == true:
-		# Flips Sprite
-		if InputEventMouseMotion:
-			var miniDirect = get_viewport().get_mouse_position().x
-			# change to scale.x?? scale needs to be 1 but flips child nodes
-			if miniDirect > position.x:
-				$MiniSprite.flip_h = true
-			else:
-				$MiniSprite.flip_h = false
-				
 		# Hand rotates against pivoit to stay pointed in a direction
 		if counterRotation == true:
 			$%OrbitHand.global_rotation = !%Orbit.rotation
 #region Walk
-		if Input.is_action_just_released("RMB"):
+		if Input.is_action_just_released("Move"):
 			$DashTimer.start()
 		
 		if dashState == false:
-			if Input.is_action_pressed("RMB"):
+			if Input.is_action_pressed("Move"):
 				_dash_timer()
 				clickPos = (get_global_mouse_position() - global_position)
 				if clickPos.length() > 100:
@@ -184,7 +185,7 @@ func _physics_process(delta):
 #endregion
 #region Dash
 		if dashState == true:
-			if Input.is_action_just_pressed("RMB"):
+			if Input.is_action_just_pressed("Move"):
 				_dash_timer()
 				$DashTimer.paused = true
 				clickPos = get_global_mouse_position()
@@ -208,14 +209,14 @@ func _physics_process(delta):
 func _input(event):
 	# Action
 	if GlobalVar.miniState == true:
-		if Input.is_action_pressed("LMB"):
+		if Input.is_action_pressed("Action"):
 			if %OrbitHand.visible == false: #Check if Hand is visible
 				%OrbitHand.visible = true
-		if Input.is_action_pressed("WheelDown"): #Hide hand
+		if Input.is_action_pressed("Cancel Action"): #Hide hand
 			%OrbitHand.visible = false
 
 		# Open Face Menu. Can't use popup due to Rendering ordering bug with Always Ontop main window
-		if Input.is_action_just_pressed("MMB"):
+		if Input.is_action_just_pressed("Emote Menu"):
 			_load_menu()
 			_load_model_settings()
 			var menuPos = DisplayServer.mouse_get_position()
@@ -417,9 +418,13 @@ func _on_mini_editor_load_dialog():
 	_load_menu()
 	_load_model_settings()
 
-func _on_mini_tuber_toggled(toggled_on):
-	GlobalVar.miniState = true 
-	DisplayServer.window_set_mouse_passthrough(GlobalVar.transBG)
+
+func _on_mini_tuber_pressed():
+	GlobalVar.miniState = !GlobalVar.miniState
+	if GlobalVar.miniState == true:
+		DisplayServer.window_set_mouse_passthrough(GlobalVar.transBG)
+	if GlobalVar.miniState == false:
+		DisplayServer.window_set_mouse_passthrough(GlobalVar.buttonMenu)
 
 func _on_bottom_move_button_up():
 	menuDragging = false # Replace with function body.
@@ -428,3 +433,4 @@ func _on_bottom_move_button_up():
 func _on_bottom_move_button_down():
 	menuDragging = true # Replace with function body.
 	clickPos = (homePos.global_position - global_position)
+

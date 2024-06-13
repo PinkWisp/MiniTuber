@@ -31,11 +31,11 @@ func _on_file_dialog_file_selected(path):
 func _process(delta):
 	pass
 
-func _input(event):
-	# quick debugging
-	if GlobalVar.miniState == false:
-		if Input.is_action_just_pressed("Close"):
-			self.visible = !self.visible
+#func _input(event):
+	## quick debugging
+	##if GlobalVar.miniState == false:
+		##if Input.is_action_just_pressed("Close"):
+			##self.visible = !self.visible
 		
 func _currentTuber():
 	currentTuber = str(MiniVariables.currentDir, "/", selectedNode)

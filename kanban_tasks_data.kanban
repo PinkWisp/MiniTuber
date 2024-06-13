@@ -94,6 +94,14 @@
 			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
 			"steps": [
 				{
+					"details": "Load another Model",
+					"done": false
+				},
+				{
+					"details": "bring up editor in settings or emotemenu",
+					"done": false
+				},
+				{
 					"details": "Save Button saves everything in current Folder\n(Face, Hands, Hand Settings)",
 					"done": true
 				},
@@ -132,22 +140,6 @@
 			]
 		},
 		{
-			"uuid": "d08c836a-4853-48bf-b99b-0bf8246e274f",
-			"title": "Config Settings",
-			"description": "",
-			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
-			"steps": [
-				{
-					"details": "Window Size",
-					"done": false
-				},
-				{
-					"details": "Select Monitor\n",
-					"done": false
-				}
-			]
-		},
-		{
 			"uuid": "9a6c264c-d085-4dd8-a3b2-ee14d95e6c2a",
 			"title": "Moveable Bottom Menu?",
 			"description": "Vector2 Array Resource Editor Addon?\nhttps://github.com/Bugwan91/vector2_array_resource_editor",
@@ -181,7 +173,7 @@
 				},
 				{
 					"details": "MiniTuber Settings",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Chalk Color?",

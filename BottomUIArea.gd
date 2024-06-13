@@ -5,6 +5,7 @@ var offSet = Vector2(0,0)
 
 func _ready():
 	_set_passthrough()
+	%BottomMove.text = GlobalVar.username
 	
 func _process(delta):
 	if dragging:

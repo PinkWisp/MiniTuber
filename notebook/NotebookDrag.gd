@@ -1,5 +1,7 @@
 extends Sprite2D
 
+@onready var NotesButton = get_node("/root/Main/BottomUIArea/HSplitContainer/VBoxContainer/ChalkButton")
+
 var dragging = false
 var offSet = Vector2(0,0)
 
@@ -37,12 +39,16 @@ func _on_note_move_gui_input(event):
 			$FileDialog.popup()
 
 func _on_close_note_pressed():
-	visible = false 
+	visible = false
+	NotesButton.button_pressed = false
 	if GlobalVar.chalkState == false:
 		DisplayServer.window_set_mouse_passthrough(GlobalVar.buttonMenu)
 
 
 func _on_notes_button_toggled(toggled_on):
-	visible = true 
+	if toggled_on:
+		visible = true
+	else:
+		visible = false
 	if GlobalVar.chalkState == false:
 		_set_passthrough()

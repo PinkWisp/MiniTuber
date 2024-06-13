@@ -9,8 +9,8 @@ func _process(delta):
 	#else:
 		#speed = 3
 		
-	if Input.is_action_pressed("LMB"):
+	if Input.is_action_pressed("Action"):
 		progress_ratio += delta * speed
-	if Input.is_action_just_released("LMB"):
+	if Input.is_action_just_released("Action"):
 		progress_ratio = 0
 
