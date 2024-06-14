@@ -51,9 +51,14 @@ text = "Save Menu Position"
 layout_mode = 2
 text = "Keybindings"
 
-[node name="AppPosition" type="Button" parent="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer2"]
+[node name="AdjustWindow" type="Button" parent="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Window Position"
+tooltip_text = "Resize and reposition window.
+
+Click-through only works when the window is boarderless. This toggles the boarderless setting so you can adjust the window. "
+toggle_mode = true
+text = "Adjust Window"
 
 [node name="Label" type="Label" parent="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer2"]
 layout_mode = 2
@@ -97,6 +102,7 @@ layout_mode = 2
 
 [connection signal="text_submitted" from="AspectRatioContainer/SplitContainer2/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer2/Keybindings" to="." method="_on_keybindings_pressed"]
+[connection signal="toggled" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer2/AdjustWindow" to="." method="_on_adjust_window_toggled"]
 [connection signal="toggled" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer/Chalk" to="." method="_on_chalk_toggled"]
 [connection signal="toggled" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer/NoteBook" to="." method="_on_note_book_toggled"]
 [connection signal="toggled" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer/MiniTuber" to="." method="_on_mini_tuber_toggled"]

@@ -20,6 +20,7 @@ var function
 func _ready():
 	ConfigHandler.load_feature_settings()
 	ConfigHandler.load_customization_settings()
+	
 	_set_passthrough()
 	
 	

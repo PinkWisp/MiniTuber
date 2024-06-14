@@ -11,15 +11,18 @@ func _ready():
 		config.set_value("keybinding", "Emote_Menu", "mouse_3")
 		config.set_value("keybinding", "Cancel_Action", "mouse_5")
 		config.set_value("keybinding", "Clear_Chalk", "mouse_2")
-
-		config.set_value("video", "aspect_ratio", true)
-		config.set_value("video", "window_position", Vector2())
 		
+		# Video Settings
+		config.set_value("video", "window_size", Vector2i())
+		config.set_value("video", "window_position", Vector2i())
+		
+		# Features On/Off
 		config.set_value("features", "chalk_on", true)
 		config.set_value("features", "notebook_on", true)
 		config.set_value("features", "minituber_on", true)
 		
-		config.set_value("customization", "username", "new_text")
+		# Customization
+		config.set_value("customization", "username", "user.ttv")
 		config.set_value("customization", "chalk_color", Color(1,1,1,1))
 		config.set_value("customization", "notebook_dir", "Default")
 		config.set_value("customization", "minituber_dir", "Default")
