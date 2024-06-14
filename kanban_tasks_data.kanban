@@ -200,7 +200,7 @@
 				},
 				{
 					"details": "Window Resizing",
-					"done": false
+					"done": true
 				}
 			]
 		},

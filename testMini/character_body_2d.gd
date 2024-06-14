@@ -212,7 +212,7 @@ func _input(event):
 		if Input.is_action_pressed("Action"):
 			if %OrbitHand.visible == false: #Check if Hand is visible
 				%OrbitHand.visible = true
-		if Input.is_action_pressed("Cancel Action"): #Hide hand
+		if Input.is_action_pressed("Cancel_Action"): #Hide hand
 			%OrbitHand.visible = false
 
 		# Open Face Menu. Can't use popup due to Rendering ordering bug with Always Ontop main window

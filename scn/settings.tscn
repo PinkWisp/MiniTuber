@@ -11,13 +11,17 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
 script = ExtResource("1_7ndvs")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_top = -113.5
+offset_bottom = 113.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -43,10 +47,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 vertical = true
 
-[node name="MenuPosition" type="Button" parent="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer2"]
-layout_mode = 2
-text = "Save Menu Position"
-
 [node name="Keybindings" type="Button" parent="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer2"]
 layout_mode = 2
 text = "Keybindings"
@@ -60,13 +60,9 @@ Click-through only works when the window is boarderless. This toggles the boarde
 toggle_mode = true
 text = "Adjust Window"
 
-[node name="Label" type="Label" parent="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer2"]
+[node name="DefaultSize" type="Button" parent="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer2"]
 layout_mode = 2
-text = "Window Size"
-
-[node name="AspectRatio" type="OptionButton" parent="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
+text = "Default Size"
 
 [node name="BoxContainer" type="BoxContainer" parent="AspectRatioContainer/SplitContainer2/SplitContainer"]
 layout_mode = 2

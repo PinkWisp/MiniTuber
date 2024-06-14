@@ -13,8 +13,10 @@ func _ready():
 		config.set_value("keybinding", "Clear_Chalk", "mouse_2")
 		
 		# Video Settings
-		config.set_value("video", "window_size", Vector2i())
-		config.set_value("video", "window_position", Vector2i())
+		var new_size = Vector2i()
+		var new_position = Vector2i()
+		config.set_value("video", "window_size", new_size)
+		config.set_value("video", "window_position", new_position)
 		
 		# Features On/Off
 		config.set_value("features", "chalk_on", true)

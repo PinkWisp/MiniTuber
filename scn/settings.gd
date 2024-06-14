@@ -12,6 +12,8 @@ extends Control
 #Video
 @onready var adjust_window = $%AdjustWindow
 
+
+
 # Buttons from Menu
 @onready var ChalkButton = get_node("/root/Main/BottomUIArea/HSplitContainer/VBoxContainer/ChalkButton")
 @onready var NotesButton = get_node("/root/Main/BottomUIArea/HSplitContainer/VBoxContainer/NotesButton")
@@ -22,7 +24,13 @@ signal keybindings
 signal namechanged
 
 func _ready():
-	#var video_settings = ConfigHandler.load_video_settings()
+	var video_settings = ConfigHandler.load_video_settings()
+	if video_settings.window_size == Vector2i():
+		_default_size()
+	else:
+		DisplayServer.window_set_size(video_settings.window_size)
+		DisplayServer.window_set_position(video_settings.window_position)
+	
 	
 	# Features
 	var function_settings = ConfigHandler.load_feature_settings()
@@ -48,7 +56,8 @@ func _ready():
 	var customization_settings = ConfigHandler.load_customization_settings()
 	UserNamed.text = customization_settings.username
 	username.text = customization_settings.username
-	#if username.text = "new_text":
+	
+	
 		
 
 func _on_settings_pressed():
@@ -96,17 +105,30 @@ func _on_mini_tuber_toggled(toggled_on):
 func _on_keybindings_pressed():
 	emit_signal("keybindings")
 
-
+# Video
 func _on_adjust_window_toggled(toggled_on):
 	if toggled_on:
 		adjust_window.text = "Adjusting Window..."
-		DisplayServer.window_set_size(Vector2i(1900,1060))
+		if DisplayServer.window_get_size() == Vector2i(1920,1080):
+			DisplayServer.window_set_size(Vector2i(1900,1060))
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
-		#get_tree().get_root().set_transparent_background(false)
 	else:
 		adjust_window.text = "Adjust Window"
-		DisplayServer.window_get_position_with_decorations()
-		DisplayServer.window_get_position()
+		var new_size = DisplayServer.window_get_size_with_decorations()
+		var new_position = DisplayServer.window_get_position_with_decorations()
 		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
-		ConfigHandler.save_video_settings()
+		
+		ConfigHandler.save_video_settings("window_size", new_size)
+		ConfigHandler.save_video_settings("window_position", new_position)
+
+func _default_size():
+	#var video_settings = ConfigHandler.load_video_settings()
+	#if ConfigHandler.load_video_settings().video_settings.window_size == "new_size":
+		DisplayServer.window_set_size(Vector2i(1920,1080))
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+		var new_size = DisplayServer.window_get_size_with_decorations()
+		var new_position = DisplayServer.window_get_position_with_decorations()
+		
+		ConfigHandler.save_video_settings("window_size", new_size)
+		ConfigHandler.save_video_settings("window_position", new_position)

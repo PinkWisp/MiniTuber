@@ -5,7 +5,6 @@
 [ext_resource type="Script" path="res://scn/notebooks/notebook2.gd" id="3_f8rov"]
 
 [node name="NoteBook" type="Sprite2D"]
-position = Vector2(611, 470)
 texture = ExtResource("1_qv5ph")
 script = ExtResource("2_ye5sf")
 

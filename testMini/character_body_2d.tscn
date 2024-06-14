@@ -24,7 +24,7 @@ point_count = 2
 size = Vector2(127.105, 127.105)
 
 [node name="MiniTuber" type="CharacterBody2D"]
-position = Vector2(408, 242)
+position = Vector2(65.86, 64.335)
 script = ExtResource("1_tenk8")
 
 [node name="MiniSprite" type="Sprite2D" parent="."]
