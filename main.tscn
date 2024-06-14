@@ -60,6 +60,7 @@ split_offset = 130
 dragger_visibility = 2
 
 [node name="MiniTuber" type="Button" parent="BottomUIArea/HSplitContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
 text = "MiniTuber"
@@ -102,10 +103,10 @@ text = "Settings"
 unique_name_in_owner = true
 position = Vector2(-46, 0)
 
-[node name="InputSettings" parent="." instance=ExtResource("8_l5mdb")]
+[node name="Settings" parent="." instance=ExtResource("8_87o2b")]
 visible = false
 
-[node name="Settings" parent="." instance=ExtResource("8_87o2b")]
+[node name="InputSettings" parent="." instance=ExtResource("8_l5mdb")]
 visible = false
 
 [connection signal="loadDialog" from="MiniEditor" to="MiniTuber" method="_on_mini_editor_load_dialog"]
@@ -119,3 +120,4 @@ visible = false
 [connection signal="toggled" from="BottomUIArea/HSplitContainer/VBoxContainer/NotesButton" to="NoteBook" method="_on_notes_button_toggled"]
 [connection signal="pressed" from="BottomUIArea/HSplitContainer/VBoxContainer/Settings" to="Settings" method="_on_settings_pressed"]
 [connection signal="keybindings" from="Settings" to="InputSettings" method="_on_settings_keybindings"]
+[connection signal="namechanged" from="Settings" to="BottomUIArea" method="_on_settings_namechanged"]

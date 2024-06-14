@@ -15,14 +15,14 @@ func _ready():
 		config.set_value("video", "aspect_ratio", true)
 		config.set_value("video", "window_position", Vector2())
 		
-		config.set_value("features", "chalk_function", true)
-		config.set_value("features", "notebook_function", true)
-		config.set_value("features", "minituber_function", true)
+		config.set_value("features", "chalk_on", true)
+		config.set_value("features", "notebook_on", true)
+		config.set_value("features", "minituber_on", true)
 		
-		config.set_value("Customization", "username", "")
-		config.set_value("Customization", "chalk_color", Color(1,1,1,1))
-		config.set_value("Customization", "notebook_dir", "Default")
-		config.set_value("Customization", "minituber_dir", "Default")
+		config.set_value("customization", "username", "new_text")
+		config.set_value("customization", "chalk_color", Color(1,1,1,1))
+		config.set_value("customization", "notebook_dir", "Default")
+		config.set_value("customization", "minituber_dir", "Default")
 		
 		config.save(settingsPath)
 	else:
