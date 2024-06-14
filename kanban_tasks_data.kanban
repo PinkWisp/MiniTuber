@@ -160,11 +160,11 @@
 			"steps": [
 				{
 					"details": "WindowSize",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Window Position?",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Chalk On/Off",

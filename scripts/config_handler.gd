@@ -13,10 +13,15 @@ func _ready():
 		config.set_value("keybinding", "Clear_Chalk", "mouse_2")
 		
 		# Video Settings
-		var new_size = Vector2i()
-		var new_position = Vector2i()
-		config.set_value("video", "window_size", new_size)
-		config.set_value("video", "window_position", new_position)
+		# Depricated: If windowed you cant tell when you click out of the transparent app
+		#var new_size = Vector2i()
+		#var new_position = Vector2i()
+		#var menu_position = Vector2()
+		#var book_position = Vector2()
+		#config.set_value("video", "window_size", new_size)
+		#config.set_value("video", "window_position", new_position)
+		#config.set_value("video", "menu_position", menu_position)
+		#config.set_value("video", "menu_position", book_position)
 		
 		# Features On/Off
 		config.set_value("features", "chalk_on", true)
@@ -33,15 +38,15 @@ func _ready():
 	else:
 		config.load(settingsPath)
 
-func save_video_settings(key: String, value):
-	config.set_value("video", key, value)
-	config.save(settingsPath)
-	
-func load_video_settings():
-	var videoSettings = {}
-	for key in config.get_section_keys("video"):
-		videoSettings[key] = config.get_value("video", key)
-	return videoSettings
+#func save_video_settings(key: String, value):
+	#config.set_value("video", key, value)
+	#config.save(settingsPath)
+	#
+#func load_video_settings():
+	#var videoSettings = {}
+	#for key in config.get_section_keys("video"):
+		#videoSettings[key] = config.get_value("video", key)
+	#return videoSettings
 	
 func save_feature_settings(key:String, value):
 	config.set_value("features", key, value)

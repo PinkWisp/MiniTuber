@@ -5,22 +5,9 @@ var offSet = Vector2(0,0)
 
 var function
 
-#func _ready():
-	#_load_keybindings_from_settings()
-	#_create_action_list()
-	#
-#func _load_keybindings_from_settings():
-	#var keybindings = ConfigHandler.load_keybindings()
-	#for action in keybindings.keys():
-		#InputMap.action_erase_events(action)
-		#InputMap.action_add_event(action, keybindings[action])
-
-
-
 func _ready():
 	ConfigHandler.load_feature_settings()
 	ConfigHandler.load_customization_settings()
-	
 	_set_passthrough()
 	
 	
@@ -35,7 +22,9 @@ func _on_bottom_move_button_down():
 
 
 func _on_bottom_move_button_up():
-	dragging = false # Replace with function body.
+	dragging = false
+	var menu_position = global_position
+	ConfigHandler.save_video_settings("menu_position", menu_position)
 	_set_passthrough()
 
 func _set_passthrough():
@@ -48,6 +37,7 @@ func _set_passthrough():
   ]
 	DisplayServer.window_set_mouse_passthrough(areaCorners)
 	GlobalVar.buttonMenu = areaCorners
+
 
 
 
