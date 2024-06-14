@@ -13,7 +13,6 @@ extends Control
 @onready var adjust_window = $%AdjustWindow
 
 
-
 # Buttons from Menu
 @onready var ChalkButton = get_node("/root/Main/BottomUIArea/HSplitContainer/VBoxContainer/ChalkButton")
 @onready var NotesButton = get_node("/root/Main/BottomUIArea/HSplitContainer/VBoxContainer/NotesButton")
@@ -111,6 +110,7 @@ func _on_adjust_window_toggled(toggled_on):
 		adjust_window.text = "Adjusting Window..."
 		if DisplayServer.window_get_size() == Vector2i(1920,1080):
 			DisplayServer.window_set_size(Vector2i(1900,1060))
+		DisplayServer.window_set_min_size(Vector2i(500,500))
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
 	else:
@@ -123,8 +123,6 @@ func _on_adjust_window_toggled(toggled_on):
 		ConfigHandler.save_video_settings("window_position", new_position)
 
 func _default_size():
-	#var video_settings = ConfigHandler.load_video_settings()
-	#if ConfigHandler.load_video_settings().video_settings.window_size == "new_size":
 		DisplayServer.window_set_size(Vector2i(1920,1080))
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 		var new_size = DisplayServer.window_get_size_with_decorations()
@@ -132,3 +130,7 @@ func _default_size():
 		
 		ConfigHandler.save_video_settings("window_size", new_size)
 		ConfigHandler.save_video_settings("window_position", new_position)
+
+
+func _on_default_size_pressed():
+	_default_size()

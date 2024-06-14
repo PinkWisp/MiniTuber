@@ -99,6 +99,7 @@ layout_mode = 2
 [connection signal="text_submitted" from="AspectRatioContainer/SplitContainer2/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer2/Keybindings" to="." method="_on_keybindings_pressed"]
 [connection signal="toggled" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer2/AdjustWindow" to="." method="_on_adjust_window_toggled"]
+[connection signal="pressed" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer2/DefaultSize" to="." method="_on_default_size_pressed"]
 [connection signal="toggled" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer/Chalk" to="." method="_on_chalk_toggled"]
 [connection signal="toggled" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer/NoteBook" to="." method="_on_note_book_toggled"]
 [connection signal="toggled" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer/MiniTuber" to="." method="_on_mini_tuber_toggled"]
