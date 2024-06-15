@@ -21,19 +21,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="NoteBook" parent="." instance=ExtResource("4_jlwh1")]
-position = Vector2(236, 654)
-
-[node name="Control2" type="Control" parent="NoteBook"]
 visible = false
-layout_mode = 3
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -197.5
-offset_bottom = -197.5
-grow_vertical = 2
-metadata/_edit_group_ = true
-metadata/_edit_use_anchors_ = true
+position = Vector2(236, 654)
 
 [node name="MiniTuber" parent="." instance=ExtResource("7_xo871")]
 position = Vector2(311, 1010)

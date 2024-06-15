@@ -23,8 +23,6 @@ func _on_bottom_move_button_down():
 
 func _on_bottom_move_button_up():
 	dragging = false
-	var menu_position = global_position
-	ConfigHandler.save_video_settings("menu_position", menu_position)
 	_set_passthrough()
 
 func _set_passthrough():

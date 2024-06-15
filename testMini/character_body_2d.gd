@@ -68,7 +68,7 @@ func _blank_png():
 
 # Get dir path to face.png to convert
 func _change_face():
-	currentFace = str(MiniVariables.currentDir ,"/",selectedFace)
+	currentFace = str(MiniVariables.currentDir,"/",selectedFace)
 	
 # Get dir path to hand.png to convert
 func _change_hand():

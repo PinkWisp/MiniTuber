@@ -51,19 +51,6 @@ vertical = true
 layout_mode = 2
 text = "Keybindings"
 
-[node name="AdjustWindow" type="Button" parent="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-tooltip_text = "Resize and reposition window.
-
-Click-through only works when the window is boarderless. This toggles the boarderless setting so you can adjust the window. "
-toggle_mode = true
-text = "Adjust Window"
-
-[node name="DefaultSize" type="Button" parent="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer2"]
-layout_mode = 2
-text = "Default Size"
-
 [node name="BoxContainer" type="BoxContainer" parent="AspectRatioContainer/SplitContainer2/SplitContainer"]
 layout_mode = 2
 vertical = true
@@ -83,23 +70,35 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Notebook"
 
-[node name="NotebookDir" type="OptionButton" parent="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer"]
+[node name="NotebookDir" type="Button" parent="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "Startup Notebook"
 
 [node name="MiniTuber" type="CheckButton" parent="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "MiniTuber"
 
-[node name="MiniTuberDir" type="OptionButton" parent="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer"]
+[node name="MiniTuberDir" type="Button" parent="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "Startup Model"
+
+[node name="NoteDialog" type="FileDialog" parent="."]
+title = "Open a Directory"
+initial_position = 1
+size = Vector2i(500, 500)
+ok_button_text = "Select Current Folder"
+file_mode = 2
+access = 1
+root_subfolder = "notebooks"
+use_native_dialog = true
 
 [connection signal="text_submitted" from="AspectRatioContainer/SplitContainer2/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer2/Keybindings" to="." method="_on_keybindings_pressed"]
-[connection signal="toggled" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer2/AdjustWindow" to="." method="_on_adjust_window_toggled"]
-[connection signal="pressed" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer2/DefaultSize" to="." method="_on_default_size_pressed"]
 [connection signal="toggled" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer/Chalk" to="." method="_on_chalk_toggled"]
 [connection signal="toggled" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer/NoteBook" to="." method="_on_note_book_toggled"]
+[connection signal="pressed" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer/NotebookDir" to="." method="_on_notebook_dir_pressed"]
 [connection signal="toggled" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer/MiniTuber" to="." method="_on_mini_tuber_toggled"]
+[connection signal="dir_selected" from="NoteDialog" to="." method="_on_note_dialog_dir_selected"]

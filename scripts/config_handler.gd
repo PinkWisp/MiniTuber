@@ -12,17 +12,6 @@ func _ready():
 		config.set_value("keybinding", "Cancel_Action", "mouse_5")
 		config.set_value("keybinding", "Clear_Chalk", "mouse_2")
 		
-		# Video Settings
-		# Depricated: If windowed you cant tell when you click out of the transparent app
-		#var new_size = Vector2i()
-		#var new_position = Vector2i()
-		#var menu_position = Vector2()
-		#var book_position = Vector2()
-		#config.set_value("video", "window_size", new_size)
-		#config.set_value("video", "window_position", new_position)
-		#config.set_value("video", "menu_position", menu_position)
-		#config.set_value("video", "menu_position", book_position)
-		
 		# Features On/Off
 		config.set_value("features", "chalk_on", true)
 		config.set_value("features", "notebook_on", true)
@@ -31,23 +20,13 @@ func _ready():
 		# Customization
 		config.set_value("customization", "username", "user.ttv")
 		config.set_value("customization", "chalk_color", Color(1,1,1,1))
-		config.set_value("customization", "notebook_dir", "Default")
-		config.set_value("customization", "minituber_dir", "Default")
+		config.set_value("customization", "notebook_dir", "default")
+		config.set_value("customization", "minituber_dir", "default")
 		
 		config.save(settingsPath)
 	else:
 		config.load(settingsPath)
 
-#func save_video_settings(key: String, value):
-	#config.set_value("video", key, value)
-	#config.save(settingsPath)
-	#
-#func load_video_settings():
-	#var videoSettings = {}
-	#for key in config.get_section_keys("video"):
-		#videoSettings[key] = config.get_value("video", key)
-	#return videoSettings
-	
 func save_feature_settings(key:String, value):
 	config.set_value("features", key, value)
 	config.save(settingsPath)

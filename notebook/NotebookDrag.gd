@@ -5,6 +5,8 @@ extends Sprite2D
 var dragging = false
 var offSet = Vector2(0,0)
 
+signal selectingFolder
+
 func _ready():
 	pass
 
@@ -35,7 +37,8 @@ func _set_passthrough():
 
 func _on_note_move_gui_input(event):
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_RIGHT: 
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			emit_signal("selectingFolder")
 			$FileDialog.popup()
 
 func _on_close_note_pressed():
@@ -48,7 +51,8 @@ func _on_close_note_pressed():
 func _on_notes_button_toggled(toggled_on):
 	if toggled_on:
 		visible = true
+		if GlobalVar.chalkState == false:
+			_set_passthrough()
 	else:
 		visible = false
-	if GlobalVar.chalkState == false:
-		_set_passthrough()
+

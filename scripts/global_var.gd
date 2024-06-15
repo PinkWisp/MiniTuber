@@ -1,16 +1,10 @@
 extends Node
 
-var username = ""
-
 var fullClickState = false # ??
 
 var miniState = false
 var chalkState = false
 var noteState = false
-
-#var miniFunction = true
-#var chalkFunction = true
-#var noteFunction = true
 
 var buttonMove = false
 
