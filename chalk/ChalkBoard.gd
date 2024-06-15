@@ -15,6 +15,8 @@ func _input(event: InputEvent):
 				
 				if chalkPressed:
 					chalkLine = Line2D.new() #create multiple lines
+					chalkLine.default_color = Color.ANTIQUE_WHITE
+					chalkLine.width = 8
 					add_child(chalkLine) #create current line
 					
 		if Input.is_action_just_pressed("Clear_Chalk"): #Chalk State off and turns cursor to normal
@@ -26,11 +28,6 @@ func _input(event: InputEvent):
 				
 		if event is InputEventMouseMotion && chalkPressed: #Draws lines
 			chalkLine.add_point(event.position)
-			
-	#if GlobalVar.chalkState == false:
-		#for chalkLine in get_children(): #get all lines made
-			#chalkLine.queue_free() #delete all lines made
-		#Input.set_custom_mouse_cursor(null)
 		
 func _process(_delta):
 	pass

@@ -24,7 +24,6 @@ point_count = 2
 size = Vector2(127.105, 127.105)
 
 [node name="MiniTuber" type="CharacterBody2D"]
-position = Vector2(65.86, 64.335)
 script = ExtResource("1_tenk8")
 
 [node name="MiniSprite" type="Sprite2D" parent="."]
@@ -87,6 +86,7 @@ transparent = true
 max_size = Vector2i(335, 235)
 
 [node name="Panel" type="Panel" parent="Menu"]
+self_modulate = Color(1, 1, 1, 0.486275)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -100,13 +100,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HandMenu" type="GridContainer" parent="Menu/BoxContainer"]
+[node name="BoxContainer" type="BoxContainer" parent="Menu/BoxContainer"]
+layout_mode = 2
+alignment = 1
+vertical = true
+
+[node name="HandMenu" type="GridContainer" parent="Menu/BoxContainer/BoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 columns = 2
 
-[node name="Hand1" type="TextureButton" parent="Menu/BoxContainer/HandMenu"]
+[node name="Hand1" type="TextureButton" parent="Menu/BoxContainer/BoxContainer/HandMenu"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
@@ -114,7 +119,7 @@ texture_normal = ExtResource("6_om0s2")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Hand2" type="TextureButton" parent="Menu/BoxContainer/HandMenu"]
+[node name="Hand2" type="TextureButton" parent="Menu/BoxContainer/BoxContainer/HandMenu"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
@@ -122,7 +127,7 @@ texture_normal = ExtResource("6_om0s2")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Hand3" type="TextureButton" parent="Menu/BoxContainer/HandMenu"]
+[node name="Hand3" type="TextureButton" parent="Menu/BoxContainer/BoxContainer/HandMenu"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
@@ -130,13 +135,19 @@ texture_normal = ExtResource("6_om0s2")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Hand4" type="TextureButton" parent="Menu/BoxContainer/HandMenu"]
+[node name="Hand4" type="TextureButton" parent="Menu/BoxContainer/BoxContainer/HandMenu"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture_normal = ExtResource("6_om0s2")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="MiniSleep" type="Button" parent="Menu/BoxContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+tooltip_text = "Return Mini to the menu"
+text = "Send Mini Home"
 
 [node name="VSeparator" type="VSeparator" parent="Menu/BoxContainer"]
 custom_minimum_size = Vector2(10.195, 0)
@@ -198,14 +209,15 @@ stretch_mode = 0
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="close_requested" from="Menu" to="." method="_on_emote_menu_close_requested"]
 [connection signal="window_input" from="Menu" to="." method="_on_face_menu_window_input"]
-[connection signal="mouse_entered" from="Menu/BoxContainer/HandMenu/Hand1" to="." method="_on_hand_1_mouse_entered"]
-[connection signal="pressed" from="Menu/BoxContainer/HandMenu/Hand1" to="." method="_on_hand_1_pressed"]
-[connection signal="mouse_entered" from="Menu/BoxContainer/HandMenu/Hand2" to="." method="_on_hand_2_mouse_entered"]
-[connection signal="pressed" from="Menu/BoxContainer/HandMenu/Hand2" to="." method="_on_hand_2_pressed"]
-[connection signal="mouse_entered" from="Menu/BoxContainer/HandMenu/Hand3" to="." method="_on_hand_3_mouse_entered"]
-[connection signal="pressed" from="Menu/BoxContainer/HandMenu/Hand3" to="." method="_on_hand_3_pressed"]
-[connection signal="mouse_entered" from="Menu/BoxContainer/HandMenu/Hand4" to="." method="_on_hand_4_mouse_entered"]
-[connection signal="pressed" from="Menu/BoxContainer/HandMenu/Hand4" to="." method="_on_hand_4_pressed"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/BoxContainer/HandMenu/Hand1" to="." method="_on_hand_1_mouse_entered"]
+[connection signal="pressed" from="Menu/BoxContainer/BoxContainer/HandMenu/Hand1" to="." method="_on_hand_1_pressed"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/BoxContainer/HandMenu/Hand2" to="." method="_on_hand_2_mouse_entered"]
+[connection signal="pressed" from="Menu/BoxContainer/BoxContainer/HandMenu/Hand2" to="." method="_on_hand_2_pressed"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/BoxContainer/HandMenu/Hand3" to="." method="_on_hand_3_mouse_entered"]
+[connection signal="pressed" from="Menu/BoxContainer/BoxContainer/HandMenu/Hand3" to="." method="_on_hand_3_pressed"]
+[connection signal="mouse_entered" from="Menu/BoxContainer/BoxContainer/HandMenu/Hand4" to="." method="_on_hand_4_mouse_entered"]
+[connection signal="pressed" from="Menu/BoxContainer/BoxContainer/HandMenu/Hand4" to="." method="_on_hand_4_pressed"]
+[connection signal="pressed" from="Menu/BoxContainer/BoxContainer/MiniSleep" to="." method="_on_mini_sleep_pressed"]
 [connection signal="mouse_entered" from="Menu/BoxContainer/FaceMenu/Face1" to="." method="_on_face_1_mouse_entered"]
 [connection signal="pressed" from="Menu/BoxContainer/FaceMenu/Face1" to="." method="_on_face_1_pressed"]
 [connection signal="mouse_entered" from="Menu/BoxContainer/FaceMenu/Face2" to="." method="_on_face_2_mouse_entered"]

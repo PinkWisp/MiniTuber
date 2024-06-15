@@ -68,8 +68,10 @@ grow_vertical = 2
 split_offset = 130
 dragger_visibility = 2
 
-[node name="MiniTuber" type="Button" parent="BottomUIArea/HSplitContainer"]
+[node name="MiniTuberButton" type="Button" parent="BottomUIArea/HSplitContainer"]
 unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 toggle_mode = true
 text = "MiniTuber"
@@ -119,8 +121,8 @@ visible = false
 visible = false
 
 [connection signal="loadDialog" from="MiniEditor" to="MiniTuber" method="_on_mini_editor_load_dialog"]
-[connection signal="pressed" from="BottomUIArea/HSplitContainer/MiniTuber" to="MiniTuber" method="_on_mini_tuber_pressed"]
-[connection signal="toggled" from="BottomUIArea/HSplitContainer/MiniTuber" to="MiniTuber" method="_on_mini_tuber_toggled"]
+[connection signal="pressed" from="BottomUIArea/HSplitContainer/MiniTuberButton" to="MiniTuber" method="_on_mini_tuber_pressed"]
+[connection signal="toggled" from="BottomUIArea/HSplitContainer/MiniTuberButton" to="MiniTuber" method="_on_mini_tuber_toggled"]
 [connection signal="button_down" from="BottomUIArea/HSplitContainer/VBoxContainer/BottomMove" to="MiniTuber" method="_on_bottom_move_button_down"]
 [connection signal="button_down" from="BottomUIArea/HSplitContainer/VBoxContainer/BottomMove" to="BottomUIArea" method="_on_bottom_move_button_down"]
 [connection signal="button_up" from="BottomUIArea/HSplitContainer/VBoxContainer/BottomMove" to="MiniTuber" method="_on_bottom_move_button_up"]

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var homePos = get_node("/root/Main/BottomUIArea/HomePos")
+signal miniSleep
 
 var menuDragging = false
 var offSet = Vector2(0,0)
@@ -451,3 +452,7 @@ func _on_bottom_move_button_down():
 	menuDragging = true # Replace with function body.
 	clickPos = (homePos.global_position - global_position)
 
+
+func _on_mini_sleep_pressed():
+	GlobalVar.miniState = false
+	emit_signal("miniSleep") # Replace with function body.

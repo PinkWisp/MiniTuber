@@ -13,9 +13,10 @@ extends Control
 # Buttons from Menu
 @onready var ChalkButton = get_node("/root/Main/BottomUIArea/HSplitContainer/VBoxContainer/ChalkButton")
 @onready var NotesButton = get_node("/root/Main/BottomUIArea/HSplitContainer/VBoxContainer/NotesButton")
-@onready var MiniButton = get_node("/root/Main/BottomUIArea/HSplitContainer/MiniTuber")
+@onready var MiniButton = get_node("/root/Main/BottomUIArea/HSplitContainer/MiniTuberButton")
 @onready var UserNamed = get_node("/root/Main/BottomUIArea/HSplitContainer/VBoxContainer/BottomMove")
-#@onready var bottom_ui_area = get_node("/root/Main/BottomUIArea")
+@onready var mini_tuber = get_node("/root/Main/MiniTuber")
+
 
 
 signal keybindings
@@ -40,8 +41,10 @@ func _ready():
 	minituber_function.button_pressed = function_settings.minituber_on
 	if minituber_function.button_pressed:
 		MiniButton.visible = true
+		mini_tuber.visible = true
 	else:
 		MiniButton.visible = false
+		mini_tuber.visible = false
 		
 	# Customization
 	var customization_settings = ConfigHandler.load_customization_settings()
@@ -100,8 +103,10 @@ func _on_note_book_toggled(toggled_on):
 func _on_mini_tuber_toggled(toggled_on):
 	if toggled_on:
 		MiniButton.visible = true
+		mini_tuber.visible = true
 	else:
 		MiniButton.visible = false
+		mini_tuber.visible = false
 	ConfigHandler.save_feature_settings("minituber_on", toggled_on)
 
 # Opens Keybinding Menu
