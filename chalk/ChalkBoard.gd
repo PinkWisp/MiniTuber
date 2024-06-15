@@ -40,4 +40,4 @@ func _on_chalk_button_toggled(toggled_on):
 	else:
 		GlobalVar.chalkState = false
 		Input.set_custom_mouse_cursor(null)
-		DisplayServer.window_set_mouse_passthrough(GlobalVar.buttonMenu)
+		DisplayServer.window_set_mouse_passthrough(GlobalVar.menuArray)

@@ -21,7 +21,8 @@
 			"title": "Doing",
 			"tasks": [
 				"cd1afa4c-7460-4dba-ab12-b5fadfa4b92b",
-				"ee82a70e-4c17-4109-ab4b-3dfe9db45577"
+				"ee82a70e-4c17-4109-ab4b-3dfe9db45577",
+				"c7e052fe-b4dd-4e69-91d1-5b987d188e7c"
 			]
 		},
 		{
@@ -217,6 +218,22 @@
 			"description": "",
 			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
 			"steps": []
+		},
+		{
+			"uuid": "c7e052fe-b4dd-4e69-91d1-5b987d188e7c",
+			"title": "Close buttons",
+			"description": "",
+			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
+			"steps": [
+				{
+					"details": "Keybind Menu",
+					"done": false
+				},
+				{
+					"details": "Close App",
+					"done": false
+				}
+			]
 		}
 	],
 	"layout": {

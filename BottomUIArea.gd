@@ -3,6 +3,9 @@ extends Sprite2D
 var dragging = false
 var offSet = Vector2(0,0)
 
+@onready var settings = $"../Settings"
+
+
 var function
 
 func _ready():
@@ -20,10 +23,12 @@ func _on_bottom_move_button_down():
 	offSet = get_global_mouse_position() - global_position
 	DisplayServer.window_set_mouse_passthrough(GlobalVar.transBG)
 
-
 func _on_bottom_move_button_up():
 	dragging = false
-	_set_passthrough()
+	if GlobalVar.chalkState || settings.visible == false:
+		_set_passthrough()
+	#if settings.visible == false:
+		#_set_passthrough()
 
 func _set_passthrough():
 	var areaCenter : Vector2 = texture.get_size() / 2 # Center
@@ -34,7 +39,7 @@ func _set_passthrough():
 	global_position + areaCenter * Vector2(-1 ,1) # Bottom left corner
   ]
 	DisplayServer.window_set_mouse_passthrough(areaCorners)
-	GlobalVar.buttonMenu = areaCorners
+	GlobalVar.menuArray = areaCorners
 
 
 

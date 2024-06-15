@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var homePos = get_node("/root/Main/BottomUIArea/HomePos")
+@onready var settings = $"../Settings"
 signal miniSleep
 
 var menuDragging = false
@@ -260,6 +261,7 @@ func _on_dash_timer_timeout():
 #region Hands Buttons
 func _on_hand_1_mouse_entered():
 	selectedHand = MiniVariables.hand[0]
+	print("H1 entered")
 
 func _on_hand_1_pressed():
 	_change_hand()
@@ -267,6 +269,7 @@ func _on_hand_1_pressed():
 	$Menu.visible = false
 	$%OrbitHand.rotation_degrees = MiniVariables.H1_Rotation_Offset
 	counterRotation = MiniVariables.H1_Counter_Rotation
+	print("H1 Pressed")
 
 func _on_hand_2_mouse_entered():
 	selectedHand = MiniVariables.hand[1]
@@ -442,7 +445,8 @@ func _on_mini_tuber_pressed():
 	if GlobalVar.miniState == true:
 		DisplayServer.window_set_mouse_passthrough(GlobalVar.transBG)
 	if GlobalVar.miniState == false:
-		DisplayServer.window_set_mouse_passthrough(GlobalVar.buttonMenu)
+		if GlobalVar.chalkState || settings.visible == false:
+			DisplayServer.window_set_mouse_passthrough(GlobalVar.menuArray)
 
 func _on_bottom_move_button_up():
 	menuDragging = false # Replace with function body.
@@ -451,8 +455,11 @@ func _on_bottom_move_button_up():
 func _on_bottom_move_button_down():
 	menuDragging = true # Replace with function body.
 	clickPos = (homePos.global_position - global_position)
+	%OrbitHand.visible = false
 
 
 func _on_mini_sleep_pressed():
 	GlobalVar.miniState = false
+	%OrbitHand.visible = false
+	$Menu.visible = false
 	emit_signal("miniSleep") # Replace with function body.

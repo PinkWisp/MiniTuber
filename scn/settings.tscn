@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfdcnk6rti0b7"]
+[gd_scene load_steps=3 format=3 uid="uid://bfdcnk6rti0b7"]
 
 [ext_resource type="Script" path="res://scn/settings.gd" id="1_7ndvs"]
+[ext_resource type="PackedScene" uid="uid://d2t84qikj0ovd" path="res://scn/inputmap/input_settings.tscn" id="2_fx4of"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -88,6 +89,17 @@ text = "MiniTuber"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Startup Model"
+
+[node name="InputSettings" parent="." instance=ExtResource("2_fx4of")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -490.0
+offset_right = -490.0
+size_flags_horizontal = 8
 
 [node name="NoteDialog" type="FileDialog" parent="."]
 title = "Open a Directory"

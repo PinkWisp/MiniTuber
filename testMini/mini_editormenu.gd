@@ -326,6 +326,5 @@ func _load_model_settings():
 func _on_settings_editor():
 	self.visible = !self.visible
 
-
 func _on_load_tuber_pressed():
 	$LoadDialog.popup()

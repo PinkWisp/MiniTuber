@@ -6,9 +6,11 @@ extends Control
 @onready var minituber_function = %MiniTuber
 #Customization
 @onready var username = $%LineEdit
-#@onready var chalk_color = $%ColorPickerButton
 @onready var notebook_dir = %NotebookDir
 @onready var mini_tuber_dir = %MiniTuberDir
+
+@onready var input_settings = %InputSettings
+
 
 # Buttons from Menu
 @onready var ChalkButton = get_node("/root/Main/BottomUIArea/HSplitContainer/VBoxContainer/ChalkButton")
@@ -61,7 +63,7 @@ func _on_settings_pressed():
 	if visible == true:
 		DisplayServer.window_set_mouse_passthrough(GlobalVar.transBG)
 	if visible == false:
-		DisplayServer.window_set_mouse_passthrough(GlobalVar.buttonMenu)
+		DisplayServer.window_set_mouse_passthrough(GlobalVar.menuArray)
 
 
 # Customization
@@ -111,7 +113,7 @@ func _on_mini_tuber_toggled(toggled_on):
 
 # Opens Keybinding Menu
 func _on_keybindings_pressed():
-	emit_signal("keybindings")
+	input_settings.visible = !input_settings.visible
 
 
 func _on_mini_editor_pressed():

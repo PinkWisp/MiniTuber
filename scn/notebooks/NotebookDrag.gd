@@ -1,6 +1,7 @@
 extends Sprite2D
 
-@onready var NotesButton = get_node("/root/Main/BottomUIArea/HSplitContainer/VBoxContainer/ChalkButton")
+@onready var NotesButton = get_node("/root/Main/BottomUIArea/HSplitContainer/VBoxContainer/NotesButton")
+@onready var settings = $"../Settings"
 
 var dragging = false
 var offSet = Vector2(0,0)
@@ -8,6 +9,7 @@ var offSet = Vector2(0,0)
 signal selectingFolder
 
 func _ready():
+	#_set_passthrough()
 	pass
 
 func _on_note_move_button_down():
@@ -17,7 +19,7 @@ func _on_note_move_button_down():
 
 func _on_note_move_button_up():
 	dragging = false # Replace with function body.
-	if GlobalVar.chalkState == false:
+	if GlobalVar.chalkState || settings.visible == false:
 		_set_passthrough()
 	
 func _process(delta):
@@ -33,6 +35,7 @@ func _set_passthrough():
 	global_position + areaCenter * Vector2(-1 ,1) # Bottom left corner
   ]
 	DisplayServer.window_set_mouse_passthrough(areaCorners)
+	GlobalVar.bookArray = areaCorners
 
 
 func _on_note_move_gui_input(event):
@@ -44,8 +47,8 @@ func _on_note_move_gui_input(event):
 func _on_close_note_pressed():
 	visible = false
 	NotesButton.button_pressed = false
-	if GlobalVar.chalkState == false:
-		DisplayServer.window_set_mouse_passthrough(GlobalVar.buttonMenu)
+	if GlobalVar.chalkState || settings.visible == false:
+		DisplayServer.window_set_mouse_passthrough(GlobalVar.menuArray)
 
 
 func _on_notes_button_toggled(toggled_on):

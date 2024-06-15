@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://w2mi5vb30kyv"]
+[gd_scene load_steps=9 format=3 uid="uid://w2mi5vb30kyv"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_gmujt"]
 [ext_resource type="Script" path="res://chalk/ChalkBoard.gd" id="3_elxl8"]
@@ -8,18 +8,9 @@
 [ext_resource type="Script" path="res://BottomUIArea.gd" id="7_cn8uq"]
 [ext_resource type="PackedScene" uid="uid://cvr8vqtmaxym" path="res://testMini/character_body_2d.tscn" id="7_xo871"]
 [ext_resource type="PackedScene" uid="uid://bfdcnk6rti0b7" path="res://scn/settings.tscn" id="8_87o2b"]
-[ext_resource type="PackedScene" uid="uid://d2t84qikj0ovd" path="res://scn/inputmap/input_settings.tscn" id="8_l5mdb"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_gmujt")
-
-[node name="Panel" type="Panel" parent="."]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="NoteBook" parent="." instance=ExtResource("4_jlwh1")]
 visible = false
@@ -43,18 +34,6 @@ texture = ExtResource("5_al02g")
 script = ExtResource("7_cn8uq")
 metadata/_edit_group_ = true
 
-[node name="Panel" type="Panel" parent="BottomUIArea"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -110.0
-offset_top = -65.0
-offset_right = -110.0
-offset_bottom = -65.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="HSplitContainer" type="HSplitContainer" parent="BottomUIArea"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,7 +53,6 @@ modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 toggle_mode = true
-text = "MiniTuber"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BottomUIArea/HSplitContainer"]
 layout_mode = 2
@@ -117,9 +95,6 @@ position = Vector2(-46, 0)
 [node name="Settings" parent="." instance=ExtResource("8_87o2b")]
 visible = false
 
-[node name="InputSettings" parent="." instance=ExtResource("8_l5mdb")]
-visible = false
-
 [connection signal="loadDialog" from="MiniEditor" to="MiniTuber" method="_on_mini_editor_load_dialog"]
 [connection signal="pressed" from="BottomUIArea/HSplitContainer/MiniTuberButton" to="MiniTuber" method="_on_mini_tuber_pressed"]
 [connection signal="toggled" from="BottomUIArea/HSplitContainer/MiniTuberButton" to="MiniTuber" method="_on_mini_tuber_toggled"]
@@ -131,5 +106,4 @@ visible = false
 [connection signal="toggled" from="BottomUIArea/HSplitContainer/VBoxContainer/NotesButton" to="NoteBook" method="_on_notes_button_toggled"]
 [connection signal="pressed" from="BottomUIArea/HSplitContainer/VBoxContainer/Settings" to="Settings" method="_on_settings_pressed"]
 [connection signal="editor" from="Settings" to="MiniEditor" method="_on_settings_editor"]
-[connection signal="keybindings" from="Settings" to="InputSettings" method="_on_settings_keybindings"]
 [connection signal="namechanged" from="Settings" to="BottomUIArea" method="_on_settings_namechanged"]
