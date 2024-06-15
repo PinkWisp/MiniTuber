@@ -13,15 +13,15 @@
 			"tasks": [
 				"0b4cc151-3bea-4a09-b3eb-40bd5d546a0b",
 				"e4a5cd66-670d-41e5-9e2e-167919a5f4a7",
-				"07661e72-16c8-41a4-9ac6-592ea79049fc",
-				"ee82a70e-4c17-4109-ab4b-3dfe9db45577"
+				"07661e72-16c8-41a4-9ac6-592ea79049fc"
 			]
 		},
 		{
 			"uuid": "501d3492-78f7-437e-95b3-f7dc2a0646db",
 			"title": "Doing",
 			"tasks": [
-				"cd1afa4c-7460-4dba-ab12-b5fadfa4b92b"
+				"cd1afa4c-7460-4dba-ab12-b5fadfa4b92b",
+				"ee82a70e-4c17-4109-ab4b-3dfe9db45577"
 			]
 		},
 		{
@@ -94,11 +94,11 @@
 			"steps": [
 				{
 					"details": "Load another Model",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "bring up editor in settings or emotemenu",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Save Button saves everything in current Folder\n(Face, Hands, Hand Settings)",
@@ -192,11 +192,11 @@
 				},
 				{
 					"details": "Notebook Dir",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "MiniTuber Dir",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Window Resizing",

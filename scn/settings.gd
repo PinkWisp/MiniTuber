@@ -20,6 +20,7 @@ extends Control
 
 signal keybindings
 signal namechanged
+signal editor
 
 func _ready():
 	# Features
@@ -47,6 +48,7 @@ func _ready():
 	UserNamed.text = customization_settings.username #Button Menu
 	username.text = customization_settings.username #Settings
 	notebook_dir.text = customization_settings.notebook_dir.replace("user://notebooks/", "")
+	mini_tuber_dir.text = customization_settings.minituber_dir.replace("user://models/", "")
 	
 	
 		
@@ -71,7 +73,13 @@ func _on_notebook_dir_pressed():
 func _on_note_dialog_dir_selected(dir):
 	notebook_dir.text = dir.replace("user://notebooks/", "")
 	ConfigHandler.save_customization_settings("notebook_dir", dir)
-	pass # Replace with function body.
+	
+func _on_mini_tuber_dir_pressed():
+	$MiniDialog.popup()
+
+func _on_mini_dialog_dir_selected(dir):
+	mini_tuber_dir.text = dir.replace("user://models/", "")
+	ConfigHandler.save_customization_settings("minituber_dir", dir)
 
 
 # Features
@@ -99,3 +107,7 @@ func _on_mini_tuber_toggled(toggled_on):
 # Opens Keybinding Menu
 func _on_keybindings_pressed():
 	emit_signal("keybindings")
+
+
+func _on_mini_editor_pressed():
+	emit_signal("editor") # Replace with function body.

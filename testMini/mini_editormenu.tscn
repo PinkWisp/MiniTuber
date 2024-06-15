@@ -240,7 +240,7 @@ popup_window = true
 ok_button_text = "Open"
 file_mode = 0
 access = 2
-root_subfolder = "G:\\Documents\\0 Godot Practice\\handtest"
+filters = PackedStringArray("*.png", "*.jpg", "*.jpeg")
 use_native_dialog = true
 
 [node name="LoadDialog" type="FileDialog" parent="."]
@@ -279,6 +279,7 @@ use_native_dialog = true
 [connection signal="gui_input" from="Control/BoxContainer/HBoxContainer/Faces/GridFace/Face6" to="." method="_on_face_6_gui_input"]
 [connection signal="mouse_entered" from="Control/BoxContainer/HBoxContainer/Faces/GridFace/Face6" to="." method="_on_face_6_mouse_entered"]
 [connection signal="pressed" from="Control/BoxContainer/HBoxContainer/Faces/HSplitContainer/HBoxContainer/SaveTuber" to="." method="_on_save_tuber_pressed"]
+[connection signal="pressed" from="Control/BoxContainer/HBoxContainer/Faces/HSplitContainer/HBoxContainer/LoadTuber" to="." method="_on_load_tuber_pressed"]
 [connection signal="close_requested" from="ImportDialog" to="." method="_on_file_dialog_close_requested"]
 [connection signal="file_selected" from="ImportDialog" to="." method="_on_file_dialog_file_selected"]
 [connection signal="dir_selected" from="LoadDialog" to="." method="_on_load_dialog_dir_selected"]

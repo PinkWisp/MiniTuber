@@ -14,6 +14,7 @@
 script = ExtResource("1_gmujt")
 
 [node name="Panel" type="Panel" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -29,8 +30,6 @@ position = Vector2(311, 1010)
 
 [node name="MiniEditor" parent="." instance=ExtResource("4_s7obh")]
 visible = false
-offset_top = -540.0
-offset_bottom = -540.0
 
 [node name="ChalkBoard" type="Node2D" parent="."]
 script = ExtResource("3_elxl8")
@@ -129,5 +128,6 @@ visible = false
 [connection signal="toggled" from="BottomUIArea/HSplitContainer/VBoxContainer/ChalkButton" to="ChalkBoard" method="_on_chalk_button_toggled"]
 [connection signal="toggled" from="BottomUIArea/HSplitContainer/VBoxContainer/NotesButton" to="NoteBook" method="_on_notes_button_toggled"]
 [connection signal="pressed" from="BottomUIArea/HSplitContainer/VBoxContainer/Settings" to="Settings" method="_on_settings_pressed"]
+[connection signal="editor" from="Settings" to="MiniEditor" method="_on_settings_editor"]
 [connection signal="keybindings" from="Settings" to="InputSettings" method="_on_settings_keybindings"]
 [connection signal="namechanged" from="Settings" to="BottomUIArea" method="_on_settings_namechanged"]

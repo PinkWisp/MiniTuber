@@ -13,7 +13,13 @@ signal loadDialog
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$LoadDialog.popup()
+	$LoadDialog.root_subfolder = "user://models/"
+	
+	var customization_settings = ConfigHandler.load_customization_settings()
+	var dir = DirAccess.open("user://")
+	# open startup folder
+	if dir.dir_exists(customization_settings.minituber_dir):
+		_load_Imported()
 
 #region File Dialog Face & Hands
 func _on_file_dialog_file_selected(path):
@@ -30,82 +36,100 @@ func _on_file_dialog_file_selected(path):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
-#func _input(event):
-	## quick debugging
-	##if GlobalVar.miniState == false:
-		##if Input.is_action_just_pressed("Close"):
-			##self.visible = !self.visible
 		
 func _currentTuber():
 	currentTuber = str(MiniVariables.currentDir, "/", selectedNode)
 
 func _load_Imported():
+	# check for Face1.png if none then make placeholders
+	if !FileAccess.file_exists(str(MiniVariables.currentDir,"/",MiniVariables.face[0])):
+		var blank_Face1 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+		blank_Face1.save_png(str(MiniVariables.currentDir,"/", MiniVariables.face[0]))
+		print(str(MiniVariables.currentDir,"/", MiniVariables.face[0]))
+		var blank_Face2 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+		blank_Face2.save_png(str(MiniVariables.currentDir,"/", MiniVariables.face[1]))
+		var blank_Face3 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+		blank_Face3.save_png(str(MiniVariables.currentDir,"/", MiniVariables.face[2]))
+		var blank_Face4 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+		blank_Face4.save_png(str(MiniVariables.currentDir,"/", MiniVariables.face[3]))
+		var blank_Face5 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+		blank_Face5.save_png(str(MiniVariables.currentDir,"/", MiniVariables.face[4]))
+		var blank_Face6 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+		blank_Face6.save_png(str(MiniVariables.currentDir,"/", MiniVariables.face[5]))
+		var blank_hand1 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+		blank_hand1.save_png(str(MiniVariables.currentDir,"/", MiniVariables.hand[0]))
+		var blank_hand2 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+		blank_hand2.save_png(str(MiniVariables.currentDir,"/", MiniVariables.hand[1]))
+		var blank_hand3 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+		blank_hand3.save_png(str(MiniVariables.currentDir,"/", MiniVariables.hand[2]))
+		var blank_hand4 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+		blank_hand4.save_png(str(MiniVariables.currentDir,"/", MiniVariables.hand[3]))
+	
+	# load imported
+	else:
 #region face
-	var face1path = str(MiniVariables.currentDir,"/",MiniVariables.face[0])
-	var face1 = Image.load_from_file(face1path)
-	var facetext1 = ImageTexture.new()
-	facetext1.set_image(face1)
-	$%Face1.texture_normal = facetext1
-	
-	var face2path = str(MiniVariables.currentDir,"/",MiniVariables.face[1])
-	var face2 = Image.load_from_file(face2path)
-	var facetext2 = ImageTexture.new()
-	facetext2.set_image(face2)
-	$%Face2.texture_normal = facetext2
-	
-	var face3path = str(MiniVariables.currentDir,"/",MiniVariables.face[2])
-	var face3 = Image.load_from_file(face3path)
-	var facetext3 = ImageTexture.new()
-	facetext3.set_image(face3)
-	$%Face3.texture_normal = facetext3
-	
-	var face4path = str(MiniVariables.currentDir,"/",MiniVariables.face[3])
-	var face4 = Image.load_from_file(face4path)
-	var facetext4 = ImageTexture.new()
-	facetext4.set_image(face4)
-	$%Face4.texture_normal = facetext4
-	
-	var face5path = str(MiniVariables.currentDir,"/",MiniVariables.face[4])
-	var face5 = Image.load_from_file(face5path)
-	var facetext5 = ImageTexture.new()
-	facetext5.set_image(face5)
-	$%Face5.texture_normal = facetext5
-	
-	var face6path = str(MiniVariables.currentDir,"/",MiniVariables.face[5])
-	var face6 = Image.load_from_file(face6path)
-	var facetext6 = ImageTexture.new()
-	facetext6.set_image(face6)
-	$%Face6.texture_normal = facetext6
+		var face1path = str(MiniVariables.currentDir,"/",MiniVariables.face[0])
+		var face1 = Image.load_from_file(face1path)
+		var facetext1 = ImageTexture.new()
+		facetext1.set_image(face1)
+		$%Face1.texture_normal = facetext1
+		
+		var face2path = str(MiniVariables.currentDir,"/",MiniVariables.face[1])
+		var face2 = Image.load_from_file(face2path)
+		var facetext2 = ImageTexture.new()
+		facetext2.set_image(face2)
+		$%Face2.texture_normal = facetext2
+		
+		var face3path = str(MiniVariables.currentDir,"/",MiniVariables.face[2])
+		var face3 = Image.load_from_file(face3path)
+		var facetext3 = ImageTexture.new()
+		facetext3.set_image(face3)
+		$%Face3.texture_normal = facetext3
+		
+		var face4path = str(MiniVariables.currentDir,"/",MiniVariables.face[3])
+		var face4 = Image.load_from_file(face4path)
+		var facetext4 = ImageTexture.new()
+		facetext4.set_image(face4)
+		$%Face4.texture_normal = facetext4
+		
+		var face5path = str(MiniVariables.currentDir,"/",MiniVariables.face[4])
+		var face5 = Image.load_from_file(face5path)
+		var facetext5 = ImageTexture.new()
+		facetext5.set_image(face5)
+		$%Face5.texture_normal = facetext5
+		
+		var face6path = str(MiniVariables.currentDir,"/",MiniVariables.face[5])
+		var face6 = Image.load_from_file(face6path)
+		var facetext6 = ImageTexture.new()
+		facetext6.set_image(face6)
+		$%Face6.texture_normal = facetext6
 #endregion
 #region Hands
-	var hand1path = str(MiniVariables.currentDir,"/",MiniVariables.hand[0])
-	var hand1 = Image.load_from_file(hand1path)
-	var handtext1 = ImageTexture.new()
-	handtext1.set_image(hand1)
-	$%Hand1.texture_normal = handtext1
-	
-	var hand2path = str(MiniVariables.currentDir,"/",MiniVariables.hand[1])
-	var hand2 = Image.load_from_file(hand2path)
-	var handtext2 = ImageTexture.new()
-	handtext2.set_image(hand2)
-	$%Hand2.texture_normal = handtext2
-	
-	var hand3path = str(MiniVariables.currentDir,"/",MiniVariables.hand[2])
-	var hand3 = Image.load_from_file(hand3path)
-	var handtext3 = ImageTexture.new()
-	handtext3.set_image(hand3)
-	$%Hand3.texture_normal = handtext3
-	
-	var hand4path = str(MiniVariables.currentDir,"/",MiniVariables.hand[3])
-	var hand4 = Image.load_from_file(hand4path)
-	var handtext4 = ImageTexture.new()
-	handtext4.set_image(hand4)
-	$%Hand4.texture_normal = handtext4
+		var hand1path = str(MiniVariables.currentDir,"/",MiniVariables.hand[0])
+		var hand1 = Image.load_from_file(hand1path)
+		var handtext1 = ImageTexture.new()
+		handtext1.set_image(hand1)
+		$%Hand1.texture_normal = handtext1
+		
+		var hand2path = str(MiniVariables.currentDir,"/",MiniVariables.hand[1])
+		var hand2 = Image.load_from_file(hand2path)
+		var handtext2 = ImageTexture.new()
+		handtext2.set_image(hand2)
+		$%Hand2.texture_normal = handtext2
+		
+		var hand3path = str(MiniVariables.currentDir,"/",MiniVariables.hand[2])
+		var hand3 = Image.load_from_file(hand3path)
+		var handtext3 = ImageTexture.new()
+		handtext3.set_image(hand3)
+		$%Hand3.texture_normal = handtext3
+		
+		var hand4path = str(MiniVariables.currentDir,"/",MiniVariables.hand[3])
+		var hand4 = Image.load_from_file(hand4path)
+		var handtext4 = ImageTexture.new()
+		handtext4.set_image(hand4)
+		$%Hand4.texture_normal = handtext4
 #endregion
 
-#func _on_load_tuber_pressed():
-	#$LoadDialog.popup() # Replace with function body.
 	
 func _on_load_dialog_dir_selected(dir):
 	MiniVariables.currentDir = dir
@@ -274,7 +298,6 @@ func _save_path():
 func _on_save_tuber_pressed():
 	save_settings()
 
-
  #Make new ModelSettings.tres in current folder and save current variables (in Mini_Variable)
 func save_settings():
 	var data:= ModelSettings.new()
@@ -300,4 +323,9 @@ func _load_model_settings():
 		return load(MiniVariables.savePath)
 	return null
 
+func _on_settings_editor():
+	self.visible = !self.visible
 
+
+func _on_load_tuber_pressed():
+	$LoadDialog.popup()
