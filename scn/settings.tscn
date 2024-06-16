@@ -27,6 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="AspectRatioContainer"]
+visible = false
 layout_mode = 2
 
 [node name="SplitContainer2" type="SplitContainer" parent="AspectRatioContainer"]
@@ -42,33 +43,18 @@ alignment = 1
 [node name="SplitContainer" type="SplitContainer" parent="AspectRatioContainer/SplitContainer2"]
 layout_mode = 2
 
-[node name="BoxContainer2" type="BoxContainer" parent="AspectRatioContainer/SplitContainer2/SplitContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-vertical = true
-
-[node name="Keybindings" type="Button" parent="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer2"]
-layout_mode = 2
-text = "Keybindings"
-
-[node name="MiniEditor" type="Button" parent="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer2"]
-layout_mode = 2
-text = "MiniTuber Editor"
-
 [node name="BoxContainer" type="BoxContainer" parent="AspectRatioContainer/SplitContainer2/SplitContainer"]
 layout_mode = 2
 vertical = true
+
+[node name="Keybindings" type="Button" parent="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer"]
+layout_mode = 2
+text = "Keybindings"
 
 [node name="Chalk" type="CheckButton" parent="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Chalk"
-
-[node name="ColorPickerButton" type="ColorPickerButton" parent="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Chalk Color"
 
 [node name="NoteBook" type="CheckButton" parent="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer"]
 unique_name_in_owner = true
@@ -90,15 +76,26 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Startup Model"
 
+[node name="MiniEditor" type="Button" parent="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer"]
+layout_mode = 2
+text = "MiniTuber Editor"
+
+[node name="CloseApp" type="Button" parent="AspectRatioContainer/SplitContainer2/SplitContainer"]
+layout_mode = 2
+tooltip_text = "Closes Program."
+text = "X"
+alignment = 0
+
 [node name="InputSettings" parent="." instance=ExtResource("2_fx4of")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -490.0
-offset_right = -490.0
+offset_left = -266.0
+offset_top = 23.0
+offset_right = -266.0
+offset_bottom = 23.0
 size_flags_horizontal = 8
 
 [node name="NoteDialog" type="FileDialog" parent="."]
@@ -122,12 +119,13 @@ root_subfolder = "models"
 use_native_dialog = true
 
 [connection signal="text_submitted" from="AspectRatioContainer/SplitContainer2/LineEdit" to="." method="_on_line_edit_text_submitted"]
-[connection signal="pressed" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer2/Keybindings" to="." method="_on_keybindings_pressed"]
-[connection signal="pressed" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer2/MiniEditor" to="." method="_on_mini_editor_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer/Keybindings" to="." method="_on_keybindings_pressed"]
 [connection signal="toggled" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer/Chalk" to="." method="_on_chalk_toggled"]
 [connection signal="toggled" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer/NoteBook" to="." method="_on_note_book_toggled"]
 [connection signal="pressed" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer/NotebookDir" to="." method="_on_notebook_dir_pressed"]
 [connection signal="toggled" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer/MiniTuber" to="." method="_on_mini_tuber_toggled"]
 [connection signal="pressed" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer/MiniTuberDir" to="." method="_on_mini_tuber_dir_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/SplitContainer2/SplitContainer/BoxContainer/MiniEditor" to="." method="_on_mini_editor_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/SplitContainer2/SplitContainer/CloseApp" to="." method="_on_close_app_pressed"]
 [connection signal="dir_selected" from="NoteDialog" to="." method="_on_note_dialog_dir_selected"]
 [connection signal="dir_selected" from="MiniDialog" to="." method="_on_mini_dialog_dir_selected"]

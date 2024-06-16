@@ -43,26 +43,38 @@ func _currentTuber():
 func _load_Imported():
 	# check for Face1.png if none then make placeholders
 	if !FileAccess.file_exists(str(MiniVariables.currentDir,"/",MiniVariables.face[0])):
+		#var template = Image.load_from_file("res://assets/transparentMiniTuberPreview.png")
+		
 		var blank_Face1 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+		blank_Face1.fill(Color.GRAY)
 		blank_Face1.save_png(str(MiniVariables.currentDir,"/", MiniVariables.face[0]))
 		print(str(MiniVariables.currentDir,"/", MiniVariables.face[0]))
 		var blank_Face2 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+		blank_Face1.fill(Color.GRAY)
 		blank_Face2.save_png(str(MiniVariables.currentDir,"/", MiniVariables.face[1]))
 		var blank_Face3 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+		blank_Face1.fill(Color.GRAY)
 		blank_Face3.save_png(str(MiniVariables.currentDir,"/", MiniVariables.face[2]))
 		var blank_Face4 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+		blank_Face1.fill(Color.GRAY)
 		blank_Face4.save_png(str(MiniVariables.currentDir,"/", MiniVariables.face[3]))
 		var blank_Face5 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+		blank_Face1.fill(Color.GRAY)
 		blank_Face5.save_png(str(MiniVariables.currentDir,"/", MiniVariables.face[4]))
 		var blank_Face6 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+		blank_Face1.fill(Color.GRAY)
 		blank_Face6.save_png(str(MiniVariables.currentDir,"/", MiniVariables.face[5]))
 		var blank_hand1 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+		blank_Face1.fill(Color.GRAY)
 		blank_hand1.save_png(str(MiniVariables.currentDir,"/", MiniVariables.hand[0]))
 		var blank_hand2 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+		blank_Face1.fill(Color.GRAY)
 		blank_hand2.save_png(str(MiniVariables.currentDir,"/", MiniVariables.hand[1]))
 		var blank_hand3 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+		blank_Face1.fill(Color.GRAY)
 		blank_hand3.save_png(str(MiniVariables.currentDir,"/", MiniVariables.hand[2]))
 		var blank_hand4 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+		blank_Face1.fill(Color.GRAY)
 		blank_hand4.save_png(str(MiniVariables.currentDir,"/", MiniVariables.hand[3]))
 	
 	# load imported

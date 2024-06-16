@@ -118,3 +118,7 @@ func _on_keybindings_pressed():
 
 func _on_mini_editor_pressed():
 	emit_signal("editor") # Replace with function body.
+
+
+func _on_close_app_pressed():
+	get_tree().quit()

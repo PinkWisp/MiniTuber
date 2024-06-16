@@ -1,12 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cvr8vqtmaxym"]
+[gd_scene load_steps=8 format=3 uid="uid://cvr8vqtmaxym"]
 
 [ext_resource type="Script" path="res://testMini/character_body_2d.gd" id="1_tenk8"]
 [ext_resource type="Texture2D" uid="uid://dlc4s5lmbasr7" path="res://icon.svg" id="2_jwqh7"]
-[ext_resource type="Texture2D" uid="uid://dw6qs6yhr1xre" path="res://assets/hands/wavetest.png" id="3_ebc5x"]
 [ext_resource type="Script" path="res://testMini/HandPaths.gd" id="3_m0qaa"]
 [ext_resource type="Script" path="res://testMini/HandPathClick.gd" id="5_e7s7a"]
-[ext_resource type="Texture2D" uid="uid://o1u4qw3dqns7" path="res://assets/hands/pointertest.png" id="6_om0s2"]
-[ext_resource type="Texture2D" uid="uid://ga1i0nrytusi" path="res://assets/EmoteTest/angryplaceholder.png" id="7_5fana"]
 
 [sub_resource type="Curve2D" id="Curve2D_e66pm"]
 _data = {
@@ -45,7 +42,7 @@ script = ExtResource("3_m0qaa")
 unique_name_in_owner = true
 visible = false
 scale = Vector2(0.465, 0.465)
-texture = ExtResource("3_ebc5x")
+texture = ExtResource("2_jwqh7")
 flip_h = true
 
 [node name="Orbit" type="Node2D" parent="MiniSprite"]
@@ -64,7 +61,7 @@ script = ExtResource("5_e7s7a")
 unique_name_in_owner = true
 visible = false
 rotation = 1.5708
-texture = ExtResource("6_om0s2")
+texture = ExtResource("2_jwqh7")
 
 [node name="Node2D" type="Node2D" parent="MiniSprite"]
 
@@ -116,7 +113,7 @@ columns = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-texture_normal = ExtResource("6_om0s2")
+texture_normal = ExtResource("2_jwqh7")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -124,7 +121,7 @@ stretch_mode = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-texture_normal = ExtResource("6_om0s2")
+texture_normal = ExtResource("2_jwqh7")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -132,7 +129,7 @@ stretch_mode = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-texture_normal = ExtResource("6_om0s2")
+texture_normal = ExtResource("2_jwqh7")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -140,7 +137,7 @@ stretch_mode = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-texture_normal = ExtResource("6_om0s2")
+texture_normal = ExtResource("2_jwqh7")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -163,7 +160,7 @@ columns = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-texture_normal = ExtResource("7_5fana")
+texture_normal = ExtResource("2_jwqh7")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -171,7 +168,7 @@ stretch_mode = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-texture_normal = ExtResource("7_5fana")
+texture_normal = ExtResource("2_jwqh7")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -179,7 +176,7 @@ stretch_mode = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-texture_normal = ExtResource("7_5fana")
+texture_normal = ExtResource("2_jwqh7")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -187,7 +184,7 @@ stretch_mode = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-texture_normal = ExtResource("7_5fana")
+texture_normal = ExtResource("2_jwqh7")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -195,7 +192,7 @@ stretch_mode = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-texture_normal = ExtResource("7_5fana")
+texture_normal = ExtResource("2_jwqh7")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -203,7 +200,7 @@ stretch_mode = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-texture_normal = ExtResource("7_5fana")
+texture_normal = ExtResource("2_jwqh7")
 ignore_texture_size = true
 stretch_mode = 0
 

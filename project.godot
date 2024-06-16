@@ -33,8 +33,7 @@ ConfigHandler="*res://scripts/config_handler.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=2
-window/size/initial_position_type=0
+window/size/mode=3
 window/size/borderless=true
 window/size/always_on_top=true
 window/size/transparent=true
@@ -44,7 +43,7 @@ mouse_cursor/transparent_background=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/2d_shapes/plugin.cfg", "res://addons/draggablesprite2d/plugin.cfg", "res://addons/jigglebones/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg", "res://addons/radial_menu/plugin.cfg")
+enabled=PackedStringArray("res://addons/kanban_tasks/plugin.cfg")
 
 [input]
 

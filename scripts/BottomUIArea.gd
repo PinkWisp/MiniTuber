@@ -27,8 +27,6 @@ func _on_bottom_move_button_up():
 	dragging = false
 	if GlobalVar.chalkState || settings.visible == false:
 		_set_passthrough()
-	#if settings.visible == false:
-		#_set_passthrough()
 
 func _set_passthrough():
 	var areaCenter : Vector2 = texture.get_size() / 2 # Center

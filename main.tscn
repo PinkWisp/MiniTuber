@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cc3fltjp24rja" path="res://scn/notebooks/notebook2.tscn" id="4_jlwh1"]
 [ext_resource type="PackedScene" uid="uid://bnvw4go1f1qb1" path="res://testMini/mini_editormenu.tscn" id="4_s7obh"]
 [ext_resource type="Texture2D" uid="uid://buv4fogvmvtue" path="res://assets/buttonMenu.png" id="5_al02g"]
-[ext_resource type="Script" path="res://BottomUIArea.gd" id="7_cn8uq"]
+[ext_resource type="Script" path="res://scripts/BottomUIArea.gd" id="7_cn8uq"]
 [ext_resource type="PackedScene" uid="uid://cvr8vqtmaxym" path="res://testMini/character_body_2d.tscn" id="7_xo871"]
 [ext_resource type="PackedScene" uid="uid://bfdcnk6rti0b7" path="res://scn/settings.tscn" id="8_87o2b"]
 
