@@ -59,7 +59,7 @@ func _ready():
 	
 func _process(delta):
 	if dragging:
-		DisplayServer.window_set_position(get_global_mouse_position() - offSet)
+		DisplayServer.window_set_position(DisplayServer.mouse_get_position() - offSet)
 		
 func _on_settings_pressed():
 	visible = !visible # Replace with function body.
@@ -128,12 +128,12 @@ func _on_close_setting_menu_pressed():
 
 func _on_move_app_button_down():
 	dragging = true
-	offSet = get_global_mouse_position() - global_position
+	offSet = DisplayServer.mouse_get_position() - DisplayServer.screen_get_position()
 	
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	DisplayServer.window_set_size(Vector2i(500,500))
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
-	print(dragging)
-
+	
 
 func _on_move_app_button_up():
 	dragging = false

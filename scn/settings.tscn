@@ -108,9 +108,9 @@ text = "MiniTuber Editor"
 
 [node name="CloseSettingMenu" type="Button" parent="AspectRatioContainer/SplitContainer2/SplitContainer"]
 layout_mode = 2
-tooltip_text = "Closes Program."
+size_flags_horizontal = 8
+tooltip_text = "Closes Menu."
 text = "X"
-alignment = 0
 
 [node name="InputSettings" parent="." instance=ExtResource("2_fx4of")]
 unique_name_in_owner = true
@@ -121,7 +121,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -278.0
+offset_top = 23.0
 offset_right = -278.0
+offset_bottom = 23.0
 size_flags_horizontal = 8
 
 [node name="NoteDialog" type="FileDialog" parent="."]

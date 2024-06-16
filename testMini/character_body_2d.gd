@@ -57,10 +57,8 @@ func _ready():
 	
 # Face Placeholders when making new Default
 func _blank_png():
-	#var template = Image.load_from_file("res://assets/transparentMiniTuberPreview.png")
-
-	var blank_Face1 = Image.load_from_file("res://assets/transparentMiniTuberPreview.png")
-	#blank_Face1.fill(Color.GRAY)
+	var blank_Face1 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
+	blank_Face1.fill(Color.GRAY)
 	blank_Face1.save_png(str(MiniVariables.currentDir,"/", MiniVariables.face[0]))
 	print(str(MiniVariables.currentDir,"/", MiniVariables.face[0]))
 	var blank_Face2 = Image.create(128, 128, false, Image.FORMAT_RGBA8)

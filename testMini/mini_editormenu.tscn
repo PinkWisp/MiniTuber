@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bnvw4go1f1qb1"]
 
 [ext_resource type="Script" path="res://testMini/mini_editormenu.gd" id="1_vyx1n"]
-[ext_resource type="Texture2D" uid="uid://c7ulfbhuuaecn" path="res://assets/transparentMiniTuberPreview.png" id="2_7k335"]
+[ext_resource type="Texture2D" uid="uid://dlc4s5lmbasr7" path="res://icon.svg" id="2_cx2t3"]
 
 [node name="MiniEditor" type="Control"]
 layout_mode = 3
@@ -89,8 +89,11 @@ columns = 4
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
+tooltip_text = "Left Click to select and customize hand settings.
+
+Right click to import. Images will be resized to 50x50."
 button_mask = 3
-texture_normal = ExtResource("2_7k335")
+texture_normal = ExtResource("2_cx2t3")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -98,8 +101,11 @@ stretch_mode = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
+tooltip_text = "Left Click to select and customize hand settings.
+
+Right click to import. Images will be resized to 50x50."
 button_mask = 3
-texture_normal = ExtResource("2_7k335")
+texture_normal = ExtResource("2_cx2t3")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -107,8 +113,11 @@ stretch_mode = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
+tooltip_text = "Left Click to select and customize hand settings.
+
+Right click to import. Images will be resized to 50x50."
 button_mask = 3
-texture_normal = ExtResource("2_7k335")
+texture_normal = ExtResource("2_cx2t3")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -116,8 +125,11 @@ stretch_mode = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
+tooltip_text = "Left Click to select and customize hand settings.
+
+Right click to import. Images will be resized to 50x50."
 button_mask = 3
-texture_normal = ExtResource("2_7k335")
+texture_normal = ExtResource("2_cx2t3")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -162,7 +174,8 @@ columns = 6
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture_normal = ExtResource("2_7k335")
+tooltip_text = "Right click to import. Images will be resized to 128x128."
+texture_normal = ExtResource("2_cx2t3")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -170,7 +183,8 @@ stretch_mode = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture_normal = ExtResource("2_7k335")
+tooltip_text = "Right click to import. Images will be resized to 128x128."
+texture_normal = ExtResource("2_cx2t3")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -178,7 +192,8 @@ stretch_mode = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture_normal = ExtResource("2_7k335")
+tooltip_text = "Right click to import. Images will be resized to 128x128."
+texture_normal = ExtResource("2_cx2t3")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -186,7 +201,8 @@ stretch_mode = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture_normal = ExtResource("2_7k335")
+tooltip_text = "Right click to import. Images will be resized to 128x128."
+texture_normal = ExtResource("2_cx2t3")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -194,7 +210,8 @@ stretch_mode = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture_normal = ExtResource("2_7k335")
+tooltip_text = "Right click to import. Images will be resized to 128x128."
+texture_normal = ExtResource("2_cx2t3")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -202,7 +219,8 @@ stretch_mode = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture_normal = ExtResource("2_7k335")
+tooltip_text = "Right click to import. Images will be resized to 128x128."
+texture_normal = ExtResource("2_cx2t3")
 ignore_texture_size = true
 stretch_mode = 0
 

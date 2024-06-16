@@ -227,11 +227,11 @@
 			"steps": [
 				{
 					"details": "Keybind Menu",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Close App",
-					"done": false
+					"done": true
 				}
 			]
 		}
