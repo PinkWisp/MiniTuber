@@ -460,6 +460,7 @@ func _on_mini_tuber_pressed():
 	if GlobalVar.miniState == false:
 		if GlobalVar.chalkState || settings.visible == false:
 			DisplayServer.window_set_mouse_passthrough(GlobalVar.menuArray)
+	emit_signal("miniSleep")
 
 func _on_bottom_move_button_up():
 	menuDragging = false # Replace with function body.

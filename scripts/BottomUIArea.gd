@@ -44,3 +44,11 @@ func _set_passthrough():
 
 func _on_settings_namechanged(new_text):
 	$%BottomMove.text = new_text
+
+
+func _on_mini_tuber_mini_sleep():
+	if GlobalVar.miniState == true:
+		$ColorRect.visible = true
+		$ColorRect.color = Color.RED
+	if GlobalVar.miniState == false: # Replace with function body.
+		$ColorRect.visible = false

@@ -19,7 +19,8 @@ extends Control
 @onready var UserNamed = get_node("/root/Main/BottomUIArea/HSplitContainer/VBoxContainer/BottomMove")
 @onready var mini_tuber = get_node("/root/Main/MiniTuber")
 
-
+var dragging = false
+var offSet = Vector2(0,0)
 
 signal keybindings
 signal namechanged
@@ -56,8 +57,10 @@ func _ready():
 	mini_tuber_dir.text = customization_settings.minituber_dir.replace("user://models/", "")
 	
 	
+func _process(delta):
+	if dragging:
+		DisplayServer.window_set_position(get_global_mouse_position() - offSet)
 		
-
 func _on_settings_pressed():
 	visible = !visible # Replace with function body.
 	if visible == true:
@@ -111,10 +114,6 @@ func _on_mini_tuber_toggled(toggled_on):
 		mini_tuber.visible = false
 	ConfigHandler.save_feature_settings("minituber_on", toggled_on)
 
-# Opens Keybinding Menu
-func _on_keybindings_pressed():
-	input_settings.visible = !input_settings.visible
-
 
 func _on_mini_editor_pressed():
 	emit_signal("editor") # Replace with function body.
@@ -122,3 +121,21 @@ func _on_mini_editor_pressed():
 
 func _on_close_app_pressed():
 	get_tree().quit()
+
+
+func _on_close_setting_menu_pressed():
+	_on_settings_pressed()
+
+func _on_move_app_button_down():
+	dragging = true
+	offSet = get_global_mouse_position() - global_position
+	
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+	print(dragging)
+
+
+func _on_move_app_button_up():
+	dragging = false
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)

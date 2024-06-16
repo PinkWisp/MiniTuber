@@ -67,6 +67,7 @@ texture = ExtResource("2_jwqh7")
 [node name="Node2D" type="Node2D" parent="MiniSprite"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_txj0k")
 
 [node name="DashTimer" type="Timer" parent="."]

@@ -34,6 +34,13 @@ texture = ExtResource("5_al02g")
 script = ExtResource("7_cn8uq")
 metadata/_edit_group_ = true
 
+[node name="ColorRect" type="ColorRect" parent="BottomUIArea"]
+visible = false
+offset_left = 17.0
+offset_top = -22.0
+offset_right = 21.0
+offset_bottom = 24.0
+
 [node name="HSplitContainer" type="HSplitContainer" parent="BottomUIArea"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -61,6 +68,7 @@ size_flags_horizontal = 8
 [node name="BottomMove" type="Button" parent="BottomUIArea/HSplitContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 8
 tooltip_text = "Click and drag here to reposition menu."
 text = "user.ttv"
@@ -95,6 +103,7 @@ position = Vector2(-46, 0)
 [node name="Settings" parent="." instance=ExtResource("8_87o2b")]
 visible = false
 
+[connection signal="miniSleep" from="MiniTuber" to="BottomUIArea" method="_on_mini_tuber_mini_sleep"]
 [connection signal="loadDialog" from="MiniEditor" to="MiniTuber" method="_on_mini_editor_load_dialog"]
 [connection signal="pressed" from="BottomUIArea/HSplitContainer/MiniTuberButton" to="MiniTuber" method="_on_mini_tuber_pressed"]
 [connection signal="toggled" from="BottomUIArea/HSplitContainer/MiniTuberButton" to="MiniTuber" method="_on_mini_tuber_toggled"]
