@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bnvw4go1f1qb1"]
 
-[ext_resource type="Texture2D" uid="uid://dlc4s5lmbasr7" path="res://icon.svg" id="1_um0wm"]
 [ext_resource type="Script" path="res://testMini/mini_editormenu.gd" id="1_vyx1n"]
+[ext_resource type="Texture2D" uid="uid://c7ulfbhuuaecn" path="res://assets/transparentMiniTuberPreview.png" id="2_7k335"]
 
 [node name="MiniEditor" type="Control"]
 layout_mode = 3
@@ -90,7 +90,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 button_mask = 3
-texture_normal = ExtResource("1_um0wm")
+texture_normal = ExtResource("2_7k335")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -99,7 +99,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 button_mask = 3
-texture_normal = ExtResource("1_um0wm")
+texture_normal = ExtResource("2_7k335")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -108,7 +108,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 button_mask = 3
-texture_normal = ExtResource("1_um0wm")
+texture_normal = ExtResource("2_7k335")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -117,7 +117,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 button_mask = 3
-texture_normal = ExtResource("1_um0wm")
+texture_normal = ExtResource("2_7k335")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -162,7 +162,7 @@ columns = 6
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture_normal = ExtResource("1_um0wm")
+texture_normal = ExtResource("2_7k335")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -170,7 +170,7 @@ stretch_mode = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture_normal = ExtResource("1_um0wm")
+texture_normal = ExtResource("2_7k335")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -178,7 +178,7 @@ stretch_mode = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture_normal = ExtResource("1_um0wm")
+texture_normal = ExtResource("2_7k335")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -186,7 +186,7 @@ stretch_mode = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture_normal = ExtResource("1_um0wm")
+texture_normal = ExtResource("2_7k335")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -194,7 +194,7 @@ stretch_mode = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture_normal = ExtResource("1_um0wm")
+texture_normal = ExtResource("2_7k335")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -202,7 +202,7 @@ stretch_mode = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-texture_normal = ExtResource("1_um0wm")
+texture_normal = ExtResource("2_7k335")
 ignore_texture_size = true
 stretch_mode = 0
 
