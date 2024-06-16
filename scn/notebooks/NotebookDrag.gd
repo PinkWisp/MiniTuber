@@ -54,8 +54,10 @@ func _on_close_note_pressed():
 func _on_notes_button_toggled(toggled_on):
 	if toggled_on:
 		visible = true
-		if GlobalVar.chalkState == false:
-			_set_passthrough()
+		if GlobalVar.chalkState || settings.visible == false:
+			DisplayServer.window_set_mouse_passthrough(GlobalVar.bookArray)
 	else:
 		visible = false
+		if GlobalVar.chalkState || settings.visible == false:
+			DisplayServer.window_set_mouse_passthrough(GlobalVar.menuArray)
 
