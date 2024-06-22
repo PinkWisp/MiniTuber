@@ -1,11 +1,13 @@
 # MiniTuber
 
 A streaming overlay that helps express yourself and engage with your audiance.
-Windows only.
+
 
 - Control your mini and emote to what's on screen. Punch that NPC you hate or kiss your fav.
 - Draw on the screen to get help with puzzles or to troll your chat.
 - Use the notebook to help solve mysteries or keep a tally of which NPC lets you die the most so you can have your revenge.
+
+Windows only. I'm still *very new* to programming so expect bugs and ugly code lol.
 
 ### Guide (WIP)
 
