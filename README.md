@@ -14,15 +14,15 @@ Windows only. I'm still *very new* to programming so expect bugs and ugly code l
 MiniTuber is always ontop and click through unless certain features are active (miniTuber, chalk, settings menu).
 Notebook and Models are saved in your appdata folder. (ex: Roaming\Godot\app_userdata\MiniTuber)
 
-You can drag the menu around so it won't block your game or video. OBS does not capture the emote menu.
-![Screenshot_287](https://github.com/PinkWisp/MiniTuber/assets/44570252/27f0a08c-1d15-4de8-9cfc-e5342d257202)
-
-Editor to customize your miniTuber. 
-![Screenshot_286](https://github.com/PinkWisp/MiniTuber/assets/44570252/92dc2965-2a62-4399-8947-714e667b5628)
-
 Select which features, models, or notebook you'd like to open at start up and the ability to change inputs.
 ![Screenshot_285](https://github.com/PinkWisp/MiniTuber/assets/44570252/ce82ade6-5481-4a5d-ac09-46487619c68e)
 
+A red bar pops up when the miniTuber is active. You can only move your mini around when it's active. OBS does not capture the emote menu allowing for viewer immersion.
+You can drag the menu around so it won't block your game or video.
+![Screenshot_287](https://github.com/PinkWisp/MiniTuber/assets/44570252/27f0a08c-1d15-4de8-9cfc-e5342d257202)
+
+Editor to customize your miniTuber. You can also put QR codes for your shops.
+![Screenshot_286](https://github.com/PinkWisp/MiniTuber/assets/44570252/92dc2965-2a62-4399-8947-714e667b5628)
 
 ### Known Bugs
 
