@@ -22,3 +22,6 @@ Select which features, models, or notebook you'd like to open at start up and th
 ![Screenshot_285](https://github.com/PinkWisp/MiniTuber/assets/44570252/ce82ade6-5481-4a5d-ac09-46487619c68e)
 
 
+### Known Bugs
+
+- Things rendering under window, making it unclickable. This a bug with the Godot Engine, hopefully it'll be fixed in 4.3 https://github.com/godotengine/godot/issues/62382
