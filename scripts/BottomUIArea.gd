@@ -25,9 +25,11 @@ func _on_bottom_move_button_down():
 
 func _on_bottom_move_button_up():
 	dragging = false
+	_set_passthrough()
 	if GlobalVar.chalkState || settings.visible == false:
-		_set_passthrough()
+		DisplayServer.window_set_mouse_passthrough(GlobalVar.menuArray)
 
+	# Make click array00
 func _set_passthrough():
 	var areaCenter : Vector2 = texture.get_size() / 2 # Center
 	var areaCorners: PackedVector2Array = [
@@ -36,7 +38,6 @@ func _set_passthrough():
 	global_position + areaCenter * Vector2(1 , 1), # Bottom right corner
 	global_position + areaCenter * Vector2(-1 ,1) # Bottom left corner
   ]
-	DisplayServer.window_set_mouse_passthrough(areaCorners)
 	GlobalVar.menuArray = areaCorners
 
 
@@ -52,3 +53,8 @@ func _on_mini_tuber_mini_sleep():
 		$ColorRect.color = Color.RED
 	if GlobalVar.miniState == false: # Replace with function body.
 		$ColorRect.visible = false
+
+
+
+func _on_settings_settings_closed():
+	pass # Replace with function body.

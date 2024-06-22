@@ -2,6 +2,9 @@ extends Control
 
 @export var selectNode: TextureButton # Select TextureRect on hover
 
+@onready var settings = $"../Settings"
+
+
 var currentTuber = "" # use FileDialog.current_dir
 var selectedNode = "" # finds .png in face or hand array
 
@@ -20,6 +23,11 @@ func _ready():
 	# open startup folder
 	if dir.dir_exists(customization_settings.minituber_dir):
 		_load_Imported()
+		
+		# Hand Settings
+		_save_path() #make dir path
+		save_settings() #make file
+		_load_model_settings() #load file is already there
 
 #region File Dialog Face & Hands
 func _on_file_dialog_file_selected(path):
@@ -43,7 +51,6 @@ func _currentTuber():
 func _load_Imported():
 	# check for Face1.png if none then make placeholders
 	if !FileAccess.file_exists(str(MiniVariables.currentDir,"/",MiniVariables.face[0])):
-		#var template = Image.load_from_file("res://assets/transparentMiniTuberPreview.png")
 		
 		var blank_Face1 = Image.create(128, 128, false, Image.FORMAT_RGBA8)
 		blank_Face1.fill(Color.GRAY)
@@ -306,9 +313,11 @@ func _on_face_6_gui_input(event):
 
 func _save_path():
 	MiniVariables.savePath = str(MiniVariables.currentDir,"/","ModelSettings.tres")
+	print(MiniVariables.savePath)
 
 	
 func _on_save_tuber_pressed():
+	_save_path()
 	save_settings()
 
  #Make new ModelSettings.tres in current folder and save current variables (in Mini_Variable)
@@ -328,6 +337,7 @@ func save_settings():
 	data.H4_Counter_Rotation =  MiniVariables.H4_Counter_Rotation
 	
 	var error := ResourceSaver.save(data, MiniVariables.savePath)
+	print("Save Finished")
 	if error:
 		print("An error happened while saving data: ", error)
 
@@ -337,7 +347,11 @@ func _load_model_settings():
 	return null
 
 func _on_settings_editor():
-	self.visible = !self.visible
+	if settings.visible:
+		self.visible = !self.visible
+	else:
+		self.visible = false
 
 func _on_load_tuber_pressed():
 	$LoadDialog.popup()
+

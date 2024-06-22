@@ -25,6 +25,7 @@ var offSet = Vector2(0,0)
 signal keybindings
 signal namechanged
 signal editor
+signal settingsClosed
 
 func _ready():
 	# Features
@@ -125,6 +126,8 @@ func _on_close_app_pressed():
 
 func _on_close_setting_menu_pressed():
 	_on_settings_pressed()
+	emit_signal("editor")
+	emit_signal("settingsClosed")
 
 func _on_move_app_button_down():
 	dragging = true

@@ -18,9 +18,10 @@ func _on_note_move_button_down():
 	DisplayServer.window_set_mouse_passthrough(GlobalVar.transBG)
 
 func _on_note_move_button_up():
-	dragging = false # Replace with function body.
+	dragging = false 
+	_set_passthrough()
 	if GlobalVar.chalkState || settings.visible == false:
-		_set_passthrough()
+		DisplayServer.window_set_mouse_passthrough(GlobalVar.bookArray)
 	
 func _process(delta):
 	if dragging:
@@ -34,7 +35,6 @@ func _set_passthrough():
 	global_position + areaCenter * Vector2(1 , 1), # Bottom right corner
 	global_position + areaCenter * Vector2(-1 ,1) # Bottom left corner
   ]
-	DisplayServer.window_set_mouse_passthrough(areaCorners)
 	GlobalVar.bookArray = areaCorners
 
 

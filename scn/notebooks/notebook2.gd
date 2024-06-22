@@ -102,3 +102,8 @@ func _on_close_note_pressed():
 
 func _on_note_book_selecting_folder():
 	save_notes() 
+
+
+
+func _on_save_button_pressed():
+	save_notes()

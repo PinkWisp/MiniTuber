@@ -49,6 +49,10 @@ layout_mode = 2
 size_flags_horizontal = 8
 text = "X"
 
+[node name="SaveButton" type="Button" parent="SplitContainer/SplitContainer"]
+layout_mode = 2
+text = "🖫"
+
 [node name="Control" type="Control" parent="SplitContainer"]
 layout_mode = 2
 mouse_filter = 1
@@ -149,4 +153,5 @@ use_native_dialog = true
 [connection signal="gui_input" from="SplitContainer/SplitContainer/NoteMove" to="." method="_on_note_move_gui_input"]
 [connection signal="pressed" from="SplitContainer/SplitContainer/CloseNote" to="." method="_on_close_note_pressed"]
 [connection signal="pressed" from="SplitContainer/SplitContainer/CloseNote" to="Control" method="_on_close_note_pressed"]
+[connection signal="pressed" from="SplitContainer/SplitContainer/SaveButton" to="Control" method="_on_save_button_pressed"]
 [connection signal="dir_selected" from="FileDialog" to="Control" method="_on_file_dialog_dir_selected"]

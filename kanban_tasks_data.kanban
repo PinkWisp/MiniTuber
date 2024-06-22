@@ -22,7 +22,7 @@
 			"tasks": [
 				"cd1afa4c-7460-4dba-ab12-b5fadfa4b92b",
 				"ee82a70e-4c17-4109-ab4b-3dfe9db45577",
-				"c7e052fe-b4dd-4e69-91d1-5b987d188e7c"
+				"ea4c5097-ed61-4ca2-83bd-00a801742b32"
 			]
 		},
 		{
@@ -34,7 +34,8 @@
 				"f704ed5c-6ea8-4fda-adda-9392182590a7",
 				"9a6c264c-d085-4dd8-a3b2-ee14d95e6c2a",
 				"07cb7335-b4c7-4ff3-84ac-472a158c4f1f",
-				"c5a5061b-cc88-40b5-a440-30fd575cfe06"
+				"c5a5061b-cc88-40b5-a440-30fd575cfe06",
+				"c7e052fe-b4dd-4e69-91d1-5b987d188e7c"
 			]
 		}
 	],
@@ -135,7 +136,7 @@
 				},
 				{
 					"details": "Easy way to exit Tuber Mode like Chalk and Notebook",
-					"done": false
+					"done": true
 				}
 			]
 		},
@@ -231,6 +232,30 @@
 				},
 				{
 					"details": "Close App",
+					"done": true
+				}
+			]
+		},
+		{
+			"uuid": "ea4c5097-ed61-4ca2-83bd-00a801742b32",
+			"title": "Bugs",
+			"description": "Hand Settings: save file not created UNTIL save button is pressed. moved function to first creation\n\n",
+			"category": "23d1d3c9-64ae-4253-b4c8-0bac77fe3433",
+			"steps": [
+				{
+					"details": "Editor Not turning off with Settings",
+					"done": true
+				},
+				{
+					"details": "Hand Settings not working",
+					"done": true
+				},
+				{
+					"details": "Moving Menu While Settings is open doesnt remake click area array",
+					"done": true
+				},
+				{
+					"details": "need save button for note",
 					"done": true
 				}
 			]

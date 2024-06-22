@@ -461,11 +461,11 @@ func _on_mini_tuber_pressed():
 	emit_signal("miniSleep")
 
 func _on_bottom_move_button_up():
-	menuDragging = false # Replace with function body.
+	menuDragging = false 
 
 
 func _on_bottom_move_button_down():
-	menuDragging = true # Replace with function body.
+	menuDragging = true 
 	clickPos = (homePos.global_position - global_position)
 	%OrbitHand.visible = false
 
@@ -474,4 +474,12 @@ func _on_mini_sleep_pressed():
 	GlobalVar.miniState = false
 	%OrbitHand.visible = false
 	$Menu.visible = false
-	emit_signal("miniSleep") # Replace with function body.
+	emit_signal("miniSleep")
+	if GlobalVar.chalkState || settings.visible == false:
+		DisplayServer.window_set_mouse_passthrough(GlobalVar.menuArray)
+
+
+func _on_settings_pressed():
+	if $Menu.visible:
+		$Menu.visible = false
+		
