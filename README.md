@@ -7,8 +7,7 @@ A streaming overlay that helps express yourself and engage with your audiance.
 - Draw on the screen to get help with puzzles or to troll your chat.
 - Use the notebook to help solve mysteries or keep a tally of which NPC lets you die the most so you can have your revenge.
 
-![ezgif com-cut](https://github.com/PinkWisp/MiniTuber/assets/44570252/9b87b50e-ab3b-4b3b-b90b-06f2cc5b7580)
-
+![OBSTest4](https://github.com/PinkWisp/MiniTuber/assets/44570252/4cf6aee5-cc66-4e5d-b233-c95ef89dc56e)
 
 Windows only. I'm still *very new* to programming so expect bugs and ugly code lol.
 
