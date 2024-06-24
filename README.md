@@ -26,6 +26,12 @@ You can drag the menu around so it won't block your game or video.
 Editor to customize your miniTuber. You can also put QR codes for your shops.
 ![Screenshot_286](https://github.com/PinkWisp/MiniTuber/assets/44570252/92dc2965-2a62-4399-8947-714e667b5628)
 
+### Planned Features
+- [ ] Online Multiplayer
+- [ ] Customizable Chalk Color
+- [ ] Customizable Theme
+
 ### Known Bugs
 
 - Things rendering under window, making it unclickable. This a bug with the Godot Engine, hopefully it'll be fixed in 4.3 https://github.com/godotengine/godot/issues/62382
+- Hands settings broken
